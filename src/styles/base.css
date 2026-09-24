@@ -1,0 +1,40 @@
+@layer components {
+  .btn {
+    @apply px-10 rounded-xl text-[1rem] text-center;
+  }
+  .btn-Primary {
+    @apply py-4 bg-primary font-semibold tracking-normal leading-6  text-white;
+  }
+  .btn-secondry {
+    @apply py-3.5 bg-Surface border-primary border-2 text-primary;
+  }
+  .btn-outline {
+    @apply py-3.5 border-[#BEC8CA] border-2 text-[#111C2C] bg-white;
+  }
+  .btn-icon {
+    @apply size-14 rounded-full flex justify-center items-center;
+  }
+  .badge {
+    @apply pt-[7.5px] pb-[8.5px] px-5 border gap-2 rounded-[9999px]
+     flex  text-[0.875rem] font-semibold leading-5 tracking-[0.14px];
+  }
+  .badge-active {
+    @apply text-primary bg-[#9FF0FB] border border-[#00535B33]/20;
+  }
+  .badge-pending {
+    @apply bg-[#FFDF96] text-[#5A4400];
+  }
+  .badge-declined {
+    @apply bg-[#FFDAD6] text-error;
+  }
+  .badge-submit {
+    @apply bg-[#E6E3D0] text-[#48473A];
+  }
+  .label-input {
+    @apply text-[0.75rem] font-bold text-[#111C2C] leading-4 tracking-normal;
+  }
+  .input-style {
+    @apply py-4.5 px-6 bg-Surface outline-0 focus:outline-0 focus:border-0 rounded-tl-lg 
+     rounded-tr-lg  text-[#6F797A] text-[1rem] tracking-normal leading-[100%] font-normal;
+  }
+}

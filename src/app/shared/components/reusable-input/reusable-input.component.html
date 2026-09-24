@@ -1,0 +1,13 @@
+<div class="flex flex-col">
+  <label [for]="idLabel()" class="label-input relative top-[-0.5px] left-1">
+    {{ label() }}
+  </label>
+  <input
+    [type]="typeInput()"
+    class="input-style"
+    [placeholder]="placeholde()"
+    [id]="idLabel()"
+    (blur)="onTouched()"
+    (input)="value = $event.target.value; onChange(value)"
+  />
+</div>

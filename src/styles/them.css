@@ -1,0 +1,29 @@
+@theme {
+  /* 1. Brand & System Colors */
+  --color-primary: #00535b;
+  --color-Secondary: #d4a373;
+  --color-Tertiary: #5e4700;
+  --color-Surface: #f9f9ff;
+  --color-Surface-container: #e7eeff;
+  --color-error: #ba1a1a;
+
+  /* 2. Fonts */
+  --font-sans: 'Inter', sans-serif;
+
+  /* 3. Fluid Typography (دمج قيم الفيجما مع clamp) */
+  /* Display Large (57px في Figma) */
+  --text-display-lg: clamp(2.25rem, 1.25rem + 3.2vw, 3.5625rem);
+  --text-display-lg--line-height: 1.15;
+
+  /* Headline Medium (28px في Figma) */
+  --text-headline-md: clamp(1.375rem, 1rem + 1.2vw, 1.75rem);
+  --text-headline-md--line-height: 1.3;
+
+  /* Body Large (18px في Figma) */
+  --text-body-lg: clamp(1rem, 0.95rem + 0.3vw, 1.125rem);
+  --text-body-lg--line-height: 1.6;
+
+  /* Label Medium (14px في Figma) */
+  --text-label-md: clamp(0.75rem, 0.7rem + 0.2vw, 0.875rem);
+  --text-label-md--line-height: 1.4;
+}
