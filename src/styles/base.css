@@ -34,7 +34,7 @@
     @apply text-[0.75rem] font-bold text-[#111C2C] leading-4 tracking-normal py-2;
   }
   .input-style {
-    @apply w-full flex-1 py-4.5 px-6 bg-Surface border-none outline-0 focus:outline-0 focus:border-0 rounded-tl-lg 
+    @apply w-full flex-1 py-4.5 px-6 bg-Surface-container border-none outline-0 focus:outline-0 focus:border-0 rounded-tl-lg 
      rounded-tr-lg  text-[#6F797A] text-[1rem] tracking-normal leading-[100%] font-normal;
   }
 }
