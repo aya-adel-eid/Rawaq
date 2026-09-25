@@ -1,4 +1,4 @@
-import { Component, forwardRef, input } from '@angular/core';
+import { Component, forwardRef, Input, input } from '@angular/core';
 import {
   AbstractControl,
   ControlValueAccessor,
@@ -22,7 +22,7 @@ import {
 export class ReusableInputComponent implements ControlValueAccessor {
   label = input<string>();
   idLabel = input<string>();
-  typeInput = input<string>();
+  @Input() typeInput!: string;
   placeholde = input<string>();
   control = input<AbstractControl | null>(null);
   group = input<FormGroup | null>(null);
@@ -41,5 +41,12 @@ export class ReusableInputComponent implements ControlValueAccessor {
   }
   setDisabledState?(isDisabled: boolean): void {
     this.disabled = isDisabled;
+  }
+  flag = true;
+  toggle() {
+    if (this.idLabel() == 'password' || this.idLabel() == 'rePassword') {
+      this.flag = !this.flag;
+      this.typeInput = this.flag ? 'password' : 'text';
+    }
   }
 }
