@@ -1,5 +1,5 @@
-<div class="bg-Surface pt-8 px-5 pb-12 lg:p-10 lg:max-w-160">
-  <div class="max-w-lg lg:p-10 rounded-xl flex flex-col gap-8 lg:bg-white lg:shadow">
+<div class="bg-Surface pt-8 px-5 pb-12 lg:p-10 w-full lg:flex lg:justify-center">
+  <div class="lg:max-w-lg lg:p-10 rounded-xl flex flex-col gap-8 lg:bg-white lg:shadow">
     <!-- header -->
     <div class="flex flex-col gap-1">
       <h2 class="text-[1.5rem] tracking-normal leading-8 text-[#111C2C] font-semibold">
@@ -10,8 +10,8 @@
       </p>
     </div>
     <!-- form -->
-    <div>
-      <form action="" class="flex flex-col gap-6 pb-32 lg:pb-0">
+    <div class="max-h-[971px]">
+      <form action="" class="flex flex-col gap-6 pb-32 lg:pb-0 w-full">
         <div class="flex flex-col gap-3">
           <h3 class="text-[1rem] text-[#3E494A] tracking-normal leading-6 font-normal">
             I am a...:
@@ -86,18 +86,22 @@
         </div>
         <!-- name -->
         <div class="flex gap-4 w-full">
-          <app-reusable-input
-            [label]="'First Name'"
-            [placeholde]="'John'"
-            [typeInput]="'text'"
-            [idLabel]="'first-name'"
-          ></app-reusable-input>
-          <app-reusable-input
-            [label]="'Last Name'"
-            [placeholde]="'Doe'"
-            [typeInput]="'text'"
-            [idLabel]="'last-name'"
-          ></app-reusable-input>
+          <div class="w-full">
+            <app-reusable-input
+              [label]="'First Name'"
+              [placeholde]="'John'"
+              [typeInput]="'text'"
+              [idLabel]="'first-name'"
+            ></app-reusable-input>
+          </div>
+          <div class="w-full">
+            <app-reusable-input
+              [label]="'Last Name'"
+              [placeholde]="'Doe'"
+              [typeInput]="'text'"
+              [idLabel]="'last-name'"
+            ></app-reusable-input>
+          </div>
         </div>
         <!-- email -->
 
