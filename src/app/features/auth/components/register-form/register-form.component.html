@@ -11,18 +11,24 @@
     </div>
     <!-- form -->
     <div class="max-h-[971px]">
-      <form action="" class="flex flex-col gap-6 pb-32 lg:pb-0 w-full">
-        <div class="flex flex-col gap-3">
+      <form
+        action=""
+        class="flex flex-col gap-6 pb-32 lg:pb-0 w-full"
+        [formGroup]="registerForm"
+        (ngSubmit)="submit()"
+      >
+        <!-- acount type -->
+        <div class="flex flex-col gap-3" formGroupName="data">
           <h3 class="text-[1rem] text-[#3E494A] tracking-normal leading-6 font-normal">
             I am a...:
           </h3>
           <ul class="flex select-none w-full gap-4">
             <li class="flex-1">
               <input
+                formControlName="account_type"
                 type="radio"
                 id="react-option"
-                value="react-option"
-                name="technologies"
+                value="student"
                 class="hidden peer"
                 required=""
                 checked
@@ -53,10 +59,10 @@
 
             <li class="flex-1">
               <input
+                formControlName="account_type"
                 type="radio"
                 id="vue-option"
-                value="vue-option"
-                name="technologies"
+                value="teacher"
                 class="hidden peer"
                 required=""
               />
@@ -85,9 +91,11 @@
           </ul>
         </div>
         <!-- name -->
-        <div class="flex gap-4 w-full">
+        <div class="flex gap-4 w-full" formGroupName="data">
           <div class="w-full">
             <app-reusable-input
+              formControlName="first_name"
+              [control]="registerForm.get('first_name')"
               [label]="'First Name'"
               [placeholde]="'John'"
               [typeInput]="'text'"
@@ -96,6 +104,8 @@
           </div>
           <div class="w-full">
             <app-reusable-input
+              [control]="registerForm.get('last_name')"
+              formControlName="last_name"
               [label]="'Last Name'"
               [placeholde]="'Doe'"
               [typeInput]="'text'"
@@ -106,6 +116,8 @@
         <!-- email -->
 
         <app-reusable-input
+          formControlName="email"
+          [control]="registerForm.get('email')"
           [label]="'Email Address'"
           [placeholde]="'john.doe@example.com'"
           [typeInput]="'email'"
@@ -113,6 +125,8 @@
         ></app-reusable-input>
         <!-- password -->
         <app-reusable-input
+          formControlName="password"
+          [control]="registerForm.get('password')"
           [label]="'Password'"
           [placeholde]="'••••••••'"
           [typeInput]="'password'"
@@ -120,6 +134,8 @@
         ></app-reusable-input>
         <!-- confirm password -->
         <app-reusable-input
+          formControlName="confirm_password"
+          [control]="registerForm.get('confirm_password')"
           [label]="'Confirm Password'"
           [placeholde]="'••••••••'"
           [typeInput]="'password'"
@@ -131,7 +147,7 @@
             for="avater"
             class="bg-Surface-container border-2 border-dashed rounded-lg p-4 border-[#BEC8CA4D] flex gap-3 items-center cursor-pointer"
           >
-            <input type="file" class="hidden" id="avater" />
+            <input type="file" class="hidden" id="avater" (change)="onAvatarSelected($event)" />
             <div class="bg-[#BEC8CA33] rounded-full flex justify-center items-center size-12">
               <svg
                 width="20"

@@ -8,7 +8,6 @@ import { RegisterPageComponent } from './features/auth/pages/register-page/regis
   selector: 'app-root',
   imports: [RouterOutlet, RegisterFormComponent, RegisterPageComponent],
   templateUrl: './app.html',
-  styleUrl: './app.css',
 })
 export class App {
   ngOnInit(): void {
