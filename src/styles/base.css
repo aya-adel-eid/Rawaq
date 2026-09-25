@@ -1,6 +1,6 @@
 @layer components {
   .btn {
-    @apply px-10 rounded-xl text-[1rem] text-center;
+    @apply inline-flex flex-col items-center justify-center px-10 rounded-xl text-[1rem] text-center;
   }
   .btn-Primary {
     @apply py-4 bg-primary font-semibold tracking-normal leading-6  text-white;
@@ -31,10 +31,10 @@
     @apply bg-[#E6E3D0] text-[#48473A];
   }
   .label-input {
-    @apply text-[0.75rem] font-bold text-[#111C2C] leading-4 tracking-normal;
+    @apply text-[0.75rem] font-bold text-[#111C2C] leading-4 tracking-normal py-2;
   }
   .input-style {
-    @apply py-4.5 px-6 bg-Surface outline-0 focus:outline-0 focus:border-0 rounded-tl-lg 
+    @apply w-full flex-1 py-4.5 px-6 bg-Surface border-none outline-0 focus:outline-0 focus:border-0 rounded-tl-lg 
      rounded-tr-lg  text-[#6F797A] text-[1rem] tracking-normal leading-[100%] font-normal;
   }
 }

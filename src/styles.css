@@ -1,13 +1,18 @@
 /* You can add global styles to this file, and also import other style files */
 
-@import './styles/typography.css';
-@import 'flowbite/src/themes/default';
+/* 1. استيراد Tailwind أولاً */
+@import 'tailwindcss';
+
+/* 2. استيراد إضافة Flowbite الخاصة بـ Tailwind v4 */
 @plugin "flowbite/plugin";
+
+/* 3. تحديد مسار Flowbite للـ Scanner */
 @source "../node_modules/flowbite";
 
-@import 'tailwindcss';
-@import './styles/base.css';
+/* 4. استيراد الملفات الخاصة بكِ */
+@import './styles/typography.css';
 @import './styles/them.css';
+@import './styles/base.css';
 
 :root {
   /* Font Family */

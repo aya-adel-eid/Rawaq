@@ -7,7 +7,7 @@ import { Component, input, output } from '@angular/core';
   styleUrl: './button.component.css',
 })
 export class ButtonComponent {
-  variant = input<'primary' | 'secondary' | 'outline' | 'icon'>('primary');
+  variant = input<'Primary' | 'secondary' | 'outline' | 'icon'>('Primary');
   type = input<'button' | 'submit'>('button');
   disabled = input<boolean>(false);
   clickEvent = output<void>();
