@@ -10,10 +10,11 @@ import {
 import { ReusableInputComponent } from '../../../../shared/components/reusable-input/reusable-input.component';
 import { ButtonComponent } from '../../../../shared/components/button/button.component';
 import { AuthService } from '../../service/auth.service';
+import { RouterLink } from '@angular/router';
 
 @Component({
   selector: 'app-register-form',
-  imports: [ReusableInputComponent, ButtonComponent, ReactiveFormsModule],
+  imports: [ReusableInputComponent, ButtonComponent, ReactiveFormsModule, RouterLink],
   templateUrl: './register-form.component.html',
   styleUrl: './register-form.component.css',
 })
