@@ -4,10 +4,17 @@ import { initFlowbite } from 'flowbite';
 import { RegisterFormComponent } from './features/auth/components/register-form/register-form.component';
 import { RegisterPageComponent } from './features/auth/pages/register-page/register-page.component';
 import { SignInFormComponent } from './features/auth/components/sign-in-form/sign-in-form.component';
+import { LoginPageComponent } from './features/auth/pages/login-page/login-page.component';
 
 @Component({
   selector: 'app-root',
-  imports: [RouterOutlet, RegisterFormComponent, RegisterPageComponent, SignInFormComponent],
+  imports: [
+    RouterOutlet,
+    RegisterFormComponent,
+    RegisterPageComponent,
+    SignInFormComponent,
+    LoginPageComponent,
+  ],
   templateUrl: './app.html',
 })
 export class App {

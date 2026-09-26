@@ -1,1 +1,38 @@
-<p>login-page works!</p>
+<div
+  class="min-h-screen lg:bg-Surface lg:bg-[radial-gradient(circle,rgba(0,83,91,0.05)_0%,rgba(0,83,91,0)_100%)] lg:px-10 lg:py-12"
+>
+  <div class="flex min-h-screen">
+    <!-- left  -->
+    <div class="bg-primary w-full p-12 lg:flex flex-col justify-between hidden rounded-l-xl">
+      <div class="flex flex-col gap-6">
+        <h2 class="text-[3rem] font-bold max-w-113.25 tracking-[-0.96px] leading-14 text-white">
+          Welcome to Rawaq — your structured learning space
+        </h2>
+        <p class="text-[1.125rem] leading-7 tracking-normal font-normal text-[#82D3DE]">
+          Step back into your journey of knowledge. Access your curated lessons, connect with
+          mentors, and track your progress along the golden path of academic excellence.
+        </p>
+      </div>
+      <!-- footer -->
+      <div
+        class="bg-[#006D774D]/30 rounded-lg p-4 border border-[#006D7733]/20 flex gap-4 backdrop-blur-sm"
+      >
+        <div>
+          <img class="size-10 rounded-full" src="/images/person.png" alt="" />
+        </div>
+        <div class="flex flex-col">
+          <span class="text-[#9BECF7] text-[0.875rem] leading-5 tracking-[0.14px]"
+            >"Knowledge is a garden that must be tended."</span
+          >
+          <span class="text-[0.75rem] leading-4 tracking-normal text-[#82D3DECC]/80"
+            >Dr. Amina Khalil, Senior Mentor</span
+          >
+        </div>
+      </div>
+    </div>
+    <!-- right -->
+    <div class="w-full">
+      <app-sign-in-form></app-sign-in-form>
+    </div>
+  </div>
+</div>
