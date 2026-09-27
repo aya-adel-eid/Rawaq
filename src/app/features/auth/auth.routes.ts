@@ -1,15 +1,38 @@
-import { Routes } from "@angular/router";
+import { Routes } from '@angular/router';
 
-export const AUTH_ROUtES:Routes=[
-       {
-path:'',loadComponent:()=>import('./pages/register-page/register-page.component').then(m=>m.RegisterPageComponent),title:'Sign Up'
-    },
-    {
-path:'sign-up',loadComponent:()=>import('./pages/register-page/register-page.component').then(m=>m.RegisterPageComponent),title:'Sign Up'
-    },
-    {
-        path:'sign-in',loadComponent:()=>import('./pages/login-page/login-page.component').then(m=>m.LoginPageComponent),title:'Sign In'
-    },{
-        path:'reset-password',loadComponent:()=>import('./pages/reset-password-page/reset-password-page.component').then(m=>m.ResetPasswordPageComponent),title:'Reset Password'
-    }
-]
+export const AUTH_ROUtES: Routes = [
+  {
+    path: '',
+    loadComponent: () =>
+      import('./pages/register-page/register-page.component').then((m) => m.RegisterPageComponent),
+    title: 'Sign Up',
+  },
+  {
+    path: 'sign-up',
+    loadComponent: () =>
+      import('./pages/register-page/register-page.component').then((m) => m.RegisterPageComponent),
+    title: 'Sign Up',
+  },
+  {
+    path: 'sign-in',
+    loadComponent: () =>
+      import('./pages/login-page/login-page.component').then((m) => m.LoginPageComponent),
+    title: 'Sign In',
+  },
+  {
+    path: 'reset-password',
+    loadComponent: () =>
+      import('./pages/reset-password-page/reset-password-page.component').then(
+        (m) => m.ResetPasswordPageComponent,
+      ),
+    title: 'Reset Password',
+  },
+  {
+    path: 'forgot-password',
+    loadComponent: () =>
+      import('./pages/forgot-password-page/forgot-password-page.component').then(
+        (m) => m.ForgotPasswordPageComponent,
+      ),
+    title: 'Forgot Password',
+  },
+];
