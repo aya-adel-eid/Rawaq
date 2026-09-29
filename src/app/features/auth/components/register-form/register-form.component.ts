@@ -43,7 +43,7 @@ export class RegisterFormComponent {
   passwordMatchValidator(group: AbstractControl): ValidationErrors | null {
     const password = group.get('password')?.value;
     const confirm = group.get('confirm_password')?.value;
-    return password === confirm ? null : { passwordMismatch: true };
+    return password === confirm ? null : { mismatch: true };
   }
 
   onAvatarSelected(event: Event): void {

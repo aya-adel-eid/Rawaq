@@ -28,7 +28,7 @@
       </span>
     }
   </div>
-  @if (control()?.touched && control()?.errors) {
+  @if (control()?.touched && control()?.invalid) {
     <p class="mt-1.5 flex items-center gap-1.5 text-sm text-red-600" role="alert">
       <svg
         class="w-4 h-4 shrink-0"
@@ -59,7 +59,7 @@
       @if (control()?.getError('email')) {
         Please enter a valid email address.
       }
-      @if (group()?.errors) {
+      @if (group()?.hasError('mismatch')) {
         Password Confirmation incorrect
       }
     </p>
