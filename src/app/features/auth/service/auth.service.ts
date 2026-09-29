@@ -4,6 +4,7 @@ import { environment } from '../../../../environments/environment.development';
 
 import { API_KEYS } from '../../../core/constants/API_KEYS';
 import { RegisterPayload, UserData } from '../interface/Register';
+import { ISignIn } from '../interface/ISignIn';
 @Injectable({
   providedIn: 'root',
 })
@@ -23,5 +24,9 @@ export class AuthService {
       `${environment.base_Url}/storage/v1/object/uploads/users/${fileName}`,
       formData,
     );
+  }
+  // login
+  signIn(data: { password: string; email: string }) {
+    return this.httpClient.post<ISignIn>(API_KEYS.auth.signIn, data);
   }
 }

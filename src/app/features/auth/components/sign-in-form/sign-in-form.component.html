@@ -39,7 +39,7 @@
       <div class="flex flex-col gap-6">
         <!-- email -->
         <div class="flex flex-col gap-[8.5px]">
-          <label for="input-group-1" class="label-input">Your Email</label>
+          <label for="email" class="label-input">Your Email</label>
           <div class="relative">
             <div class="absolute inset-y-0 inset-s-0 flex items-center ps-3 pointer-events-none">
               <svg
@@ -61,8 +61,8 @@
                 !(signIn.get('email')?.touched && signIn.get('email')?.invalid)
               "
               formControlName="email"
-              type="text"
-              id="input-group-1"
+              type="email"
+              id="email"
               class="block w-full py-3.5 ps-11 bg-white lg:bg-Surface border border-[#BEC8CA] rounded-lg text-[#6B7280] text-[1rem] leading-[100%] tracking-normal"
               placeholder="name@example.com"
             />
@@ -225,6 +225,22 @@
             </span>
           </span>
         </app-button>
+        @if (errorMessage()) {
+          <div
+            class="p-4 mb-4 text-sm text-red-800 rounded-lg bg-red-50 border border-red-200 text-center"
+            role="alert"
+          >
+            {{ errorMessage() }}
+          </div>
+        }
+        @if (successMessage()) {
+          <div
+            class="p-4 mb-4 text-sm text-green-800 rounded-lg bg-green-50 border border-green-200 text-center"
+            role="status"
+          >
+            {{ successMessage() }}
+          </div>
+        }
         <!-- footer -->
         <div class="pt-8 text-center lg:hidden">
           <p class="text-[1rem] leading-6 tracking-normal font-normal text-[#3E494A]">
