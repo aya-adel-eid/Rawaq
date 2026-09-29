@@ -20,6 +20,7 @@ export class SignInFormComponent {
   showPass = signal<boolean>(false);
   successMessage = signal<string>('');
   errorMessage = signal<string>('');
+  isLoading = signal<boolean>(false);
   signIn: FormGroup = this.fb.group({
     email: [null, [Validators.required, Validators.email]],
     password: [null, Validators.required],
@@ -27,12 +28,14 @@ export class SignInFormComponent {
   submit() {
     this.successMessage.set('');
     this.errorMessage.set('');
+    this.isLoading.set(true);
     if (this.signIn.invalid) {
       this.signIn.markAllAsDirty();
       return;
     }
     this.authService.signIn(this.signIn.value).subscribe({
       next: (resp) => {
+        this.isLoading.set(false);
         sessionStorage.setItem(STORED_KEY.refresh_token, resp.refresh_token);
         sessionStorage.setItem(STORED_KEY.userToken, resp.access_token);
         sessionStorage.setItem(STORED_KEY.rememberMeExpiry, String(resp.expires_at));
@@ -42,6 +45,7 @@ export class SignInFormComponent {
         timer(3000).subscribe(() => this.route.navigateByUrl('/dashboard'));
       },
       error: (err: HttpErrorResponse) => {
+        this.isLoading.set(false);
         this.errorMessage.set(err.error.msg);
         this.successMessage.set('');
       },

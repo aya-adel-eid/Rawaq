@@ -188,41 +188,45 @@
         </div>
       </div>
       <div class="flex flex-col gap-6 py-8 lg:py-0">
-        <app-button [variant]="'Primary'" [type]="'submit'">
+        <app-button [variant]="'Primary'" [type]="'submit'" [disabled]="isLoading()">
           <span class="flex justify-center items-center gap-2">
-            <span
-              class="text-[1.5rem] tracking-normal leading-8 lg:text-[0.875rem] lg:tracking-[0.14px] lg:leading-5 font-medium"
-            >
-              Create Account
-            </span>
-            <span class="hidden lg:block">
-              <svg
-                width="12"
-                height="12"
-                viewBox="0 0 12 12"
-                fill="none"
-                xmlns="http://www.w3.org/2000/svg"
+            @if (isLoading()) {
+              <i class="fa-solid fa-spinner"></i>
+            } @else {
+              <span
+                class="text-[1.5rem] tracking-normal leading-8 lg:text-[0.875rem] lg:tracking-[0.14px] lg:leading-5 font-medium"
               >
-                <path
-                  d="M9.13125 6.75H0V5.25H9.13125L4.93125 1.05L6 0L12 6L6 12L4.93125 10.95L9.13125 6.75Z"
-                  fill="white"
-                />
-              </svg>
-            </span>
-            <span class="lg:hidden">
-              <svg
-                width="16"
-                height="16"
-                viewBox="0 0 16 16"
-                fill="none"
-                xmlns="http://www.w3.org/2000/svg"
-              >
-                <path
-                  d="M12.175 9H0V7H12.175L6.575 1.4L8 0L16 8L8 16L6.575 14.6L12.175 9Z"
-                  fill="white"
-                />
-              </svg>
-            </span>
+                Create Account
+              </span>
+              <span class="hidden lg:block">
+                <svg
+                  width="12"
+                  height="12"
+                  viewBox="0 0 12 12"
+                  fill="none"
+                  xmlns="http://www.w3.org/2000/svg"
+                >
+                  <path
+                    d="M9.13125 6.75H0V5.25H9.13125L4.93125 1.05L6 0L12 6L6 12L4.93125 10.95L9.13125 6.75Z"
+                    fill="white"
+                  />
+                </svg>
+              </span>
+              <span class="lg:hidden">
+                <svg
+                  width="16"
+                  height="16"
+                  viewBox="0 0 16 16"
+                  fill="none"
+                  xmlns="http://www.w3.org/2000/svg"
+                >
+                  <path
+                    d="M12.175 9H0V7H12.175L6.575 1.4L8 0L16 8L8 16L6.575 14.6L12.175 9Z"
+                    fill="white"
+                  />
+                </svg>
+              </span>
+            }
           </span>
         </app-button>
         @if (errorMessage()) {

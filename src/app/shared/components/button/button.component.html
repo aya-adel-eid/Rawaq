@@ -2,7 +2,7 @@
   (click)="onClick()"
   [type]="type()"
   [disabled]="disabled()"
-  [class]="`btn btn-${variant()} w-full cursor-pointer`"
+  [class]="`btn btn-${variant()} w-full cursor-pointer disabled:bg-gray-500`"
 >
   <ng-content></ng-content>
 </button>

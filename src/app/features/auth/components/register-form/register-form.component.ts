@@ -27,6 +27,7 @@ export class RegisterFormComponent {
   private readonly route = inject(Router);
   successMessage = signal<string>('');
   errorMessage = signal<string>('');
+  isLoading = signal<boolean>(false);
   avaterError = signal<string>('');
   selectedAvatarFile: File | null = null;
   avatarPreviewUrl: string | null = null;
@@ -96,8 +97,10 @@ export class RegisterFormComponent {
   submitRegisterForm(): void {
     this.successMessage.set('');
     this.errorMessage.set('');
+    this.isLoading.set(true);
     this.authService.signup(this.registerForm.value).subscribe({
       next: (res) => {
+        this.isLoading.set(false);
         sessionStorage.setItem(STORED_KEY.userToken, res.access_token);
         sessionStorage.setItem(STORED_KEY.role, res.user.identities[0].identity_data.account_type);
         sessionStorage.setItem(STORED_KEY.refresh_token, res.refresh_token);
@@ -107,6 +110,7 @@ export class RegisterFormComponent {
         timer(3000).subscribe(() => this.route.navigateByUrl('/dashboard'));
       },
       error: (err: HttpErrorResponse) => {
+        this.isLoading.set(false);
         this.successMessage.set('');
         this.errorMessage.set(err.error.msg);
       },
