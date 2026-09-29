@@ -18,6 +18,7 @@ import {
 export class ResetPasswordPageComponent {
   private readonly fb = inject(FormBuilder);
   showPassword = signal(false);
+  confirmPass = signal(false);
   resetForm = this.fb.group(
     {
       password: [null, [Validators.required, Validators.minLength(8)]],
