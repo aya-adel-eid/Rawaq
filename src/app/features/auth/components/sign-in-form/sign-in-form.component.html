@@ -122,12 +122,16 @@
             <div>
               <input
                 formControlName="password"
-                type="text"
+                [type]="showPass() ? 'text' : 'password'"
                 id="password"
                 class="block w-full py-3.5 ps-11 bg-white lg:bg-Surface border border-[#BEC8CA] rounded-lg text-[#6B7280] text-[1rem] leading-[100%] tracking-normal"
                 placeholder="••••••••"
               />
-              <span class="absolute top-1/2 -translate-y-1/2 inset-e-4 cursor-pointer">
+              <span
+                class="absolute top-1/2 -translate-y-1/2 inset-e-4 cursor-pointer"
+                (click)="showPass.update((v) => !v)"
+                role="button"
+              >
                 <svg
                   width="22"
                   height="15"

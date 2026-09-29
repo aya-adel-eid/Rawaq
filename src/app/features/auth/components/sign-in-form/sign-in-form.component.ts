@@ -1,4 +1,4 @@
-import { Component, inject } from '@angular/core';
+import { Component, inject, signal } from '@angular/core';
 import { ButtonComponent } from '../../../../shared/components/button/button.component';
 import { RouterLink } from '@angular/router';
 import { FormBuilder, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
@@ -11,6 +11,7 @@ import { FormBuilder, FormGroup, ReactiveFormsModule, Validators } from '@angula
 })
 export class SignInFormComponent {
   private readonly fb = inject(FormBuilder);
+  showPass = signal<boolean>(false);
   signIn: FormGroup = this.fb.group({
     email: [null, [Validators.required, Validators.email]],
     password: [null, Validators.required],
