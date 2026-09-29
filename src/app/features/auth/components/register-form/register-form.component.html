@@ -14,7 +14,7 @@
       </p>
     </div>
     <!-- form -->
-    <div class="max-h-[971px]">
+    <div class="max-h-242.75">
       <form
         action=""
         class="flex flex-col gap-6 w-full"
@@ -99,7 +99,7 @@
           <div class="w-full">
             <app-reusable-input
               formControlName="first_name"
-              [control]="registerForm.get('first_name')"
+              [control]="registerForm.get('data.first_name')"
               [label]="'First Name'"
               [placeholde]="'John'"
               [typeInput]="'text'"
@@ -108,7 +108,7 @@
           </div>
           <div class="w-full">
             <app-reusable-input
-              [control]="registerForm.get('last_name')"
+              [control]="registerForm.get('data.last_name')"
               formControlName="last_name"
               [label]="'Last Name'"
               [placeholde]="'Doe'"
@@ -144,6 +144,7 @@
           [placeholde]="'••••••••'"
           [typeInput]="'password'"
           [idLabel]="'confirm-password'"
+          [group]="registerForm"
         ></app-reusable-input>
         <!-- avater -->
         <div>
@@ -175,6 +176,30 @@
               >
             </div>
           </label>
+          @if (registerForm.get('avatar_url')?.touched && registerForm.get('avatar_url')?.invalid) {
+            <p class="mt-1.5 flex items-center gap-1.5 text-sm text-red-600" role="alert">
+              <svg
+                class="w-4 h-4 shrink-0"
+                aria-hidden="true"
+                xmlns="http://www.w3.org/2000/svg"
+                width="24"
+                height="24"
+                fill="none"
+                viewBox="0 0 24 24"
+              >
+                <path
+                  stroke="currentColor"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  stroke-width="2"
+                  d="M10 11h2v5m-2 0h4m-2.592-8.5h.01M21 12a9 9 0 1 1-18 0 9 9 0 0 1 18 0Z"
+                />
+              </svg>
+              @if (registerForm.get('avatar_url')?.hasError('pattern')) {
+                Use a PNG, JPG, or WebP image
+              }
+            </p>
+          }
         </div>
         <!-- button -->
         <app-button [variant]="'Primary'" [type]="'submit'">
