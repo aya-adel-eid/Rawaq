@@ -20,7 +20,6 @@ export class AuthService {
       .post(`${environment.base_Url}/storage/v1/object/uploads/users/${fileName}`, formData, {})
       .pipe(
         map(() => {
-          // عدّلي الرابط ده حسب شكل الـ response الراجع من Supabase عندك
           return `${environment.base_Url}/storage/v1/object/public/uploads/users/${fileName}`;
         }),
       );
