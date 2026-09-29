@@ -10,8 +10,10 @@ import {
 import { ReusableInputComponent } from '../../../../shared/components/reusable-input/reusable-input.component';
 import { ButtonComponent } from '../../../../shared/components/button/button.component';
 import { AuthService } from '../../service/auth.service';
-import { RouterLink } from '@angular/router';
+import { Router, RouterLink } from '@angular/router';
 import { STORED_KEY } from '../../../../core/constants/STORED_KEYS';
+import { timer } from 'rxjs';
+import { HttpErrorResponse } from '@angular/common/http';
 
 @Component({
   selector: 'app-register-form',
@@ -22,6 +24,9 @@ import { STORED_KEY } from '../../../../core/constants/STORED_KEYS';
 export class RegisterFormComponent {
   private readonly fb = inject(FormBuilder);
   private readonly authService = inject(AuthService);
+  private readonly route = inject(Router);
+  successMessage = signal<string>('');
+  errorMessage = signal<string>('');
   avaterError = signal<string>('');
   selectedAvatarFile: File | null = null;
   avatarPreviewUrl: string | null = null;
@@ -89,14 +94,22 @@ export class RegisterFormComponent {
   }
 
   submitRegisterForm(): void {
+    this.successMessage.set('');
+    this.errorMessage.set('');
     this.authService.signup(this.registerForm.value).subscribe({
       next: (res) => {
         sessionStorage.setItem(STORED_KEY.userToken, res.access_token);
         sessionStorage.setItem(STORED_KEY.role, res.user.identities[0].identity_data.account_type);
         sessionStorage.setItem(STORED_KEY.refresh_token, res.refresh_token);
         sessionStorage.setItem(STORED_KEY.rememberMeExpiry, String(res.expires_at));
+        this.successMessage.set('Account created successfully!.');
+        this.errorMessage.set('');
+        timer(3000).subscribe(() => this.route.navigateByUrl('/dashboard'));
       },
-      error: (err) => console.error('Register failed', err),
+      error: (err: HttpErrorResponse) => {
+        this.successMessage.set('');
+        this.errorMessage.set(err.error.msg);
+      },
     });
   }
 }
