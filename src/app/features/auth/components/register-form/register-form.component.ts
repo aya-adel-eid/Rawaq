@@ -1,4 +1,4 @@
-import { Component, inject } from '@angular/core';
+import { Component, inject, signal } from '@angular/core';
 import {
   AbstractControl,
   FormBuilder,
@@ -11,6 +11,7 @@ import { ReusableInputComponent } from '../../../../shared/components/reusable-i
 import { ButtonComponent } from '../../../../shared/components/button/button.component';
 import { AuthService } from '../../service/auth.service';
 import { RouterLink } from '@angular/router';
+import { STORED_KEY } from '../../../../core/constants/STORED_KEYS';
 
 @Component({
   selector: 'app-register-form',
@@ -21,7 +22,7 @@ import { RouterLink } from '@angular/router';
 export class RegisterFormComponent {
   private readonly fb = inject(FormBuilder);
   private readonly authService = inject(AuthService);
-
+  avaterError = signal<string>('');
   selectedAvatarFile: File | null = null;
   avatarPreviewUrl: string | null = null;
 
@@ -34,7 +35,7 @@ export class RegisterFormComponent {
         account_type: ['student', [Validators.required]], // 'teacher' | 'student'
         first_name: [null, [Validators.required]],
         last_name: [null, [Validators.required]],
-        avatar_url: [null, [Validators.pattern(/\.(jpeg|png|webp)$/i)]], // optional, e.g. after upload
+        avatar_url: [null, [Validators.pattern(/\.(jpeg|png|webp)$/i)]],
       }),
     },
     { validators: this.passwordMatchValidator },
@@ -47,12 +48,13 @@ export class RegisterFormComponent {
   }
 
   onAvatarSelected(event: Event): void {
+    this.avaterError.set('');
     const file = (event.target as HTMLInputElement).files?.[0];
     if (!file) return;
 
     const maxSize = 500 * 1024; // 500KB
     if (file.size > maxSize) {
-      console.error('File too large, max 500KB');
+      this.avaterError.set('File too large, max 500KB');
       return;
     }
 
@@ -66,10 +68,10 @@ export class RegisterFormComponent {
   }
 
   submit() {
-    // if (this.registerForm.invalid) {
-    //   this.registerForm.markAllAsTouched();
-    //   return;
-    // }
+    if (this.registerForm.invalid) {
+      this.registerForm.markAllAsTouched();
+      return;
+    }
 
     if (this.selectedAvatarFile) {
       this.authService.uploadImage(this.selectedAvatarFile).subscribe({
@@ -86,12 +88,14 @@ export class RegisterFormComponent {
     }
   }
 
-  private submitRegisterForm(): void {
-    const payload = this.registerForm.value;
-    console.log('Final payload:', payload);
-
-    this.authService.signup(payload, {}).subscribe({
-      next: (res) => console.log('Registered successfully', res),
+  submitRegisterForm(): void {
+    this.authService.signup(this.registerForm.value).subscribe({
+      next: (res) => {
+        sessionStorage.setItem(STORED_KEY.userToken, res.access_token);
+        sessionStorage.setItem(STORED_KEY.role, res.user.identities[0].identity_data.account_type);
+        sessionStorage.setItem(STORED_KEY.refresh_token, res.refresh_token);
+        sessionStorage.setItem(STORED_KEY.rememberMeExpiry, String(res.expires_at));
+      },
       error: (err) => console.error('Register failed', err),
     });
   }
