@@ -24,8 +24,10 @@ export class SignInFormComponent {
   signIn: FormGroup = this.fb.group({
     email: [null, [Validators.required, Validators.email]],
     password: [null, Validators.required],
+    rememberme: false,
   });
   submit() {
+    const { rememberme, ...userData } = this.signIn.value;
     this.successMessage.set('');
     this.errorMessage.set('');
     this.isLoading.set(true);
@@ -33,7 +35,7 @@ export class SignInFormComponent {
       this.signIn.markAllAsDirty();
       return;
     }
-    this.authService.signIn(this.signIn.value).subscribe({
+    this.authService.signIn(userData).subscribe({
       next: (resp) => {
         this.isLoading.set(false);
         localStorage.setItem(STORED_KEY.expireAt, String(resp.expires_at));
@@ -43,7 +45,7 @@ export class SignInFormComponent {
             refresh_token: resp.refresh_token,
             role: resp.user.identities[0].identity_data.account_type,
           },
-          true,
+          rememberme,
         );
 
         this.successMessage.set('Signed in successfully! Redirecting....');
