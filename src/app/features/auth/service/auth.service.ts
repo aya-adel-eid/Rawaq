@@ -6,6 +6,7 @@ import { API_KEYS } from '../../../core/constants/API_KEYS';
 import { RegisterPayload, UserData } from '../interface/Register';
 import { ISignIn } from '../interface/ISignIn';
 import { STORED_KEY } from '../../../core/constants/STORED_KEYS';
+import { IUserData } from '../interface/IRefreshToken';
 @Injectable({
   providedIn: 'root',
 })
@@ -78,4 +79,16 @@ export class AuthService {
       },
     });
   }
+  // refresh  token
+  refreshToken(refreshToken: {}) {
+    return this.httpClient.post<IUserData>(API_KEYS.auth.refreshToken, refreshToken);
+  }
+  updateStoredTokens(accessToken: string, refreshToken: string): void {
+    const storage: Storage = localStorage.getItem(STORED_KEY.userToken)
+      ? localStorage
+      : sessionStorage;
+    storage.setItem(STORED_KEY.userToken, accessToken);
+    storage.setItem(STORED_KEY.refresh_token, refreshToken);
+  }
+  logOut() {}
 }
