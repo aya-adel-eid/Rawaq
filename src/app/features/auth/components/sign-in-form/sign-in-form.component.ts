@@ -36,10 +36,16 @@ export class SignInFormComponent {
     this.authService.signIn(this.signIn.value).subscribe({
       next: (resp) => {
         this.isLoading.set(false);
-        sessionStorage.setItem(STORED_KEY.refresh_token, resp.refresh_token);
-        sessionStorage.setItem(STORED_KEY.userToken, resp.access_token);
-        sessionStorage.setItem(STORED_KEY.rememberMeExpiry, String(resp.expires_at));
-        sessionStorage.setItem(STORED_KEY.role, resp.user.identities[0].identity_data.account_type);
+        localStorage.setItem(STORED_KEY.expireAt, String(resp.expires_at));
+        this.authService.storeSession(
+          {
+            userToken: resp.access_token,
+            refresh_token: resp.refresh_token,
+            role: resp.user.identities[0].identity_data.account_type,
+          },
+          true,
+        );
+
         this.successMessage.set('Signed in successfully! Redirecting....');
         this.errorMessage.set('');
         timer(3000).subscribe(() => this.route.navigateByUrl('/dashboard'));

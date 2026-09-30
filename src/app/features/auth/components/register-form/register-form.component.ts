@@ -99,12 +99,17 @@ export class RegisterFormComponent {
     this.errorMessage.set('');
     this.isLoading.set(true);
     this.authService.signup(this.registerForm.value).subscribe({
-      next: (res) => {
+      next: (resp) => {
+        localStorage.setItem(STORED_KEY.expireAt, String(resp.expires_at));
         this.isLoading.set(false);
-        sessionStorage.setItem(STORED_KEY.userToken, res.access_token);
-        sessionStorage.setItem(STORED_KEY.role, res.user.identities[0].identity_data.account_type);
-        sessionStorage.setItem(STORED_KEY.refresh_token, res.refresh_token);
-        sessionStorage.setItem(STORED_KEY.rememberMeExpiry, String(res.expires_at));
+        this.authService.storeSession(
+          {
+            userToken: resp.access_token,
+            refresh_token: resp.refresh_token,
+            role: resp.user.identities[0].identity_data.account_type,
+          },
+          true,
+        );
         this.successMessage.set('Account created successfully!.');
         this.errorMessage.set('');
         timer(3000).subscribe(() => this.route.navigateByUrl('/dashboard'));
