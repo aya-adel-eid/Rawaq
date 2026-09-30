@@ -68,4 +68,14 @@ export class AuthService {
   forgotPassword(data: {}) {
     return this.httpClient.post(API_KEYS.auth.forgotPassword, data);
   }
+  // reset password
+  resetPassword(data: {}, token: string) {
+    return this.httpClient.put(API_KEYS.auth.resetPass, data, {
+      headers: {
+        Authorization: `Bearer ${token}`,
+        apikey: environment.anonKey,
+        'Content-Type': 'application/json',
+      },
+    });
+  }
 }

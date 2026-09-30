@@ -5,5 +5,6 @@ export const API_KEYS = {
     signUp: `${environment.base_Url}/auth/v1/signup`,
     signIn: `${environment.base_Url}/auth/v1/token?grant_type=password`,
     forgotPassword: `${environment.base_Url}/auth/v1/recover`,
+    resetPass: `${environment.base_Url}/auth/v1/user`,
   },
 };
