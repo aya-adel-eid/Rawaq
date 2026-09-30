@@ -64,4 +64,8 @@ export class AuthService {
       sessionStorage.getItem(STORED_KEY.refresh_token)
     );
   }
+  // forgot pass
+  forgotPassword(data: {}) {
+    return this.httpClient.post(API_KEYS.auth.forgotPassword, data);
+  }
 }
