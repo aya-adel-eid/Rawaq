@@ -53,4 +53,15 @@ export class AuthService {
     }
     return Date.now() > Number(expiresAt);
   }
+  getToken(): string | null {
+    return (
+      localStorage.getItem(STORED_KEY.userToken) ?? sessionStorage.getItem(STORED_KEY.userToken)
+    );
+  }
+  getRefreshToken(): string | null {
+    return (
+      localStorage.getItem(STORED_KEY.refresh_token) ??
+      sessionStorage.getItem(STORED_KEY.refresh_token)
+    );
+  }
 }
