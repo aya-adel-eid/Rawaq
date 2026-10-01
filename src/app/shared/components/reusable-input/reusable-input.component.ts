@@ -44,7 +44,7 @@ export class ReusableInputComponent implements ControlValueAccessor {
   }
   flag = true;
   toggle() {
-    if (this.idLabel() == 'password' || this.idLabel() == 'rePassword') {
+    if (this.idLabel() == 'password' || this.idLabel() == 'confirm-password') {
       this.flag = !this.flag;
       this.typeInput = this.flag ? 'password' : 'text';
     }

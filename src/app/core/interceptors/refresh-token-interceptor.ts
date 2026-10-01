@@ -1,0 +1,58 @@
+import { HttpErrorResponse, HttpInterceptorFn } from '@angular/common/http';
+import { AuthService } from '../../features/auth/service/auth.service';
+import { inject } from '@angular/core';
+import { environment } from '../../../environments/environment';
+import { catchError, switchMap, throwError } from 'rxjs';
+
+export const refreshTokenInterceptor: HttpInterceptorFn = (req, next) => {
+  const authService = inject(AuthService);
+  const token = authService.getToken();
+  const refreshToken = authService.getRefreshToken();
+  const isAuthEndpoint =
+    req.url.includes('/auth/v1/token') ||
+    req.url.includes('/auth/v1/recove') ||
+    req.url.includes('/auth/v1/signup') ||
+    req.url.includes('/auth/v1/user');
+
+  if (isAuthEndpoint) {
+    return next(req);
+  }
+  req = req.clone({
+    setHeaders: {
+      Authorization: `Bearer ${token}`,
+      apikey: environment.anonKey,
+    },
+  });
+
+  return next(req).pipe(
+    catchError((error: HttpErrorResponse) => {
+      // 401 => Unauthorized    403=>Forbidden
+      if (error.status === 401 || error.status === 403) {
+        //
+        console.log(error.status, 'errror');
+
+        return authService.refreshToken({ refresh_token: refreshToken! }).pipe(
+          switchMap((resp) => {
+            console.log('new token:', resp.access_token);
+            console.log('new refresh:', resp.refresh_token);
+
+            authService.updateStoredTokens(resp.access_token, resp.refresh_token);
+            const newAuthToken = req.clone({
+              setHeaders: {
+                Authorization: `Bearer ${resp.access_token}`,
+                apikey: environment.anonKey,
+              },
+            });
+            return next(newAuthToken);
+          }),
+          catchError((refreshError) => {
+            authService.logOut();
+            return throwError(() => refreshError);
+          }),
+        );
+      }
+
+      return throwError(() => error);
+    }),
+  );
+};
