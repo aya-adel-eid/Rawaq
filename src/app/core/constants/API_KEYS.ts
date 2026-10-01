@@ -7,5 +7,6 @@ export const API_KEYS = {
     forgotPassword: `${environment.base_Url}/auth/v1/recover`,
     resetPass: `${environment.base_Url}/auth/v1/user`,
     refreshToken: `${environment.base_Url}/auth/v1/token?grant_type=refresh_token`,
+    logOut: `${environment.base_Url}/auth/v1/logout`,
   },
 };

@@ -10,7 +10,7 @@ export const refreshTokenInterceptor: HttpInterceptorFn = (req, next) => {
   const refreshToken = authService.getRefreshToken();
   const isAuthEndpoint =
     req.url.includes('/auth/v1/token') ||
-    req.url.includes('/auth/v1/logout') ||
+    req.url.includes('/auth/v1/recove') ||
     req.url.includes('/auth/v1/signup') ||
     req.url.includes('/auth/v1/user');
 

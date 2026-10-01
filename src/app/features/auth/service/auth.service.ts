@@ -1,4 +1,4 @@
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpErrorResponse } from '@angular/common/http';
 import { inject, Injectable } from '@angular/core';
 import { environment } from '../../../../environments/environment.development';
 
@@ -7,12 +7,14 @@ import { RegisterPayload, UserData } from '../interface/Register';
 import { ISignIn } from '../interface/ISignIn';
 import { STORED_KEY } from '../../../core/constants/STORED_KEYS';
 import { IUserData } from '../interface/IRefreshToken';
+import { Router } from '@angular/router';
 @Injectable({
   providedIn: 'root',
 })
 export class AuthService {
   private readonly httpClient = inject(HttpClient);
   private readonly rememberMeDays = 30;
+  private readonly router = inject(Router);
   signup(data: RegisterPayload) {
     return this.httpClient.post<UserData>(API_KEYS.auth.signUp, data);
   }
@@ -90,5 +92,26 @@ export class AuthService {
     storage.setItem(STORED_KEY.userToken, accessToken);
     storage.setItem(STORED_KEY.refresh_token, refreshToken);
   }
-  logOut() {}
+  logOut() {
+    return this.httpClient.post(API_KEYS.auth.logOut, {}).subscribe({
+      next: () => {
+        this.clearSeassion();
+        this.router.navigateByUrl('/sign-in');
+      },
+      error: (err: HttpErrorResponse) => {
+        console.log(err.error.msg);
+      },
+    });
+  }
+  // clear seassion
+  clearSeassion() {
+    localStorage.removeItem(STORED_KEY.expireAt);
+    localStorage.removeItem(STORED_KEY.refresh_token);
+    localStorage.removeItem(STORED_KEY.rememberMeExpiry);
+    localStorage.removeItem(STORED_KEY.role);
+    sessionStorage.removeItem(STORED_KEY.expireAt);
+    sessionStorage.removeItem(STORED_KEY.refresh_token);
+    sessionStorage.removeItem(STORED_KEY.rememberMeExpiry);
+    sessionStorage.removeItem(STORED_KEY.role);
+  }
 }
