@@ -20,18 +20,23 @@
       <div class="flex flex-col gap-8">
         <img src="/images/formGroup.png" alt="" class="rounded-lg lg:hidden" />
         <form
+          id="groupForm"
+          [formGroup]="formGroup"
+          (ngSubmit)="submit()"
           action=""
           class="flex flex-col gap-8 bg-white lg:bg-transparent p-6 lg:p-0 w-full rounded-[12px] lg:rounded-0 shadow-[0_4px_16px_0_rgba(0,83,91,0.08)] lg:shadow-none"
         >
           <!-- name -->
           <div class="flex flex-col gap-2">
             <label
-              for=""
+              for="name"
               class="label-input text-primary text-[0.875rem] tracking-[0.14px] font-medium"
               >Group Name <span class="text-error">*</span></label
             >
             <input
+              formControlName="name"
               type="text"
+              id="name"
               placeholder="e.g. Frontend Mentorship – Batch 2"
               class="border text-[1rem] focus:ring-[#BEC8CA] tracking-normal leading-[100%] text-[#6B7280] font-normal border-[#BEC8CA] bg-white py-3.5 px-4 rounded-[8px] w-full outline-none focus:border-none focus:outline-0"
             />
@@ -39,7 +44,7 @@
           <!-- category -->
           <div class="flex flex-col gap-2">
             <label
-              for=""
+              for="category"
               class="label-input text-primary text-[0.875rem] tracking-[0.14px] font-medium"
               >Category
               <span class="text-2xs leading-5 tracking-[0.14px] text-[#3E494A80]/70 uppercase ps-1"
@@ -47,6 +52,8 @@
               ></label
             >
             <input
+              id="category"
+              formControlName="category"
               type="text"
               placeholder="e.g. Frontend Development, React, Algorithms"
               class="border text-[1rem] tracking-normal leading-[100%] focus:ring-[#BEC8CA] text-[#6B7280] font-normal border-[#BEC8CA] bg-white py-3.5 px-4 rounded-[8px] w-full outline-none focus:border-none focus:outline-0"
@@ -56,7 +63,7 @@
 
           <div class="flex flex-col gap-2">
             <label
-              for=""
+              for="description"
               class="label-input text-primary text-[0.875rem] tracking-[0.14px] font-medium"
               >Description
               <span class="text-2xs leading-5 tracking-[0.14px] text-[#3E494A80]/70 uppercase ps-1"
@@ -64,6 +71,8 @@
               ></label
             >
             <textarea
+              id="description"
+              formControlName="description"
               type="text"
               rows="6"
               placeholder="e.g. Frontend Development, React, Algorithms"
@@ -107,8 +116,8 @@
 
                 <input
                   id="maxStudents"
-                  type="text"
-                  inputmode="numeric"
+                  type="number"
+                  formControlName="no_of_students"
                   [value]="count()"
                   class="flex-1 focus:ring-0 min-w-0 h-full text-center text-[1.5rem] font-bold lg:font-normal lg:text-[1rem] text-[#191C1E] bg-transparent outline-none border-none"
                 />
@@ -160,6 +169,7 @@
                   id="duration"
                   type="number"
                   min="1"
+                  formControlName="duration_in_days"
                   placeholder="90"
                   class="flex-1 min-w-0 h-full focus:ring-0 text-[1rem] text-[#191C1E] placeholder:text-[#6B7280] focus:outline-none focus:border-none bg-transparent outline-none border-none [appearance:textfield] [&::-webkit-inner-spin-button]:appearance-none [&::-webkit-outer-spin-button]:appearance-none"
                 />
@@ -185,18 +195,23 @@
 
             <input
               id="startDate"
+              [min]="today"
               type="date"
-              formControlName="startDate"
+              formControlName="start_date"
               class="border text-[1rem] tracking-normal focus:ring-[#BEC8CA] leading-[100%] text-[#6B7280] font-normal border-[#BEC8CA] bg-white py-3.5 px-4 rounded-[8px] w-full outline-none focus:border-none focus:outline-0"
             />
           </div>
         </form>
         <div class="py-5 flex flex-col lg:flex-row gap-4">
-          <button class="btn btn-Primary text-[0.875rem] leading-5 tracking-[0.14px] font-medium">
+          <button
+            form="groupForm"
+            class="btn btn-Primary text-[0.875rem] leading-5 tracking-[0.14px] font-medium cursor-pointer"
+            type="submit"
+          >
             Create Group
           </button>
           <button
-            class="bg-[#E6E3D04D]/30 border-2 border-primary btn btn-Primary text-primary text-[0.875rem] leading-5 tracking-[0.14px] font-medium"
+            class="bg-[#E6E3D04D]/30 border-2 cursor-pointer border-primary btn btn-Primary text-primary text-[0.875rem] leading-5 tracking-[0.14px] font-medium"
           >
             Back
           </button>
