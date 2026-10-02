@@ -12,11 +12,19 @@ export const routes: Routes = [
     loadChildren: () => import('./features/auth/auth.routes').then((m) => m.AUTH_ROUtES),
   },
   {
-    path: 'dashboard',
+    path: '',
     canActivate: [authGuard],
     loadComponent: () =>
-      import('./features/dashBoard/pages/dashboard/dashboard.component').then(
-        (c) => c.DashboardComponent,
-      ),
+      import('./core/layoute/main-layout/main-layout.component').then((c) => c.MainLayoutComponent),
+    children: [
+      {
+        path: 'dashboard',
+
+        loadComponent: () =>
+          import('./features/dashBoard/pages/dashboard/dashboard.component').then(
+            (c) => c.DashboardComponent,
+          ),
+      },
+    ],
   },
 ];

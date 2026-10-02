@@ -1,0 +1,179 @@
+<!-- ================= TOP NAV ================= -->
+<nav class="fixed top-0 z-50 w-full h-16 bg-Surface shadow-[0_1px_2px_0_rgba(0,0,0,0.05)]">
+  <div class="h-full px-4 lg:px-6 flex items-center justify-between">
+    <div class="flex items-center gap-2">
+      <a
+        routerLink="/dashboard"
+        class="font-bold text-[#0F5257] text-[1.5rem] leading-8 tracking-normal"
+        >Rawaq</a
+      >
+    </div>
+    <!-- student -->
+    @if (role() === 'student') {
+      <div class="w-full max-w-lg px-8 hidden lg:block">
+        <div class="relative">
+          <span
+            class="absolute inset-y-0 left-3 flex items-center pointer-events-none text-[#6B7280]"
+          >
+            <svg
+              width="18"
+              height="18"
+              viewBox="0 0 18 18"
+              fill="none"
+              xmlns="http://www.w3.org/2000/svg"
+            >
+              <path
+                d="M16.6 18L10.3 11.7C9.8 12.1 9.225 12.4167 8.575 12.65C7.925 12.8833 7.23333 13 6.5 13C4.68333 13 3.14583 12.3708 1.8875 11.1125C0.629167 9.85417 0 8.31667 0 6.5C0 4.68333 0.629167 3.14583 1.8875 1.8875C3.14583 0.629167 4.68333 0 6.5 0C8.31667 0 9.85417 0.629167 11.1125 1.8875C12.3708 3.14583 13 4.68333 13 6.5C13 7.23333 12.8833 7.925 12.65 8.575C12.4167 9.225 12.1 9.8 11.7 10.3L18 16.6L16.6 18ZM6.5 11C7.75 11 8.8125 10.5625 9.6875 9.6875C10.5625 8.8125 11 7.75 11 6.5C11 5.25 10.5625 4.1875 9.6875 3.3125C8.8125 2.4375 7.75 2 6.5 2C5.25 2 4.1875 2.4375 3.3125 3.3125C2.4375 4.1875 2 5.25 2 6.5C2 7.75 2.4375 8.8125 3.3125 9.6875C4.1875 10.5625 5.25 11 6.5 11Z"
+                fill="#3E494A"
+              />
+            </svg>
+          </span>
+
+          <input
+            type="text"
+            placeholder="Search groups..."
+            class="w-full h-9.75 pl-10 pr-4 rounded-xl bg-[#F0F3FF] border border-transparent text-[1rem] text-[#1F2937] placeholder:text-[#6B7280] leading-[100%] tracking-normal focus:outline-none focus:border-[#0F5257] focus:ring-2 focus:ring-[#0F5257]/20"
+          />
+        </div>
+      </div>
+    }
+    <div class="flex items-center gap-4">
+      <span class="flex items-center justify-center size-10 lg:hidden">
+        <svg
+          width="16"
+          height="20"
+          viewBox="0 0 16 20"
+          fill="none"
+          xmlns="http://www.w3.org/2000/svg"
+        >
+          <path
+            d="M0 17V15H2V8C2 6.61667 2.41667 5.3875 3.25 4.3125C4.08333 3.2375 5.16667 2.53333 6.5 2.2V1.5C6.5 1.08333 6.64583 0.729167 6.9375 0.4375C7.22917 0.145833 7.58333 0 8 0C8.41667 0 8.77083 0.145833 9.0625 0.4375C9.35417 0.729167 9.5 1.08333 9.5 1.5V2.2C10.8333 2.53333 11.9167 3.2375 12.75 4.3125C13.5833 5.3875 14 6.61667 14 8V15H16V17H0ZM8 20C7.45 20 6.97917 19.8042 6.5875 19.4125C6.19583 19.0208 6 18.55 6 18H10C10 18.55 9.80417 19.0208 9.4125 19.4125C9.02083 19.8042 8.55 20 8 20ZM4 15H12V8C12 6.9 11.6083 5.95833 10.825 5.175C10.0417 4.39167 9.1 4 8 4C6.9 4 5.95833 4.39167 5.175 5.175C4.39167 5.95833 4 6.9 4 8V15Z"
+            fill="#00535B"
+          />
+        </svg>
+      </span>
+      <img
+        class="size-8 lg:size-12 rounded-full object-cover"
+        src="https://flowbite.com/docs/images/people/profile-picture-5.jpg"
+        alt="user photo"
+      />
+    </div>
+  </div>
+</nav>
+
+<!-- ================= SIDEBAR ================= -->
+<aside
+  id="top-bar-sidebar"
+  class="fixed top-16 left-0 z-40 w-64 h-[calc(100vh-4rem)] -translate-x-full sm:translate-x-0 transition-transform bg-[#E6E3D0]"
+  aria-label="Sidebar"
+>
+  <div class="h-full flex flex-col justify-between py-8 px-4 overflow-y-auto">
+    <!-- TOP: logo + nav -->
+    <div>
+      <!-- Logo -->
+      <div class="pb-10 px-6">
+        <div class="flex gap-3 items-center">
+          <span class="size-8 bg-primary flex justify-center items-center text-white rounded-[8px]">
+            <svg
+              width="19"
+              height="15"
+              viewBox="0 0 19 15"
+              fill="none"
+              xmlns="http://www.w3.org/2000/svg"
+            >
+              <path
+                d="M16.6667 11.6667V5.91667L9.16667 10L0 5L9.16667 0L18.3333 5V11.6667H16.6667ZM9.16667 15L3.33333 11.8333V7.66667L9.16667 10.8333L15 7.66667V11.8333L9.16667 15Z"
+                fill="white"
+              />
+            </svg>
+          </span>
+          <div class="flex flex-col">
+            @if (role() === 'student') {
+              <h3 class="text-primary text-[0.875rem] font-bold leading-5 tracking-[0.14px]">
+                Student Portal
+              </h3>
+            } @else {
+              <h3 class="text-primary text-[0.875rem] font-bold leading-5 tracking-[0.14px]">
+                Teacher Portal
+              </h3>
+            }
+            <span class="text-[#48473A] text-2xs uppercase tracking-[1px] leading-3.75"
+              >ACADEMIC EXCELLENCE</span
+            >
+          </div>
+        </div>
+      </div>
+
+      <!-- Nav -->
+      <div>
+        <ul class="flex flex-col gap-1 space-y-1 text-sm font-medium">
+          @for (item of role() === 'student' ? student : teacher; track item.route) {
+            <li>
+              <a
+                [routerLink]="item.route"
+                routerLinkActive="navlinksActive text-white"
+                class="navlinks"
+              >
+                <svg
+                  class="w-4 h-4 shrink-0"
+                  fill="none"
+                  stroke="currentColor"
+                  stroke-width="2"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  viewBox="0 0 24 24"
+                >
+                  <path [attr.d]="item.icon" />
+                </svg>
+                {{ item.label }}
+              </a>
+            </li>
+          }
+        </ul>
+      </div>
+
+      <!-- Divider -->
+      <div class="py-4 px-6">
+        <hr class="border-[#9AA3A5]" />
+      </div>
+    </div>
+
+    <!-- BOTTOM: buttons -->
+    <div class="space-y-3">
+      @if (role() === 'teacher') {
+        <a href="#" class="navlinks">
+          <svg
+            width="14"
+            height="14"
+            viewBox="0 0 14 14"
+            fill="none"
+            xmlns="http://www.w3.org/2000/svg"
+          >
+            <path d="M6 8H0V6H6V0H8V6H14V8H8V14H6V8Z" fill="white" />
+          </svg>
+
+          Create New Group
+        </a>
+      }
+
+      <button
+        class="flex items-center justify-center gap-3 w-full py-3 px-4 rounded-lg border border-error text-error leading-5 tracking-[0.14px] text-sm font-medium"
+      >
+        <svg
+          width="18"
+          height="18"
+          viewBox="0 0 18 18"
+          fill="none"
+          xmlns="http://www.w3.org/2000/svg"
+        >
+          <path
+            d="M16 18C16.55 18 17.0208 17.8042 17.4125 17.4125C17.8042 17.0208 18 16.55 18 16V2C18 1.45 17.8042 0.979167 17.4125 0.5875C17.0208 0.195833 16.55 0 16 0H9V2H16V16H9V18H16ZM5 14L6.375 12.55L3.825 10H12V8H3.825L6.375 5.45L5 4L0 9L5 14Z"
+            fill="#BA1A1A"
+          />
+        </svg>
+
+        Sign Out
+      </button>
+    </div>
+  </div>
+</aside>
