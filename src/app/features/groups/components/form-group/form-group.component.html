@@ -1,0 +1,211 @@
+<div class="lg:flex justify-center items-center">
+  <div
+    class="lg:max-w-167.5 pt-12 lg:px-12 pb-16 lg:bg-white flex flex-col gap-10 rounded-lg relative overflow-hidden lg:shadow-[0_16px_48px_0_rgba(0,0,0,0.08)]"
+  >
+    <!-- header -->
+    <div class="lg:flex flex-col lg:items-center gap-2">
+      <h2
+        class="text-[1.75rem] leading-9 tracking-normal text-[#111C2C] lg:text-[2rem] lg:leading-10 font-semibold lg:text-primary lg:tracking-[-0.32px]"
+      >
+        Create New Group
+      </h2>
+      <p
+        class="max-w-87.5 lg:max-w-md text-[1rem] leading-6.5 lg:leading-6 tracking-normal lg:text-center text-[#3E494A]"
+      >
+        Set up a new learning space for your students and start organizing your mentorship journey.
+      </p>
+    </div>
+    <!-- form -->
+    <div>
+      <div class="flex flex-col gap-8">
+        <img src="/images/formGroup.png" alt="" class="rounded-lg lg:hidden" />
+        <form
+          action=""
+          class="flex flex-col gap-8 bg-white lg:bg-transparent p-6 lg:p-0 w-full rounded-[12px] lg:rounded-0 shadow-[0_4px_16px_0_rgba(0,83,91,0.08)] lg:shadow-none"
+        >
+          <!-- name -->
+          <div class="flex flex-col gap-2">
+            <label
+              for=""
+              class="label-input text-primary text-[0.875rem] tracking-[0.14px] font-medium"
+              >Group Name <span class="text-error">*</span></label
+            >
+            <input
+              type="text"
+              placeholder="e.g. Frontend Mentorship – Batch 2"
+              class="border text-[1rem] focus:ring-[#BEC8CA] tracking-normal leading-[100%] text-[#6B7280] font-normal border-[#BEC8CA] bg-white py-3.5 px-4 rounded-[8px] w-full outline-none focus:border-none focus:outline-0"
+            />
+          </div>
+          <!-- category -->
+          <div class="flex flex-col gap-2">
+            <label
+              for=""
+              class="label-input text-primary text-[0.875rem] tracking-[0.14px] font-medium"
+              >Category
+              <span class="text-2xs leading-5 tracking-[0.14px] text-[#3E494A80]/70 uppercase ps-1"
+                >(OPTIONAL)</span
+              ></label
+            >
+            <input
+              type="text"
+              placeholder="e.g. Frontend Development, React, Algorithms"
+              class="border text-[1rem] tracking-normal leading-[100%] focus:ring-[#BEC8CA] text-[#6B7280] font-normal border-[#BEC8CA] bg-white py-3.5 px-4 rounded-[8px] w-full outline-none focus:border-none focus:outline-0"
+            />
+          </div>
+          <!-- description -->
+
+          <div class="flex flex-col gap-2">
+            <label
+              for=""
+              class="label-input text-primary text-[0.875rem] tracking-[0.14px] font-medium"
+              >Description
+              <span class="text-2xs leading-5 tracking-[0.14px] text-[#3E494A80]/70 uppercase ps-1"
+                >(OPTIONAL)</span
+              ></label
+            >
+            <textarea
+              type="text"
+              rows="6"
+              placeholder="e.g. Frontend Development, React, Algorithms"
+              class="border leading-6 resize-none text-[1rem] focus:ring-[#BEC8CA] tracking-normal lg:leading-[100%] text-[#6B7280] font-normal border-[#BEC8CA] bg-white py-3.5 px-4 rounded-[8px] w-full outline-none focus:border-none focus:outline-none"
+            ></textarea>
+          </div>
+          <!-- Row: Max Students & Duration -->
+          <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+            <!-- Maximum Number of Students -->
+            <div class="flex flex-col gap-2">
+              <label
+                for="maxStudents"
+                class="text-primary text-[0.875rem] tracking-[0.14px] font-medium"
+              >
+                Maximum Number of Students <span class="text-error">*</span>
+              </label>
+
+              <div
+                class="flex items-center h-13 p-2 bg-white border border-[#BEC8CA] rounded-[8px] overflow-hidden focus-within:border-primary focus-within:ring-2 focus-within:ring-[#00535B]/20"
+              >
+                <button
+                  type="button"
+                  (click)="decrease()"
+                  aria-label="Decrease"
+                  class="h-full cursor-pointer"
+                >
+                  <span
+                    class="lg:px-4 flex items-center justify-center hover:bg-primary/5 focus:outline-none bg-Surface lg:bg-transparent lg:border-0 size-10 lg:w-11.5 lg:h-9.5 rounded-full border border-[#BEC8CA] lg:rounded-0"
+                  >
+                    <svg
+                      width="14"
+                      height="2"
+                      viewBox="0 0 14 2"
+                      fill="none"
+                      xmlns="http://www.w3.org/2000/svg"
+                    >
+                      <path d="M0 2V0H14V2H0Z" fill="#00535B" />
+                    </svg>
+                  </span>
+                </button>
+
+                <input
+                  id="maxStudents"
+                  type="text"
+                  inputmode="numeric"
+                  [value]="count()"
+                  class="flex-1 focus:ring-0 min-w-0 h-full text-center text-[1.5rem] font-bold lg:font-normal lg:text-[1rem] text-[#191C1E] bg-transparent outline-none border-none"
+                />
+
+                <button
+                  type="button"
+                  (click)="increase()"
+                  aria-label="Increase"
+                  class="h-full cursor-pointer"
+                >
+                  <span
+                    class="lg:px-4 flex items-center justify-center hover:bg-primary/5 focus:outline-none bg-Surface lg:bg-transparent lg:border-0 size-10 lg:w-11.5 lg:h-9.5 rounded-full border border-[#BEC8CA] lg:rounded-0"
+                  >
+                    <svg
+                      width="14"
+                      height="14"
+                      viewBox="0 0 14 14"
+                      fill="none"
+                      xmlns="http://www.w3.org/2000/svg"
+                    >
+                      <path d="M6 8H0V6H6V0H8V6H14V8H8V14H6V8Z" fill="#00535B" />
+                    </svg>
+                  </span>
+                </button>
+              </div>
+
+              <p class="text-[0.75rem] leading-4 tracking-normal text-[#3E494A] font-semibold">
+                Set the maximum number of students allowed to join this group.
+              </p>
+            </div>
+
+            <!-- Duration -->
+            <div class="flex flex-col gap-2">
+              <label
+                for="duration"
+                class="text-primary text-[0.875rem] tracking-[0.14px] font-medium"
+              >
+                Duration
+                <span
+                  class="text-2xs leading-5 tracking-[0.14px] text-[#3E494A80]/70 uppercase ps-1"
+                  >(OPTIONAL)</span
+                >
+              </label>
+
+              <div
+                class="flex items-center justify-between h-13 bg-white border border-[#BEC8CA] rounded-[8px] px-4 focus-within:border-border focus-within:ring-2 focus-within:ring-[#00535B]/20"
+              >
+                <input
+                  id="duration"
+                  type="number"
+                  min="1"
+                  placeholder="90"
+                  class="flex-1 min-w-0 h-full focus:ring-0 text-[1rem] text-[#191C1E] placeholder:text-[#6B7280] focus:outline-none focus:border-none bg-transparent outline-none border-none [appearance:textfield] [&::-webkit-inner-spin-button]:appearance-none [&::-webkit-outer-spin-button]:appearance-none"
+                />
+                <span class="text-[1rem] text-[#6B7280]">days</span>
+              </div>
+
+              <p class="text-[0.75rem] leading-4 tracking-normal text-[#3E494A] font-semibold">
+                Estimated duration of the program.
+              </p>
+            </div>
+          </div>
+          <!-- Start Date -->
+          <div class="flex flex-col gap-2">
+            <label
+              for="startDate"
+              class="text-primary text-[0.875rem] tracking-[0.14px] font-medium"
+            >
+              Start Date
+              <span class="text-2xs leading-5 tracking-[0.14px] text-[#3E494A80]/70 uppercase ps-1"
+                >(OPTIONAL)</span
+              >
+            </label>
+
+            <input
+              id="startDate"
+              type="date"
+              formControlName="startDate"
+              class="border text-[1rem] tracking-normal focus:ring-[#BEC8CA] leading-[100%] text-[#6B7280] font-normal border-[#BEC8CA] bg-white py-3.5 px-4 rounded-[8px] w-full outline-none focus:border-none focus:outline-0"
+            />
+          </div>
+        </form>
+        <div class="py-5 flex flex-col lg:flex-row gap-4">
+          <button class="btn btn-Primary text-[0.875rem] leading-5 tracking-[0.14px] font-medium">
+            Create Group
+          </button>
+          <button
+            class="bg-[#E6E3D04D]/30 border-2 border-primary btn btn-Primary text-primary text-[0.875rem] leading-5 tracking-[0.14px] font-medium"
+          >
+            Back
+          </button>
+        </div>
+      </div>
+      <div
+        aria-hidden="true"
+        class="pointer-events-none hidden lg:block absolute bottom-0 rounded-br-lg right-0 w-24 h-24 bg-primary opacity-10 [clip-path:polygon(100%_0,100%_100%,0_100%)]"
+      ></div>
+    </div>
+  </div>
+</div>
