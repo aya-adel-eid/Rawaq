@@ -2,6 +2,7 @@ import { isPlatformBrowser } from '@angular/common';
 import { Component, inject, OnInit, PLATFORM_ID, signal } from '@angular/core';
 import { RouterLink, RouterLinkActive } from '@angular/router';
 import { STORED_KEY } from '../../constants/STORED_KEYS';
+import { AuthService } from '../../../features/auth/service/auth.service';
 
 @Component({
   selector: 'app-asid-bar',
@@ -11,6 +12,7 @@ import { STORED_KEY } from '../../constants/STORED_KEYS';
 })
 export class AsidBarComponent implements OnInit {
   private readonly plat_Id = inject(PLATFORM_ID);
+  authService = inject(AuthService);
   role = signal<string>('');
   teacher = [
     {

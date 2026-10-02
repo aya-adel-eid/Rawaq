@@ -113,5 +113,7 @@ export class AuthService {
     sessionStorage.removeItem(STORED_KEY.refresh_token);
     sessionStorage.removeItem(STORED_KEY.rememberMeExpiry);
     sessionStorage.removeItem(STORED_KEY.role);
+    localStorage.removeItem(STORED_KEY.userToken);
+    sessionStorage.removeItem(STORED_KEY.userToken);
   }
 }

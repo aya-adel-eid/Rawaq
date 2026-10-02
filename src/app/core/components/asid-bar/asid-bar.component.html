@@ -153,7 +153,8 @@
       }
 
       <button
-        class="flex items-center justify-center gap-3 w-full py-3 px-4 rounded-lg border border-error text-error leading-5 tracking-[0.14px] text-sm font-medium"
+        (click)="authService.logOut()"
+        class="flex cursor-pointer items-center justify-center gap-3 w-full py-3 px-4 rounded-lg border border-error text-error leading-5 tracking-[0.14px] text-sm font-medium"
       >
         <svg
           width="18"
