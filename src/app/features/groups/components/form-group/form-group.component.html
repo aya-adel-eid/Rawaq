@@ -40,6 +40,32 @@
               placeholder="e.g. Frontend Mentorship – Batch 2"
               class="border text-[1rem] focus:ring-[#BEC8CA] tracking-normal leading-[100%] text-[#6B7280] font-normal border-[#BEC8CA] bg-white py-3.5 px-4 rounded-[8px] w-full outline-none focus:border-none focus:outline-0"
             />
+            @if (formGroup.get('name')?.touched && formGroup.get('name')?.invalid) {
+              <p class="mt-1.5 flex items-center gap-1.5 text-sm text-red-600" role="alert">
+                <svg
+                  class="w-4 h-4 shrink-0"
+                  aria-hidden="true"
+                  xmlns="http://www.w3.org/2000/svg"
+                  width="24"
+                  height="24"
+                  fill="none"
+                  viewBox="0 0 24 24"
+                >
+                  <path
+                    stroke="currentColor"
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    stroke-width="2"
+                    d="M10 11h2v5m-2 0h4m-2.592-8.5h.01M21 12a9 9 0 1 1-18 0 9 9 0 0 1 18 0Z"
+                  />
+                </svg>
+                @if (formGroup.get('name')?.getError('required')) {
+                  Name is required
+                } @else if (formGroup.get('name')?.getError('minlength')) {
+                  Minimum 3 characters
+                }
+              </p>
+            }
           </div>
           <!-- category -->
           <div class="flex flex-col gap-2">
@@ -58,6 +84,30 @@
               placeholder="e.g. Frontend Development, React, Algorithms"
               class="border text-[1rem] tracking-normal leading-[100%] focus:ring-[#BEC8CA] text-[#6B7280] font-normal border-[#BEC8CA] bg-white py-3.5 px-4 rounded-[8px] w-full outline-none focus:border-none focus:outline-0"
             />
+            @if (formGroup.get('category')?.touched && formGroup.get('category')?.invalid) {
+              <p class="mt-1.5 flex items-center gap-1.5 text-sm text-red-600" role="alert">
+                <svg
+                  class="w-4 h-4 shrink-0"
+                  aria-hidden="true"
+                  xmlns="http://www.w3.org/2000/svg"
+                  width="24"
+                  height="24"
+                  fill="none"
+                  viewBox="0 0 24 24"
+                >
+                  <path
+                    stroke="currentColor"
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    stroke-width="2"
+                    d="M10 11h2v5m-2 0h4m-2.592-8.5h.01M21 12a9 9 0 1 1-18 0 9 9 0 0 1 18 0Z"
+                  />
+                </svg>
+                @if (formGroup.get('category')?.getError('maxLength')) {
+                  Maximum 100 characters
+                }
+              </p>
+            }
           </div>
           <!-- description -->
 
@@ -78,6 +128,30 @@
               placeholder="e.g. Frontend Development, React, Algorithms"
               class="border leading-6 resize-none text-[1rem] focus:ring-[#BEC8CA] tracking-normal lg:leading-[100%] text-[#6B7280] font-normal border-[#BEC8CA] bg-white py-3.5 px-4 rounded-[8px] w-full outline-none focus:border-none focus:outline-none"
             ></textarea>
+            @if (formGroup.get('description')?.touched && formGroup.get('description')?.invalid) {
+              <p class="mt-1.5 flex items-center gap-1.5 text-sm text-red-600" role="alert">
+                <svg
+                  class="w-4 h-4 shrink-0"
+                  aria-hidden="true"
+                  xmlns="http://www.w3.org/2000/svg"
+                  width="24"
+                  height="24"
+                  fill="none"
+                  viewBox="0 0 24 24"
+                >
+                  <path
+                    stroke="currentColor"
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    stroke-width="2"
+                    d="M10 11h2v5m-2 0h4m-2.592-8.5h.01M21 12a9 9 0 1 1-18 0 9 9 0 0 1 18 0Z"
+                  />
+                </svg>
+                @if (formGroup.get('description')?.getError('maxLength')) {
+                  Maximum 1000 characters
+                }
+              </p>
+            }
           </div>
           <!-- Row: Max Students & Duration -->
           <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
@@ -118,7 +192,6 @@
                   id="maxStudents"
                   type="number"
                   formControlName="no_of_students"
-                  [value]="count()"
                   class="flex-1 focus:ring-0 min-w-0 h-full text-center text-[1.5rem] font-bold lg:font-normal lg:text-[1rem] text-[#191C1E] bg-transparent outline-none border-none"
                 />
 
@@ -147,6 +220,32 @@
               <p class="text-[0.75rem] leading-4 tracking-normal text-[#3E494A] font-semibold">
                 Set the maximum number of students allowed to join this group.
               </p>
+              @if (
+                formGroup.get('no_of_students')?.touched && formGroup.get('no_of_students')?.invalid
+              ) {
+                <p class="mt-1.5 flex items-center gap-1.5 text-sm text-red-600" role="alert">
+                  <svg
+                    class="w-4 h-4 shrink-0"
+                    aria-hidden="true"
+                    xmlns="http://www.w3.org/2000/svg"
+                    width="24"
+                    height="24"
+                    fill="none"
+                    viewBox="0 0 24 24"
+                  >
+                    <path
+                      stroke="currentColor"
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                      stroke-width="2"
+                      d="M10 11h2v5m-2 0h4m-2.592-8.5h.01M21 12a9 9 0 1 1-18 0 9 9 0 0 1 18 0Z"
+                    />
+                  </svg>
+                  @if (formGroup.get('no_of_students')?.getError('min')) {
+                    Minimum value: 1
+                  }
+                </p>
+              }
             </div>
 
             <!-- Duration -->
@@ -179,6 +278,33 @@
               <p class="text-[0.75rem] leading-4 tracking-normal text-[#3E494A] font-semibold">
                 Estimated duration of the program.
               </p>
+              @if (
+                formGroup.get('duration_in_days')?.touched &&
+                formGroup.get('duration_in_days')?.invalid
+              ) {
+                <p class="mt-1.5 flex items-center gap-1.5 text-sm text-red-600" role="alert">
+                  <svg
+                    class="w-4 h-4 shrink-0"
+                    aria-hidden="true"
+                    xmlns="http://www.w3.org/2000/svg"
+                    width="24"
+                    height="24"
+                    fill="none"
+                    viewBox="0 0 24 24"
+                  >
+                    <path
+                      stroke="currentColor"
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                      stroke-width="2"
+                      d="M10 11h2v5m-2 0h4m-2.592-8.5h.01M21 12a9 9 0 1 1-18 0 9 9 0 0 1 18 0Z"
+                    />
+                  </svg>
+                  @if (formGroup.get('duration_in_days')?.getError('min')) {
+                    must be Positive integer only
+                  }
+                </p>
+              }
             </div>
           </div>
           <!-- Start Date -->
@@ -200,6 +326,30 @@
               formControlName="start_date"
               class="border text-[1rem] tracking-normal focus:ring-[#BEC8CA] leading-[100%] text-[#6B7280] font-normal border-[#BEC8CA] bg-white py-3.5 px-4 rounded-[8px] w-full outline-none focus:border-none focus:outline-0"
             />
+            @if (formGroup.get('start_date')?.touched && formGroup.get('start_date')?.invalid) {
+              <p class="mt-1.5 flex items-center gap-1.5 text-sm text-red-600" role="alert">
+                <svg
+                  class="w-4 h-4 shrink-0"
+                  aria-hidden="true"
+                  xmlns="http://www.w3.org/2000/svg"
+                  width="24"
+                  height="24"
+                  fill="none"
+                  viewBox="0 0 24 24"
+                >
+                  <path
+                    stroke="currentColor"
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    stroke-width="2"
+                    d="M10 11h2v5m-2 0h4m-2.592-8.5h.01M21 12a9 9 0 1 1-18 0 9 9 0 0 1 18 0Z"
+                  />
+                </svg>
+                @if (formGroup.get('start_date')?.getError('past')) {
+                  Minimum value: 1
+                }
+              </p>
+            }
           </div>
         </form>
         <div class="py-5 flex flex-col lg:flex-row gap-4">

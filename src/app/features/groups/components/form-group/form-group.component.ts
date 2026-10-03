@@ -15,11 +15,12 @@ import {
 })
 export class FormGroupComponent {
   private readonly fb = inject(FormBuilder);
+  count = signal<number>(1);
   today = new Date().toLocaleDateString('en-CA');
   formGroup: FormGroup = this.fb.group({
     name: [null, [Validators.required, Validators.minLength(3)]],
     description: [null, [Validators.maxLength(1000)]],
-    no_of_students: [1, [Validators.required, Validators.min(1)]],
+    no_of_students: [this.count(), [Validators.required, Validators.min(1)]],
     category: [null, [Validators.maxLength(100)]],
     start_date: [
       null,
@@ -27,14 +28,15 @@ export class FormGroupComponent {
     ],
     duration_in_days: [0, Validators.min(0)],
   });
-  count = signal<number>(1);
+
   increase() {
-    this.count.update((v) => v + 1);
+    const c = this.formGroup.get('no_of_students');
+    c?.setValue((c.value ?? 1) + 1);
   }
+
   decrease() {
-    if (this.count() > 1) {
-      this.count.update((v) => v - 1);
-    }
+    const c = this.formGroup.get('no_of_students');
+    c?.setValue(Math.max((c.value ?? 1) - 1, 1));
   }
   submit() {
     console.log(this.formGroup.value);

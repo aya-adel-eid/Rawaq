@@ -9,4 +9,7 @@ export const API_KEYS = {
     refreshToken: `${environment.base_Url}/auth/v1/token?grant_type=refresh_token`,
     logOut: `${environment.base_Url}/auth/v1/logout`,
   },
+  dashboard: {
+    newGroup: `${environment.base_Url}/rest/v1/groups`,
+  },
 };
