@@ -6,6 +6,8 @@ import {
   ReactiveFormsModule,
   Validators,
 } from '@angular/forms';
+import { GroupService } from '../../services/group.service';
+import { HttpErrorResponse } from '@angular/common/http';
 
 @Component({
   selector: 'app-form-group',
@@ -15,6 +17,7 @@ import {
 })
 export class FormGroupComponent {
   private readonly fb = inject(FormBuilder);
+  private readonly groupService = inject(GroupService);
   count = signal<number>(1);
   today = new Date().toLocaleDateString('en-CA');
   formGroup: FormGroup = this.fb.group({
@@ -39,6 +42,18 @@ export class FormGroupComponent {
     c?.setValue(Math.max((c.value ?? 1) - 1, 1));
   }
   submit() {
+    if (this.formGroup.invalid) {
+      this.formGroup.markAllAsDirty();
+      return;
+    }
+    this.groupService.createNewGroup(this.formGroup.value).subscribe({
+      next: (resp) => {
+        console.log(resp);
+      },
+      error: (error: HttpErrorResponse) => {
+        console.log(error);
+      },
+    });
     console.log(this.formGroup.value);
   }
 }
