@@ -11,4 +11,7 @@ export class GroupService {
   createNewGroup(groupData: IGroupData) {
     return this.httpClinet.post(API_KEYS.dashboard.newGroup, groupData);
   }
+  getAllGroupsStudent() {
+    return this.httpClinet.get(API_KEYS.dashboard.allGroupsStudent);
+  }
 }
