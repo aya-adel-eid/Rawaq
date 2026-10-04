@@ -1,63 +1,82 @@
+@let group = groupStudent();
+
 <div
-  class="max-w-[293.33px] rounded-lg border border-[#BEC8CA] shadow-sm bg-white p-4 flex flex-col gap-[15.5px]"
+  class="flex h-full min-w-[293.33px] flex-col gap-[15.5px] rounded-lg border border-[#BEC8CA] bg-white p-4 shadow-sm"
 >
-  <!-- heading -->
-  <div class="ps-[0.01px] flex justify-between">
-    <span
-      class="text-[0.75rem] leading-4 tracking-normal text-primary px-3 py-1 bg-primary/10 rounded-full"
-      >Theology</span
-    >
-    <span class="flex gap-1">
-      <svg
-        width="12"
-        height="14"
-        viewBox="0 0 12 14"
-        fill="none"
-        xmlns="http://www.w3.org/2000/svg"
+  <div class="flex h-6 items-center justify-between">
+    @if (group.category) {
+      <span
+        class="text-[0.75rem] leading-4 tracking-normal text-primary px-3 py-1 bg-primary/10 rounded-full"
+        >{{ group.category }}</span
       >
-        <path
-          d="M4 1.33333V0H8V1.33333H4ZM5.33333 8.66667H6.66667V4.66667H5.33333V8.66667ZM6 14C5.17778 14 4.40278 13.8417 3.675 13.525C2.94722 13.2083 2.31111 12.7778 1.76667 12.2333C1.22222 11.6889 0.791667 11.0528 0.475 10.325C0.158333 9.59722 0 8.82222 0 8C0 7.17778 0.158333 6.40278 0.475 5.675C0.791667 4.94722 1.22222 4.31111 1.76667 3.76667C2.31111 3.22222 2.94722 2.79167 3.675 2.475C4.40278 2.15833 5.17778 2 6 2C6.68889 2 7.35 2.11111 7.98333 2.33333C8.61667 2.55556 9.21111 2.87778 9.76667 3.3L10.7 2.36667L11.6333 3.3L10.7 4.23333C11.1222 4.78889 11.4444 5.38333 11.6667 6.01667C11.8889 6.65 12 7.31111 12 8C12 8.82222 11.8417 9.59722 11.525 10.325C11.2083 11.0528 10.7778 11.6889 10.2333 12.2333C9.68889 12.7778 9.05278 13.2083 8.325 13.525C7.59722 13.8417 6.82222 14 6 14ZM6 12.6667C7.28889 12.6667 8.38889 12.2111 9.3 11.3C10.2111 10.3889 10.6667 9.28889 10.6667 8C10.6667 6.71111 10.2111 5.61111 9.3 4.7C8.38889 3.78889 7.28889 3.33333 6 3.33333C4.71111 3.33333 3.61111 3.78889 2.7 4.7C1.78889 5.61111 1.33333 6.71111 1.33333 8C1.33333 9.28889 1.78889 10.3889 2.7 11.3C3.61111 12.2111 4.71111 12.6667 6 12.6667Z"
-          fill="#3E494A"
-        />
-      </svg>
-      <span class="text-[0.75rem] leading-4 tracking-normal text-primary">12 Weeks</span>
-    </span>
+    } @else {
+      <span></span>
+    }
+
+    @if (weeks(); as w) {
+      <span class="flex items-center gap-1">
+        <svg
+          width="12"
+          height="14"
+          viewBox="0 0 12 14"
+          fill="none"
+          xmlns="http://www.w3.org/2000/svg"
+        >
+          <path
+            d="M4 1.33333V0H8V1.33333H4ZM5.33333 8.66667H6.66667V4.66667H5.33333V8.66667ZM6 14C5.17778 14 4.40278 13.8417 3.675 13.525C2.94722 13.2083 2.31111 12.7778 1.76667 12.2333C1.22222 11.6889 0.791667 11.0528 0.475 10.325C0.158333 9.59722 0 8.82222 0 8C0 7.17778 0.158333 6.40278 0.475 5.675C0.791667 4.94722 1.22222 4.31111 1.76667 3.76667C2.31111 3.22222 2.94722 2.79167 3.675 2.475C4.40278 2.15833 5.17778 2 6 2C6.68889 2 7.35 2.11111 7.98333 2.33333C8.61667 2.55556 9.21111 2.87778 9.76667 3.3L10.7 2.36667L11.6333 3.3L10.7 4.23333C11.1222 4.78889 11.4444 5.38333 11.6667 6.01667C11.8889 6.65 12 7.31111 12 8C12 8.82222 11.8417 9.59722 11.525 10.325C11.2083 11.0528 10.7778 11.6889 10.2333 12.2333C9.68889 12.7778 9.05278 13.2083 8.325 13.525C7.59722 13.8417 6.82222 14 6 14ZM6 12.6667C7.28889 12.6667 8.38889 12.2111 9.3 11.3C10.2111 10.3889 10.6667 9.28889 10.6667 8C10.6667 6.71111 10.2111 5.61111 9.3 4.7C8.38889 3.78889 7.28889 3.33333 6 3.33333C4.71111 3.33333 3.61111 3.78889 2.7 4.7C1.78889 5.61111 1.33333 6.71111 1.33333 8C1.33333 9.28889 1.78889 10.3889 2.7 11.3C3.61111 12.2111 4.71111 12.6667 6 12.6667Z"
+            fill="#3E494A"
+          />
+        </svg>
+        <span class="text-[0.75rem] leading-4 tracking-normal text-primary">{{ w }} Weeks</span>
+      </span>
+    }
   </div>
-  <h3 class="text-[1.25rem] leading-7.5 tracking-normal text-[#111C2C] font-normal">
-    Advanced Aqidah
+
+  <h3
+    class="line-clamp-1 h-7.5 text-[1.25rem] leading-7.5 tracking-normal text-[#111C2C] font-normal"
+  >
+    {{ group.name }}
   </h3>
+
   <!-- info -->
   <div class="py-2 flex gap-3 border-y border-y-[#BEC8CA4D]/30">
-    <span>
-      <img src="/images/person.png" alt="" class="size-10 rounded-full" />
+    <span class="shrink-0">
+      <img
+        [src]="group.created_by.avatar_url || '/images/person.png'"
+        (error)="$any($event.target).src = '/images/person.png'"
+        alt=""
+        class="size-10 rounded-full object-cover"
+      />
     </span>
     <div class="flex flex-col">
-      <span class="text-[0.875rem] tracking-[0.14px] leading-5 font-medium text-[#111C2C]"
-        >Dr. Mahmoud Khalid</span
-      >
+      <span class="text-[0.875rem] tracking-[0.14px] leading-5 font-medium text-[#111C2C]">
+        {{ group.created_by.first_name }} {{ group.created_by.last_name }}
+      </span>
       <span class="text-[0.75rem] leading-4 tracking-normal text-[#111C2C] font-semibold"
         >Lead Mentor</span
       >
     </div>
   </div>
+
+  <!-- capacity -->
   <div class="flex flex-col gap-2">
     <div class="flex justify-between">
       <span class="text-[#3E494A] text-[0.75rem] leading-4 tracking-normal font-semibold"
         >Capacity</span
       >
       <span class="text-primary text-[0.75rem] leading-4 tracking-normal font-bold"
-        >12/25 Students</span
+        >{{ group.current_students_count }}/{{ group.max_no_of_students }} Students</span
       >
     </div>
-
-    <div class="w-full bg-[#E6E3D0] rounded-full h-2">
-      <div class="bg-primary h-2 rounded-full" style="width: 45%"></div>
+    <div class="h-2 w-full overflow-hidden rounded-full bg-[#E8E4D0]">
+      <div class="bg-primary h-2 rounded-full" [style.width.%]="progress()"></div>
     </div>
   </div>
+
   <!-- date info -->
   <div class="flex flex-col gap-4">
-    <span class="flex gap-1 items-center"
-      ><svg
+    <span class="flex gap-1 items-center">
+      <svg
         width="14"
         height="15"
         viewBox="0 0 14 15"
@@ -69,11 +88,11 @@
           fill="#3E494A"
         />
       </svg>
-
       <span class="text-[0.875rem] leading-5 tracking-[0.14px] text-[#3E494A]">
-        Starts Nov 01
+        {{ group.start_date ? 'Starts ' + (group.start_date | date: 'MMM dd') : 'Not scheduled' }}
       </span>
     </span>
+
     <span class="flex gap-1 items-center">
       <svg
         width="15"
@@ -92,12 +111,10 @@
       >
     </span>
   </div>
-  <!-- button -->
-  <div>
-    <button
-      class="bg-primary text-white py-3 rounded-[12px] text-[0.875rem] leading-5 tracking-[0.14px] font-medium w-full text-center cursor-pointer"
-    >
-      Request to Join
-    </button>
-  </div>
+
+  <button
+    class="bg-primary mt-auto text-white py-3 rounded-[12px] text-[0.875rem] leading-5 tracking-[0.14px] font-medium w-full text-center cursor-pointer"
+  >
+    Request to Join
+  </button>
 </div>
