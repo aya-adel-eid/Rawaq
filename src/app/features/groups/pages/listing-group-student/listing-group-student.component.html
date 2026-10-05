@@ -1,4 +1,4 @@
-<div class="grid grid-cols-4 gap-4">
+<div class="grid md:grid-cols-2 lg:grid-cols-3 gap-4">
   @for (group of allGroups(); track group.id) {
     <app-group-card-student [groupStudent]="group"></app-group-card-student>
   }

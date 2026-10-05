@@ -10,6 +10,11 @@ import { DatePipe } from '@angular/common';
 })
 export class GroupCardStudentComponent {
   groupStudent = input.required<IGroupStudent>();
+  statuses: Record<string, string> = {
+    not_member: 'Request to Join',
+    pending: 'Pending Approval',
+    member: 'Open Group',
+  };
   progress = computed(() => {
     const g = this.groupStudent();
     if (!g.max_no_of_students) return 0;
