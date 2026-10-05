@@ -1,5 +1,15 @@
-<div class="grid md:grid-cols-2 lg:grid-cols-3 gap-4">
-  @for (group of allGroups(); track group.id) {
-    <app-group-card-student [groupStudent]="group"></app-group-card-student>
-  }
-</div>
+@if (hasError()) {
+  <app-show-error (retry)="getAllGroups()"></app-show-error>
+} @else {
+  <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-4">
+    @if (!allGroups()) {
+      @for (item of [0, 1, 2, 3, 4, 5, 6]; track $index) {
+        <app-group-card-student-skeleton></app-group-card-student-skeleton>
+      }
+    } @else {
+      @for (group of allGroups(); track group.id) {
+        <app-group-card-student [groupStudent]="group"></app-group-card-student>
+      }
+    }
+  </div>
+}
