@@ -113,8 +113,15 @@
   </div>
 
   <button
-    class="bg-primary mt-auto text-white py-3 rounded-[12px] text-[0.875rem] leading-5 tracking-[0.14px] font-medium w-full text-center cursor-pointer"
+    type="button"
+    [class]="config().classes"
+    (click)="sendRequsetForJoinGroup()"
+    class="mt-auto w-full rounded-[12px] py-3 text-center text-[0.875rem] leading-5 font-medium tracking-[0.14px]"
   >
-    {{ statuses[group.status] }}
+    @if (isRequesting()) {
+      Sending...
+    } @else {
+      {{ config().label }}
+    }
   </button>
 </div>

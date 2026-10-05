@@ -1,10 +1,8 @@
-import { Component, DestroyRef, inject, OnInit, signal } from '@angular/core';
+import { Component, DestroyRef, inject, OnInit } from '@angular/core';
 import { GroupService } from '../../services/group.service';
-import { IGroupStudent } from '../../interfaces/IGroupStudent';
 import { GroupCardStudentComponent } from '../../components/group-card-student/group-card-student.component';
 import { GroupCardStudentSkeletonComponent } from '../../components/group-card-student-skeleton/group-card-student-skeleton.component';
 import { ShowErrorComponent } from '../../../../shared/components/show-error/show-error.component';
-import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
 
 @Component({
   selector: 'app-listing-group-student',
@@ -14,29 +12,16 @@ import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
 })
 export class ListingGroupStudentComponent implements OnInit {
   private readonly groupService = inject(GroupService);
-  allGroups = signal<IGroupStudent[] | null>(null);
-  isLoading = signal<boolean>(false);
-  hasError = signal<boolean>(false);
+  allGroups = this.groupService.allGroupsStudent;
+  isLoading = this.groupService.isLoadingGroupsStudent;
+  hasError = this.groupService.hasErrorGroupsStudent;
   private readonly destroyRef = inject(DestroyRef);
 
   ngOnInit(): void {
     this.getAllGroups();
   }
   getAllGroups() {
-    this.isLoading.set(true);
-    this.hasError.set(false);
-    this.groupService
-      .getAllGroupsStudent()
-      .pipe(takeUntilDestroyed(this.destroyRef))
-      .subscribe({
-        next: (resp) => {
-          this.isLoading.set(false);
-          this.allGroups.set(resp);
-        },
-        error: () => {
-          this.isLoading.set(false);
-          this.hasError.set(true);
-        },
-      });
+    this.groupService.getAllGroupsStudent();
   }
+  sendRequsetForJoinGroup() {}
 }
