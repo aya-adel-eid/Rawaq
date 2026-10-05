@@ -4,6 +4,7 @@ import { DatePipe } from '@angular/common';
 import { GroupService } from '../../services/group.service';
 import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
 import { GroupStatus } from '../../interfaces/GroupStatues';
+import { ToastrService } from 'ngx-toastr';
 
 @Component({
   selector: 'app-group-card-student',
@@ -15,6 +16,7 @@ export class GroupCardStudentComponent {
   groupStudent = input.required<IGroupStudent>();
   private readonly groupService = inject(GroupService);
   private readonly destroyRef = inject(DestroyRef);
+  private readonly toaster = inject(ToastrService);
   isRequesting = signal<boolean>(false);
   statusConfig: Record<GroupStatus, { label: string; classes: string }> = {
     not_member: {
@@ -54,10 +56,13 @@ export class GroupCardStudentComponent {
       .pipe(takeUntilDestroyed(this.destroyRef))
       .subscribe({
         next: () => {
+          this.toaster.success('Your request has been sent successfully.');
           this.isRequesting.set(false);
+          console.log('success');
         },
         error: () => {
           this.isRequesting.set(false);
+          this.toaster.error('Unable to send your request. Please try again.');
         },
       });
   }

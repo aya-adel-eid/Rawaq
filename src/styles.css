@@ -8,6 +8,7 @@
 @import './styles/typography.css';
 @import './styles/them.css';
 @import './styles/base.css';
+@import './styles/toaster.css';
 
 :root {
   /* Font Family */
