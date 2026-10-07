@@ -1,9 +1,10 @@
 import { Component, HostListener, input, signal } from '@angular/core';
 import { IAllGroupJoinReq } from '../../interfaces/IAllGroupJoinReq';
+import { InitialsPipePipe } from '../../../../shared/pipes/initials-pipe-pipe';
 
 @Component({
   selector: 'app-join-requests-card',
-  imports: [],
+  imports: [InitialsPipePipe],
   templateUrl: './join-requests-card.component.html',
   styleUrl: './join-requests-card.component.css',
 })
