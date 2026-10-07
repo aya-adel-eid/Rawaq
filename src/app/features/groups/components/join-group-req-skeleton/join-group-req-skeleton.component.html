@@ -1,0 +1,83 @@
+<!-- Desktop -->
+<div
+  class="border-Surface-container mx-auto hidden max-w-204.25 animate-pulse overflow-hidden rounded-[12px] border md:block"
+  role="status"
+  aria-label="Loading join requests"
+>
+  <table class="w-full">
+    <thead class="bg-[#F0F3FF]">
+      <tr>
+        <th class="px-6 py-4 text-left"><div class="h-4 w-16 rounded bg-gray-200"></div></th>
+        <th class="px-6 py-4 text-left"><div class="h-4 w-24 rounded bg-gray-200"></div></th>
+        <th class="px-6 py-4 text-left"><div class="h-4 w-20 rounded bg-gray-200"></div></th>
+        <th class="px-6 py-4 text-right">
+          <div class="ml-auto h-4 w-16 rounded bg-gray-200"></div>
+        </th>
+      </tr>
+    </thead>
+    <tbody class="divide-y divide-[#BEC8CA]/30 bg-white">
+      @for (item of [0, 2, 3, 4]; track $index) {
+        <tr>
+          <td class="px-6 py-6">
+            <div class="flex items-center gap-3">
+              <div class="size-10 shrink-0 rounded-full bg-gray-200"></div>
+              <div class="flex flex-col gap-2">
+                <div class="h-3.5 w-28 rounded bg-gray-200"></div>
+                <div class="h-3 w-36 rounded bg-gray-200"></div>
+              </div>
+            </div>
+          </td>
+          <td class="px-6 py-6">
+            <div class="flex items-center gap-2.75">
+              <div class="size-3.75 rounded bg-gray-200"></div>
+              <div class="h-5 w-32 rounded bg-gray-200"></div>
+            </div>
+          </td>
+          <td class="px-6 py-6"><div class="h-5 w-24 rounded bg-gray-200"></div></td>
+          <td class="px-6 py-6">
+            <div class="ml-auto h-8 w-8 rounded bg-gray-200"></div>
+          </td>
+        </tr>
+      }
+    </tbody>
+    <tfoot class="bg-[#F0F3FF]">
+      <tr>
+        <td colspan="4" class="px-6 py-4">
+          <div class="flex justify-end gap-2">
+            <div class="h-7.5 w-[25.39px] rounded-[8px] bg-gray-200"></div>
+            <div class="h-7.5 w-[25.39px] rounded-[8px] bg-gray-200"></div>
+          </div>
+        </td>
+      </tr>
+    </tfoot>
+  </table>
+</div>
+
+<!-- Mobile -->
+<div
+  class="grid animate-pulse grid-cols-1 gap-4 md:hidden"
+  role="status"
+  aria-label="Loading join requests"
+>
+  @for (item of [0, 1, 2, 3, 4]; track $index) {
+    <div
+      class="flex flex-col gap-3.5 rounded-[12px] border border-[#BEC8CA1A] bg-white p-4 shadow-sm"
+    >
+      <div class="flex justify-between gap-4">
+        <div class="flex gap-4">
+          <div class="size-14 shrink-0 rounded-full bg-gray-200"></div>
+          <div class="flex flex-col gap-2">
+            <div class="h-5 w-32 rounded bg-gray-200"></div>
+            <div class="h-4 w-40 rounded bg-gray-200"></div>
+            <div class="mt-1 h-4 w-28 rounded bg-gray-200"></div>
+          </div>
+        </div>
+        <div class="h-4 w-14 rounded bg-gray-200"></div>
+      </div>
+      <div class="flex flex-col gap-3">
+        <div class="h-12 w-full rounded-lg bg-gray-200"></div>
+        <div class="h-12 w-full rounded-lg bg-gray-200"></div>
+      </div>
+    </div>
+  }
+</div>

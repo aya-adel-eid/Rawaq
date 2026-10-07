@@ -59,6 +59,18 @@
   </div>
   <!--  -->
   <div>
-    <app-join-requests-card [allGroupJoinReq]="allGroupJoinReq()!"></app-join-requests-card>
+    @if (hasError()) {
+      <app-show-error
+        [message]="`Unable to load join requests.
+Please try again.`"
+        (retry)="getAllGroupJoinReq()"
+      ></app-show-error>
+    } @else {
+      @if (!allGroupJoinReq()) {
+        <app-join-group-req-skeleton></app-join-group-req-skeleton>
+      } @else {
+        <app-join-requests-card [allGroupJoinReq]="allGroupJoinReq()!"></app-join-requests-card>
+      }
+    }
   </div>
 </section>

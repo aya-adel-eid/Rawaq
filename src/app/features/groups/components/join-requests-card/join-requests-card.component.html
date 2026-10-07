@@ -120,6 +120,15 @@
               </div>
             </td>
           </tr>
+        } @empty {
+          <tr>
+            <td
+              colspan="4"
+              class="px-6 py-12 text-center font-semibold text-[1.5rem] leading-6 text-primary"
+            >
+              No join requests at the moment.
+            </td>
+          </tr>
         }
       }
     </tbody>
@@ -164,6 +173,7 @@
     </tfoot>
   </table>
 </div>
+<!-- mobile -->
 
 @if (allGroupJoinReq()) {
   <div class="md:hidden grid grid-cols-1 gap-4">
@@ -231,6 +241,12 @@
           </button>
         </div>
       </div>
+    } @empty {
+      <p
+        class="rounded-[12px] border border-[#BEC8CA1A] bg-white p-8 font-semibold text-center text-[1.2rem] leading-6 text-primary shadow-sm"
+      >
+        No join requests at the moment.
+      </p>
     }
   </div>
 }
