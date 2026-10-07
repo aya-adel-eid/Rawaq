@@ -5,6 +5,7 @@ import { API_KEYS } from '../../../core/constants/API_KEYS';
 import { IGroupStudent } from '../interfaces/IGroupStudent';
 import { tap } from 'rxjs';
 import { IAllGroupJoinReq } from '../interfaces/IAllGroupJoinReq';
+import { ImyGroups } from '../interfaces/IMyGroups';
 
 @Injectable({
   providedIn: 'root',
@@ -17,6 +18,9 @@ export class GroupService {
   allGroupJoinReq = signal<IAllGroupJoinReq[] | null>(null);
   hasErrorGroupJoinReq = signal<boolean>(false);
   isLoaddingGroupJoinReq = signal<boolean>(false);
+  allMyGroupsStudentJoined = signal<ImyGroups[] | null>(null);
+  isLoadingMyGroupsJoined = signal<boolean>(false);
+  hasErrorMyGroupsJoined = signal<boolean>(false);
   createNewGroup(groupData: IGroupData) {
     return this.httpClinet.post(API_KEYS.dashboard.newGroup, groupData);
   }
@@ -78,5 +82,20 @@ export class GroupService {
   }
   removeRequest(requestId: string) {
     this.allGroupJoinReq.update((list) => (list ?? []).filter((r) => r.id !== requestId));
+  }
+  getAllMyGroupsStudentJoined() {
+    this.isLoadingMyGroupsJoined.set(true);
+    this.hasErrorMyGroupsJoined.set(false);
+    return this.httpClinet.get<ImyGroups[]>(API_KEYS.dashboard.myGroupsStudentJoined).subscribe({
+      next: (resp) => {
+        this.allMyGroupsStudentJoined.set(resp);
+        this.isLoadingMyGroupsJoined.set(false);
+        this.hasErrorMyGroupsJoined.set(false);
+      },
+      error: () => {
+        this.isLoadingMyGroupsJoined.set(false);
+        this.hasErrorMyGroupsJoined.set(true);
+      },
+    });
   }
 }

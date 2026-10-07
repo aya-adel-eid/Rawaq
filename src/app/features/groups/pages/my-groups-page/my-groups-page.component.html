@@ -1,0 +1,27 @@
+@if (hasErrorMyGroups()) {
+  <app-show-error
+    (retry)="getAllMyGroups()"
+    [message]="'Unable to load your groups. Please try again.'"
+  ></app-show-error>
+} @else {
+  <section>
+    <!-- header -->
+    <div>
+      <h2 class="font-semibold text-[2rem] leading-10 tracking-[-0.32px]">My Groups</h2>
+      <p class="max-w-[658.53px] text-[1.125rem] leading-7 tracking-normal text-[#3E494A]">
+        Access your learning spaces and continue your progress with your peers and mentors.
+      </p>
+    </div>
+    <div class="grid grid-cols-1 lg:grid-cols-3 gap-6">
+      @if (!allMyGroups()) {
+        @for (item of [0, 1, 2, 3, 4, 5]; track $index) {
+          <app-my-groups-card-student-skeletone></app-my-groups-card-student-skeletone>
+        }
+      } @else {
+        @for (myGroup of allMyGroups(); track myGroup.id) {
+          <app-my-groups-card-student [myGroup]="myGroup"></app-my-groups-card-student>
+        }
+      }
+    </div>
+  </section>
+}

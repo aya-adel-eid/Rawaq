@@ -3,6 +3,8 @@ import { FormGroupComponent } from '../../../groups/components/form-group/form-g
 import { GroupCardStudentComponent } from '../../../groups/components/group-card-student/group-card-student.component';
 import { ListingGroupStudentComponent } from '../../../groups/pages/listing-group-student/listing-group-student.component';
 import { JoinRequestsComponent } from '../../../groups/pages/join-requests/join-requests.component';
+import { MyGroupsCardStudentComponent } from '../../../groups/components/my-groups-card-student/my-groups-card-student.component';
+import { MyGroupsPageComponent } from '../../../groups/pages/my-groups-page/my-groups-page.component';
 
 @Component({
   selector: 'app-dashboard',
@@ -11,6 +13,8 @@ import { JoinRequestsComponent } from '../../../groups/pages/join-requests/join-
     GroupCardStudentComponent,
     ListingGroupStudentComponent,
     JoinRequestsComponent,
+    MyGroupsCardStudentComponent,
+    MyGroupsPageComponent,
   ],
   templateUrl: './dashboard.component.html',
   styleUrl: './dashboard.component.css',
