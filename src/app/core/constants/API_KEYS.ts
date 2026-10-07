@@ -15,5 +15,6 @@ export const API_KEYS = {
     GroupJoinRequests: `${environment.base_Url}/rest/v1/group_join_requests`,
     allGroupJoinReq: `${environment.base_Url}/rest/v1/get_group_join_requests`,
     acceptJoinReq: `${environment.base_Url}/rest/v1/rpc/accept_join_request`,
+    rejectJoinReq: `${environment.base_Url}/rest/v1/rpc/reject_join_request`,
   },
 };

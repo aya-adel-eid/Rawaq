@@ -1,7 +1,6 @@
-import { Component, inject, OnInit, signal } from '@angular/core';
+import { Component, inject, OnInit } from '@angular/core';
 import { JoinRequestsCardComponent } from '../../components/join-requests-card/join-requests-card.component';
 import { GroupService } from '../../services/group.service';
-import { IAllGroupJoinReq } from '../../interfaces/IAllGroupJoinReq';
 import { ShowErrorComponent } from '../../../../shared/components/show-error/show-error.component';
 import { JoinGroupReqSkeletonComponent } from '../../components/join-group-req-skeleton/join-group-req-skeleton.component';
 
@@ -13,23 +12,15 @@ import { JoinGroupReqSkeletonComponent } from '../../components/join-group-req-s
 })
 export class JoinRequestsComponent implements OnInit {
   private readonly groupService = inject(GroupService);
-  allGroupJoinReq = signal<IAllGroupJoinReq[] | null>(null);
-  hasError = signal<boolean>(false);
-  isLoadding = signal<boolean>(false);
+  allGroupJoinReq = this.groupService.allGroupJoinReq;
+  hasError = this.groupService.hasErrorGroupJoinReq;
+  isLoadding = this.groupService.isLoaddingGroupJoinReq;
   ngOnInit(): void {
     this.getAllGroupJoinReq();
   }
   getAllGroupJoinReq() {
     this.isLoadding.set(true);
     this.hasError.set(false);
-    this.groupService.getAllGroupJoinReq().subscribe({
-      next: (resp) => {
-        this.allGroupJoinReq.set(resp);
-      },
-      error: () => {
-        this.hasError.set(true);
-        this.isLoadding.set(false);
-      },
-    });
+    this.groupService.getAllGroupJoinReq();
   }
 }

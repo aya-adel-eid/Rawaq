@@ -43,7 +43,20 @@ export class JoinRequestsCardComponent {
         this.toaster.success('Student added to group successfully');
       },
       error: (error: HttpErrorResponse) => {
-        this.toaster.error(error.error.message);
+        this.toaster.error(error.error.message ?? 'Something went wrong');
+      },
+    });
+  }
+  rejectJoinReq(groupId: string) {
+    this.groupService.rejectJoinReq(groupId).subscribe({
+      next: () => {
+        this.allGroupJoinReq()?.filter((resp) => {
+          console.log(resp);
+        });
+        this.toaster.success('Request rejected');
+      },
+      error: (error: HttpErrorResponse) => {
+        this.toaster.error(error.error.message ?? 'Something went wrong');
       },
     });
   }
