@@ -1,4 +1,4 @@
-<section class="flex flex-col gap-8 px-10">
+<section class="flex flex-col gap-4 md:gap-8 px-10">
   <!-- header -->
   <div>
     <h2
@@ -6,19 +6,19 @@
     >
       Join Requests
       <span
-        class="bg-[#7A5E0A] w-10.5 h-6.5 py-0.5 px-3 rounded-full text-[0.875rem] tracking-[0.14px] leading-5 text-[#FFDA83]"
+        class="bg-primary md:bg-[#7A5E0A] w-10.5 h-6.5 py-0.5 px-3 rounded-full text-[0.875rem] tracking-[0.14px] leading-5 text-white md:text-[#FFDA83]"
         >12</span
       >
     </h2>
-    <p class="text-[1rem] leading-6 tracking-normal text-[#3E494A] font-normal">
+    <p class="text-[1rem] leading-6 tracking-normal text-[#3E494A] font-normal md:hidden">
       Review and manage student requests to join your groups.
     </p>
   </div>
   <!-- for search -->
   <div
-    class="bg-white border border-[#E7EEFF80]/50 backdrop-blur-sm shadow-sm p-6 rounded-[12px] flex justify-between"
+    class="bg-transparent md:bg-white md:border border-[#E7EEFF80]/50 backdrop-blur-sm md:shadow-sm md:p-6 gap-3 rounded-[12px] flex flex-col md:flex-row justify-between"
   >
-    <div class="w-full max-w-lg px-8 hidden lg:block">
+    <div class="w-full md:max-w-lg md:px-8">
       <div class="relative">
         <span
           class="absolute inset-y-0 left-3 flex items-center pointer-events-none text-[#6B7280]"
@@ -40,14 +40,14 @@
         <input
           type="text"
           placeholder="Search by student name or email"
-          class="w-full h-12.25 pl-10 pr-4 rounded-[8px] bg-Surface border border-[#BEC8CA] text-[1rem] text-[#1F2937] placeholder:text-[#6B7280] leading-[100%] tracking-normal focus:outline-none focus:border-[#0F5257] focus:ring-2 focus:ring-[#0F5257]/20"
+          class="w-full h-12.25 pl-10 pr-4 rounded-[8px] bg-[#F0F3FF] md:bg-Surface border border-[#BEC8CA4D]/30 md:border-[#BEC8CA] text-[1rem] text-[#1F2937] placeholder:text-[#6B7280] leading-[100%] tracking-normal focus:outline-none focus:border-[#0F5257] focus:ring-2 focus:ring-[#0F5257]/20"
         />
       </div>
     </div>
-    <div>
+    <div class="">
       <select
         id="countries"
-        class="block w-full ps-4 pe-10 py-3 bg-Surface border border-[#BEC8CA] text-[#111C2C] text-[1rem] tracking-normal leading-6 rounded-[8px] focus:ring-0"
+        class="w-full ps-4 pe-10 py-3 bg-Surface border border-[#BEC8CA] text-[#111C2C] text-[1rem] tracking-normal leading-6 rounded-[8px] focus:ring-0"
       >
         <option selected>All Groups</option>
         <option value="US">United States</option>
