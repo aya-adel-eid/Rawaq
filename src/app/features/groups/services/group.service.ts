@@ -52,4 +52,7 @@ export class GroupService {
   getAllGroupJoinReq() {
     return this.httpClinet.get<IAllGroupJoinReq[]>(API_KEYS.dashboard.allGroupJoinReq);
   }
+  AcceptJoinReq(groupId: string) {
+    return this.httpClinet.post(API_KEYS.dashboard.acceptJoinReq, { p_request_id: groupId });
+  }
 }
