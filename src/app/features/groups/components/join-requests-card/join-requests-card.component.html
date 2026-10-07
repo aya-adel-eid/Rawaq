@@ -65,7 +65,9 @@
               </div>
             </td>
 
-            <td class="px-6 py-6 text-[1rem] leading-6 font-medium text-[#3E494A]">2 hours ago</td>
+            <td class="px-6 py-6 text-[1rem] leading-6 font-medium text-[#3E494A]">
+              {{ groupJoin.created_at | timeAgo }}
+            </td>
 
             <td class="px-6 py-6 text-right">
               <div class="relative inline-block">
@@ -215,9 +217,9 @@
                 >
               </div>
             </div>
-            <span class="text-[0.75rem] leading-4 tracking-normal text-[#6F797A] font-semibold"
-              >2 hours ago</span
-            >
+            <span class="text-[0.75rem] leading-4 tracking-normal text-[#6F797A] font-semibold">{{
+              groupJoin.created_at | timeAgo
+            }}</span>
           </div>
         </div>
         <div class="flex flex-col gap-3">
