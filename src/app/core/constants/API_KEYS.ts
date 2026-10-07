@@ -13,5 +13,6 @@ export const API_KEYS = {
     newGroup: `${environment.base_Url}/rest/v1/groups`,
     allGroupsStudent: `${environment.base_Url}/rest/v1/groups_with_status`,
     GroupJoinRequests: `${environment.base_Url}/rest/v1/group_join_requests`,
+    allGroupJoinReq: `${environment.base_Url}/rest/v1/get_group_join_requests`,
   },
 };

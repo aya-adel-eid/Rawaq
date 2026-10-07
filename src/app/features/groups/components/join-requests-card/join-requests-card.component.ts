@@ -1,4 +1,5 @@
-import { Component, HostListener, signal } from '@angular/core';
+import { Component, HostListener, input, signal } from '@angular/core';
+import { IAllGroupJoinReq } from '../../interfaces/IAllGroupJoinReq';
 
 @Component({
   selector: 'app-join-requests-card',
@@ -7,6 +8,7 @@ import { Component, HostListener, signal } from '@angular/core';
   styleUrl: './join-requests-card.component.css',
 })
 export class JoinRequestsCardComponent {
+  allGroupJoinReq = input<IAllGroupJoinReq[]>();
   columns = [
     { label: 'Student', align: 'text-left' },
     { label: 'Group Name', align: 'text-left' },

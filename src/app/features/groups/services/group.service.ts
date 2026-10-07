@@ -4,6 +4,7 @@ import { IGroupData } from '../interfaces/IGroupData';
 import { API_KEYS } from '../../../core/constants/API_KEYS';
 import { IGroupStudent } from '../interfaces/IGroupStudent';
 import { tap } from 'rxjs';
+import { IAllGroupJoinReq } from '../interfaces/IAllGroupJoinReq';
 
 @Injectable({
   providedIn: 'root',
@@ -47,5 +48,8 @@ export class GroupService {
           ),
         ),
       );
+  }
+  getAllGroupJoinReq() {
+    return this.httpClinet.get<IAllGroupJoinReq[]>(API_KEYS.dashboard.allGroupJoinReq);
   }
 }
