@@ -1,10 +1,11 @@
 import { Component } from '@angular/core';
 import { PostCardComponent } from '../../../posts/components/post-card/post-card.component';
 import { AssignmentsCardComponent } from '../../../assignments/components/assignments-card/assignments-card.component';
+import { PostFormComponent } from '../../../posts/pages/post-form/post-form.component';
 type GroupTab = 'posts' | 'assignments' | 'members';
 @Component({
   selector: 'app-group-details-page',
-  imports: [PostCardComponent, AssignmentsCardComponent],
+  imports: [PostCardComponent, AssignmentsCardComponent, PostFormComponent],
   templateUrl: './group-details-page.component.html',
   styleUrl: './group-details-page.component.css',
 })
