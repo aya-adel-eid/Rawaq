@@ -1,0 +1,67 @@
+<section>
+  <!-- header -->
+  <div class="p-8 rounded-[12px] bg-[#006D77] flex gap-5">
+    <!-- image -->
+
+    <img src="/images/person.png" alt="" class="size-20 rounded-full border-4 border-Surface" />
+    <div class="flex flex-col gap-1">
+      <h3 class="text-[2rem] leading-10 tracking-[-0.32px] font-semibold text-white">
+        Frontend Group 2
+      </h3>
+      <p class="text-[0.875rem] leading-5 tracking-[0.14px] text-[#FFFFFFE5]/90">
+        <span class="font-medium">Instructor: </span><span class="font-bold">Mahmoud Taha</span>
+      </p>
+      <p class="text-[1rem] tracking-normal leading-6 text-white font-normal">
+        Mastering modern web development with React and Tailwind CSS.
+      </p>
+    </div>
+  </div>
+  <div class="grid grid-cols-1 gap-6 md:grid-cols-3 py-8" role="tablist">
+    @for (item of tabs; track item.id) {
+      <button
+        type="button"
+        role="tab"
+        class="flex cursor-pointer items-center gap-4 shadow-md rounded-[8px] border-l-4 bg-Surface p-5 text-left transition hover:shadow-md"
+        [class]="item.border"
+      >
+        <!-- icon -->
+        <span
+          class="flex size-12 shrink-0 items-center justify-center rounded-[8px]"
+          [class]="item.iconBg"
+        >
+          <span
+            class="block size-5 bg-current"
+            [style.mask]="'url(/icons/' + item.icon + '.svg) center / contain no-repeat'"
+            [style.webkitMask]="'url(/icons/' + item.icon + '.svg) center / contain no-repeat'"
+          ></span>
+        </span>
+
+        <!-- content -->
+        <span class="flex flex-col">
+          <span class="text-[1rem] leading-6 font-bold text-[#111C2C]">{{ item.title }}</span>
+          <span class="text-[0.75rem] leading-4 text-[#3E494A] font-semibold">{{
+            item.subtitle
+          }}</span>
+        </span>
+      </button>
+    }
+  </div>
+  <!--  -->
+  <div class="grid grid-cols-12 gap-8">
+    <!-- posts -->
+    <div class="col-span-8">
+      <!-- header -->
+      <div class="flex justify-between items-center">
+        <h3 class="text-[1.5rem] font-semibold leading-6 tracking-normal text-[#111C2C]">
+          Latest Posts
+        </h3>
+        <a href="" class="text-[0.875rem] leading-5 tracking-[0.14px] text-primary font-bold"
+          >View All Posts</a
+        >
+      </div>
+      <app-post-card></app-post-card>
+    </div>
+    <!-- assignment -->
+    <div class="col-span-4">assi</div>
+  </div>
+</section>
