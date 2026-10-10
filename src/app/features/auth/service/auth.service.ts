@@ -8,6 +8,7 @@ import { ISignIn } from '../interface/ISignIn';
 import { STORED_KEY } from '../../../core/constants/STORED_KEYS';
 import { IUserData } from '../interface/IRefreshToken';
 import { Router } from '@angular/router';
+import { shareReplay } from 'rxjs';
 @Injectable({
   providedIn: 'root',
 })
@@ -115,5 +116,20 @@ export class AuthService {
     sessionStorage.removeItem(STORED_KEY.role);
     localStorage.removeItem(STORED_KEY.userToken);
     sessionStorage.removeItem(STORED_KEY.userToken);
+  }
+  // UserData
+  getUserData(token: string) {
+    this.httpClient
+      .get(API_KEYS.auth.userData, {
+        headers: {
+          Authorization: `Bearer ${token}`,
+        },
+      })
+      .pipe(shareReplay())
+      .subscribe({
+        next: (resp) => {
+          console.log(resp);
+        },
+      });
   }
 }

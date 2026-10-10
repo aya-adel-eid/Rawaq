@@ -55,5 +55,6 @@ export class AsidBarComponent implements OnInit {
         localStorage.getItem(STORED_KEY.role) ?? sessionStorage.getItem(STORED_KEY.role);
       this.role.set(stored === 'student' || stored === 'teacher' ? stored : null);
     }
+    this.authService.getUserData(this.authService.getToken()!);
   }
 }
