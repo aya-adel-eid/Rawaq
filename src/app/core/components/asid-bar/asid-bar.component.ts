@@ -41,7 +41,7 @@ const NAV_LINKS: NavLink[] = [
 export class AsidBarComponent implements OnInit {
   private readonly plat_Id = inject(PLATFORM_ID);
   authService = inject(AuthService);
-
+  userData = this.authService.userData;
   role = signal<UserRole | null>(null);
 
   links = computed(() => {
@@ -51,10 +51,11 @@ export class AsidBarComponent implements OnInit {
 
   ngOnInit(): void {
     if (isPlatformBrowser(this.plat_Id)) {
+      console.log(this.userData());
       const stored =
         localStorage.getItem(STORED_KEY.role) ?? sessionStorage.getItem(STORED_KEY.role);
       this.role.set(stored === 'student' || stored === 'teacher' ? stored : null);
+      this.authService.getUserData(this.authService.getToken()!);
     }
-    this.authService.getUserData(this.authService.getToken()!);
   }
 }

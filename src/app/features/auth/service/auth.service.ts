@@ -1,5 +1,5 @@
 import { HttpClient, HttpErrorResponse } from '@angular/common/http';
-import { inject, Injectable } from '@angular/core';
+import { inject, Injectable, signal } from '@angular/core';
 import { environment } from '../../../../environments/environment.development';
 
 import { API_KEYS } from '../../../core/constants/API_KEYS';
@@ -16,6 +16,7 @@ export class AuthService {
   private readonly httpClient = inject(HttpClient);
   private readonly rememberMeDays = 30;
   private readonly router = inject(Router);
+  userData = signal<IUserData | null>(null);
   signup(data: RegisterPayload) {
     return this.httpClient.post<UserData>(API_KEYS.auth.signUp, data);
   }
@@ -120,7 +121,7 @@ export class AuthService {
   // UserData
   getUserData(token: string) {
     this.httpClient
-      .get(API_KEYS.auth.userData, {
+      .get<IUserData>(API_KEYS.auth.userData, {
         headers: {
           Authorization: `Bearer ${token}`,
         },
@@ -129,6 +130,8 @@ export class AuthService {
       .subscribe({
         next: (resp) => {
           console.log(resp);
+
+          this.userData.set(resp);
         },
       });
   }
