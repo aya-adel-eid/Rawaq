@@ -1,10 +1,10 @@
 import { Component, HostListener, inject, input, signal } from '@angular/core';
-import { IAllGroupJoinReq } from '../../interfaces/IAllGroupJoinReq';
+import { IAllGroupJoinReq } from '../../../groups/interfaces/IAllGroupJoinReq';
 import { InitialsPipePipe } from '../../../../shared/pipes/initials-pipe-pipe';
 import { TimeAgoPipe } from '../../../../shared/pipes/time-ago-pipe';
-import { GroupService } from '../../services/group.service';
 import { ToastrService } from 'ngx-toastr';
 import { HttpErrorResponse } from '@angular/common/http';
+import { MembersService } from '../../service/members.service';
 
 @Component({
   selector: 'app-join-requests-card',
@@ -13,7 +13,7 @@ import { HttpErrorResponse } from '@angular/common/http';
   styleUrl: './join-requests-card.component.css',
 })
 export class JoinRequestsCardComponent {
-  private readonly groupService = inject(GroupService);
+  private readonly membersService = inject(MembersService);
   private readonly toaster = inject(ToastrService);
   allGroupJoinReq = input<IAllGroupJoinReq[]>();
   columns = [
@@ -38,7 +38,7 @@ export class JoinRequestsCardComponent {
     this.openMenuId.set(null);
   }
   acceptJoinReq(groupId: string) {
-    this.groupService.AcceptJoinReq(groupId).subscribe({
+    this.membersService.AcceptJoinReq(groupId).subscribe({
       next: () => {
         this.toaster.success('Student added to group successfully');
       },
@@ -48,7 +48,7 @@ export class JoinRequestsCardComponent {
     });
   }
   rejectJoinReq(groupId: string) {
-    this.groupService.rejectJoinReq(groupId).subscribe({
+    this.membersService.rejectJoinReq(groupId).subscribe({
       next: () => {
         this.allGroupJoinReq()?.filter((resp) => {
           console.log(resp);

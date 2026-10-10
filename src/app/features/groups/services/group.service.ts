@@ -4,7 +4,6 @@ import { IGroupData } from '../interfaces/IGroupData';
 import { API_KEYS } from '../../../core/constants/API_KEYS';
 import { IGroupStudent } from '../interfaces/IGroupStudent';
 import { tap } from 'rxjs';
-import { IAllGroupJoinReq } from '../interfaces/IAllGroupJoinReq';
 import { ImyGroups } from '../interfaces/IMyGroups';
 
 @Injectable({
@@ -15,9 +14,7 @@ export class GroupService {
   allGroupsStudent = signal<IGroupStudent[] | null>(null);
   isLoadingGroupsStudent = signal<boolean>(false);
   hasErrorGroupsStudent = signal<boolean>(false);
-  allGroupJoinReq = signal<IAllGroupJoinReq[] | null>(null);
-  hasErrorGroupJoinReq = signal<boolean>(false);
-  isLoaddingGroupJoinReq = signal<boolean>(false);
+
   allMyGroupsStudentJoined = signal<ImyGroups[] | null>(null);
   isLoadingMyGroupsJoined = signal<boolean>(false);
   hasErrorMyGroupsJoined = signal<boolean>(false);
@@ -56,33 +53,7 @@ export class GroupService {
         ),
       );
   }
-  getAllGroupJoinReq() {
-    this.isLoaddingGroupJoinReq.set(true);
-    this.hasErrorGroupJoinReq.set(false);
-    return this.httpClinet.get<IAllGroupJoinReq[]>(API_KEYS.dashboard.allGroupJoinReq).subscribe({
-      next: (resp) => {
-        this.allGroupJoinReq.set(resp);
-        this.isLoaddingGroupJoinReq.set(false);
-      },
-      error: () => {
-        this.hasErrorGroupJoinReq.set(true);
-        this.isLoaddingGroupJoinReq.set(false);
-      },
-    });
-  }
-  AcceptJoinReq(groupId: string) {
-    return this.httpClinet
-      .post(API_KEYS.dashboard.acceptJoinReq, { p_request_id: groupId })
-      .pipe(tap(() => this.removeRequest(groupId)));
-  }
-  rejectJoinReq(groupId: string) {
-    return this.httpClinet
-      .post(API_KEYS.dashboard.rejectJoinReq, { p_request_id: groupId })
-      .pipe(tap(() => this.removeRequest(groupId)));
-  }
-  removeRequest(requestId: string) {
-    this.allGroupJoinReq.update((list) => (list ?? []).filter((r) => r.id !== requestId));
-  }
+
   getAllMyGroupsStudentJoined() {
     this.isLoadingMyGroupsJoined.set(true);
     this.hasErrorMyGroupsJoined.set(false);

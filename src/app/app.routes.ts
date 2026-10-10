@@ -1,6 +1,7 @@
 import { Routes } from '@angular/router';
 import { loggedGuard } from './core/guards/logged-guard';
 import { authGuard } from './core/guards/auth-guard';
+import { roleGuard } from './core/guards/role-guard';
 
 export const routes: Routes = [
   // auth routes
@@ -14,6 +15,7 @@ export const routes: Routes = [
   {
     path: '',
     canActivate: [authGuard],
+    canActivateChild: [roleGuard],
     loadComponent: () =>
       import('./core/layoute/main-layout/main-layout.component').then((c) => c.MainLayoutComponent),
     children: [
@@ -24,6 +26,17 @@ export const routes: Routes = [
           import('./features/dashBoard/pages/dashboard/dashboard.component').then(
             (c) => c.DashboardComponent,
           ),
+      },
+      {
+        path: 'group',
+        data: { roles: ['student'] },
+        loadChildren: () => import('./features/groups/groups.routes').then((c) => c.GroupsRoutes),
+      },
+      {
+        path: '',
+        data: { roles: ['teacher'] },
+        loadChildren: () =>
+          import('./features/members/members.routes').then((c) => c.MembersRoutes),
       },
     ],
   },

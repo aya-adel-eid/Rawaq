@@ -1,8 +1,36 @@
 import { isPlatformBrowser } from '@angular/common';
-import { Component, inject, OnInit, PLATFORM_ID, signal } from '@angular/core';
+import { Component, computed, inject, OnInit, PLATFORM_ID, signal } from '@angular/core';
 import { RouterLink, RouterLinkActive } from '@angular/router';
 import { STORED_KEY } from '../../constants/STORED_KEYS';
 import { AuthService } from '../../../features/auth/service/auth.service';
+
+type UserRole = 'student' | 'teacher';
+
+interface NavLink {
+  label: string;
+  route: string;
+  icon: string;
+  roles: UserRole[];
+  exact?: boolean;
+}
+
+// نفس الـ routes اللي في app.routes + groups.routes + members.routes
+const NAV_LINKS: NavLink[] = [
+  {
+    label: 'Dashboard',
+    route: '/dashboard',
+    icon: 'dashboard',
+    roles: ['student', 'teacher'],
+    exact: true,
+  },
+
+  // student
+  { label: 'Explore Groups', route: '/group', icon: 'explore', roles: ['student'], exact: true },
+  { label: 'My Groups', route: '/group/joined', icon: 'groups', roles: ['student'] },
+
+  // teacher
+  { label: 'Join Requests', route: '/members', icon: 'requst', roles: ['teacher'] },
+];
 
 @Component({
   selector: 'app-asid-bar',
@@ -13,73 +41,19 @@ import { AuthService } from '../../../features/auth/service/auth.service';
 export class AsidBarComponent implements OnInit {
   private readonly plat_Id = inject(PLATFORM_ID);
   authService = inject(AuthService);
-  role = signal<string>('');
-  teacher = [
-    {
-      label: 'My Groups',
-      route: '/teacher/groups',
-      icon: 'groups',
-    },
-    {
-      label: 'Join Requests',
-      route: '/teacher/requests',
-      icon: 'requst',
-    },
-    {
-      label: 'Group Assignments',
-      route: '/teacher/assignments',
-      icon: 'assignments',
-    },
-    {
-      label: 'Group Students',
-      route: '/teacher/students',
-      icon: 'students',
-    },
-    { label: 'Group Posts', route: '/teacher/posts', icon: 'posts' },
-    {
-      label: 'Create New Post',
-      route: '/teacher/posts/new',
-      icon: 'newPost',
-    },
-  ];
-  student = [
-    {
-      label: 'dashboard',
-      route: '/',
-      icon: 'dashboard',
-    },
-    {
-      label: 'Explore Groups',
-      route: '/student/explore',
-      icon: 'explore',
-    },
-    {
-      label: 'My Groups',
-      route: '/student/groups',
-      icon: 'groups',
-    },
-    {
-      label: 'My Calendar',
-      route: '/student/calendar',
-      icon: 'calander',
-    },
-    { label: 'Group Posts', route: '/student/posts', icon: 'posts' },
-    {
-      label: 'Group Assignments',
-      route: '/student/assignments',
-      icon: 'assignments',
-    },
-    {
-      label: 'Create New Post',
-      route: '/student/posts/new',
-      icon: 'newPost',
-    },
-  ];
+
+  role = signal<UserRole | null>(null);
+
+  links = computed(() => {
+    const role = this.role();
+    return role ? NAV_LINKS.filter((l) => l.roles.includes(role)) : [];
+  });
+
   ngOnInit(): void {
     if (isPlatformBrowser(this.plat_Id)) {
-      this.role.set(
-        localStorage.getItem(STORED_KEY.role)! || sessionStorage.getItem(STORED_KEY.role)!,
-      );
+      const stored =
+        localStorage.getItem(STORED_KEY.role) ?? sessionStorage.getItem(STORED_KEY.role);
+      this.role.set(stored === 'student' || stored === 'teacher' ? stored : null);
     }
   }
 }

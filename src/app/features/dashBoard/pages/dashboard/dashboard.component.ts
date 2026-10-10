@@ -1,24 +1,24 @@
-import { Component } from '@angular/core';
-import { FormGroupComponent } from '../../../groups/components/form-group/form-group.component';
-import { GroupCardStudentComponent } from '../../../groups/components/group-card-student/group-card-student.component';
+import { Component, inject, OnInit, PLATFORM_ID, signal } from '@angular/core';
+
+import { isPlatformBrowser } from '@angular/common';
+import { STORED_KEY } from '../../../../core/constants/STORED_KEYS';
 import { ListingGroupStudentComponent } from '../../../groups/pages/listing-group-student/listing-group-student.component';
-import { JoinRequestsComponent } from '../../../groups/pages/join-requests/join-requests.component';
-import { MyGroupsCardStudentComponent } from '../../../groups/components/my-groups-card-student/my-groups-card-student.component';
-import { MyGroupsPageComponent } from '../../../groups/pages/my-groups-page/my-groups-page.component';
-import { GroupDetailsPageComponent } from '../../../groups/pages/group-details-page/group-details-page.component';
+import { FormGroupComponent } from '../../../groups/components/form-group/form-group.component';
 
 @Component({
   selector: 'app-dashboard',
-  imports: [
-    FormGroupComponent,
-    GroupCardStudentComponent,
-    ListingGroupStudentComponent,
-    JoinRequestsComponent,
-    MyGroupsCardStudentComponent,
-    MyGroupsPageComponent,
-    GroupDetailsPageComponent,
-  ],
+  imports: [ListingGroupStudentComponent, FormGroupComponent],
   templateUrl: './dashboard.component.html',
   styleUrl: './dashboard.component.css',
 })
-export class DashboardComponent {}
+export class DashboardComponent implements OnInit {
+  private readonly plat_id = inject(PLATFORM_ID);
+  role = signal<string>('');
+  ngOnInit(): void {
+    if (isPlatformBrowser(this.plat_id)) {
+      this.role.set(
+        localStorage.getItem(STORED_KEY.role) ?? sessionStorage.getItem(STORED_KEY.role)!,
+      );
+    }
+  }
+}
