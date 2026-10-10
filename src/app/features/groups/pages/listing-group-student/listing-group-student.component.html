@@ -1,15 +1,51 @@
 @if (hasError()) {
   <app-show-error (retry)="getAllGroups()"></app-show-error>
 } @else {
-  <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-4">
-    @if (!allGroups()) {
-      @for (item of [0, 1, 2, 3, 4, 5, 6]; track $index) {
-        <app-group-card-student-skeleton></app-group-card-student-skeleton>
+  <!--  -->
+  <section class="flex flex-col gap-8">
+    <!-- header -->
+    <div class="flex flex-col gap-2">
+      <h2 class="text-[2rem] leading-10 tracking-[-0.32px] text-primary font-semibold">
+        Explore Learning Groups
+      </h2>
+      <p class="text-[1rem] leading-6 text-[#3E494A]">
+        Join a group and start your learning journey
+      </p>
+    </div>
+    <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-4">
+      @if (!allGroups()) {
+        @for (item of [0, 1, 2, 3, 4, 5, 6]; track $index) {
+          <app-group-card-student-skeleton></app-group-card-student-skeleton>
+        }
+      } @else {
+        @for (group of allGroups(); track group.id) {
+          <app-group-card-student [groupStudent]="group"></app-group-card-student>
+        }
       }
-    } @else {
-      @for (group of allGroups(); track group.id) {
-        <app-group-card-student [groupStudent]="group"></app-group-card-student>
-      }
+    </div>
+    <!-- footer -->
+    @if (allGroups()) {
+      <div class="pt-8 lg:flex flex-col gap-4 items-center hidden">
+        <p class="text-[0.875rem] leading-5 tracking-[0.14px] text-[#6F797A]">
+          Showing 6 of 24 learning groups
+        </p>
+        <button
+          class="flex gap-2 bg-[#E6E3D0] py-3 px-8 rounded-[12px] items-center text-[1rem] text-[#666556] leading-6 tracking-normal"
+        >
+          <span>Load More Groups</span
+          ><span
+            ><svg
+              width="12"
+              height="8"
+              viewBox="0 0 12 8"
+              fill="none"
+              xmlns="http://www.w3.org/2000/svg"
+            >
+              <path d="M6 7.4L0 1.4L1.4 0L6 4.6L10.6 0L12 1.4L6 7.4V7.4" fill="#666556" />
+            </svg>
+          </span>
+        </button>
+      </div>
     }
-  </div>
+  </section>
 }
