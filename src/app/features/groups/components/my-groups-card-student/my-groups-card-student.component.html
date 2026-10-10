@@ -94,6 +94,8 @@
         </p>
       </div>
     </div>
-    <button class="btn btn-Primary py-3 w-full text-[0.875rem]">Open Group</button>
+    <button class="btn btn-Primary py-3 w-full text-[0.875rem]">
+      <a [routerLink]="['/group', myGroup()?.id]">Open Group</a>
+    </button>
   </div>
 }
