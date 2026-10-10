@@ -5,10 +5,11 @@ import { GroupService } from '../../services/group.service';
 import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
 import { GroupStatus } from '../../interfaces/GroupStatues';
 import { ToastrService } from 'ngx-toastr';
+import { RouterLink } from '@angular/router';
 
 @Component({
   selector: 'app-group-card-student',
-  imports: [DatePipe],
+  imports: [DatePipe, RouterLink],
   templateUrl: './group-card-student.component.html',
   styleUrl: './group-card-student.component.css',
 })

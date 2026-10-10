@@ -121,7 +121,11 @@
     @if (isRequesting()) {
       Sending...
     } @else {
-      {{ config().label }}
+      @if (config().label === 'Open Group') {
+        <a [routerLink]="['/group', group.id]"> {{ config().label }}</a>
+      } @else {
+        {{ config().label }}
+      }
     }
   </button>
 </div>
