@@ -4,4 +4,5 @@ export const STORED_KEY = {
   rememberMeExpiry: 'rememberMeExpiry',
   role: 'role',
   expireAt: 'expire',
+  userId: 'UserId',
 };

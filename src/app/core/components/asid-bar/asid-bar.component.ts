@@ -55,6 +55,10 @@ export class AsidBarComponent implements OnInit {
 
   ngOnInit(): void {
     if (isPlatformBrowser(this.plat_Id)) {
+      const id = this.userData()?.id;
+      if (id) {
+        localStorage.setItem(STORED_KEY.userId, id);
+      }
       console.log(this.userData());
       const stored =
         localStorage.getItem(STORED_KEY.role) ?? sessionStorage.getItem(STORED_KEY.role);
