@@ -1,0 +1,60 @@
+<section class="mx-auto flex w-full max-w-3xl flex-col gap-6">
+  <!-- header -->
+  <div class="flex items-start gap-4">
+    <a
+      routerLink="/group/joined"
+      aria-label="Back"
+      class="mt-1 flex size-8 shrink-0 items-center justify-center rounded-full hover:bg-black/5"
+    >
+      <svg
+        aria-hidden="true"
+        width="16"
+        height="16"
+        viewBox="0 0 16 16"
+        fill="none"
+        xmlns="http://www.w3.org/2000/svg"
+      >
+        <path d="M3.825 9L9.425 14.6L8 16L0 8L8 0L9.425 1.4L3.825 7H16V9H3.825Z" fill="#111C2C" />
+      </svg>
+    </a>
+
+    <div class="flex flex-col">
+      <h1 class="text-primary text-[1.5rem] leading-8 font-semibold">Frontend Group 2</h1>
+      <p class="flex items-center gap-2 text-[1rem] leading-6 text-[#3E494A]">
+        <span>Mahmoud Taha</span>
+        <span aria-hidden="true" class="size-1 rounded-full bg-[#6F797A]"></span>
+        <span>125 members</span>
+      </p>
+    </div>
+  </div>
+
+  <!-- create post -->
+  <form
+    class="flex gap-4 rounded-[8px] border border-[#D8E3FA] bg-white p-6 shadow-[0_4px_16px_0_rgba(0,0,0,0.08)]"
+  >
+    <img src="/images/person.png" alt="" class="size-12 shrink-0 rounded-full object-cover" />
+
+    <div class="flex min-w-0 flex-1 flex-col gap-4">
+      <textarea
+        rows="4"
+        aria-label="Post content"
+        placeholder="Share an update with the group..."
+        class="w-full border-none focus:border-none focus:ring-0 resize-none bg-transparent text-[1.125rem] leading-7 text-[#111C2C] outline-none placeholder:text-[#3E494A]/50"
+      ></textarea>
+
+      <div class="flex justify-end border-t border-t-[#D8E3FA] pt-4">
+        <button
+          type="submit"
+          class="bg-primary cursor-pointer rounded-[8px] px-8 py-2 text-[0.875rem] leading-5 font-medium tracking-[0.14px] text-white"
+        >
+          Post
+        </button>
+      </div>
+    </div>
+  </form>
+
+  <!-- posts feed -->
+  <article>
+    <app-post-card [variant]="'feed'"></app-post-card>
+  </article>
+</section>

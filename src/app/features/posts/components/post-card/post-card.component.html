@@ -3,26 +3,44 @@
 >
   <!-- header -->
   <div class="flex gap-4 items-start">
-    <span>
-      <img src="/images/person.png" alt="" class="size-12 rounded-full" />
-    </span>
-    <div>
+    <img src="/images/person.png" alt="" class="size-12 shrink-0 rounded-full object-cover" />
+
+    <div class="flex flex-col">
       <div class="flex gap-3 items-center">
         <h3 class="font-bold text-[1rem] leading-6 tracking-normal text-[#111C2C]">Aya Adel</h3>
-        <span class="text-[#6F797A] text-[0.75rem] leading-4 tracking-normal">2 hours ago</span>
+
+        @if (variant() === 'feed') {
+          <span
+            class="rounded bg-[#00535B] px-2 py-0.5 text-[0.625rem] leading-4 font-bold tracking-[0.5px] text-white uppercase"
+          >
+            Instructor
+          </span>
+        }
+
+        <!-- في الـ details: التاريخ جنب الاسم -->
+        @if (variant() === 'details') {
+          <span class="text-[#6F797A] text-[0.75rem] leading-4">2 hours ago</span>
+        }
       </div>
-      <span class="text-[0.75rem] leading-4 tracking-normal text-primary font-semibold"
-        >Instructor</span
-      >
-      <div></div>
+
+      <!-- في الـ feed: التاريخ تحت الاسم -->
+      @if (variant() === 'feed') {
+        <span class="text-[#6F797A] text-[0.75rem] leading-4">2 hours ago</span>
+      }
+
+      @if (variant() === 'details') {
+        <span class="text-primary text-[0.75rem] leading-4 font-semibold">Instructor</span>
+      }
     </div>
   </div>
+
   <!-- body -->
   <p class="text-[1rem] leading-6.5 tracking-normal text-[#3E494A] pb-2">
     The final project requirements are now live in the resources section. Please make sure to review
     the submission guidelines carefully. We will have a Q&A session this Thursday to clarify any
     doubts regarding the React state management part of the requirements.
   </p>
+
   <!-- footer -->
   <div class="pt-4 border-t border-t-[#BEC8CA4D]/30 flex gap-6">
     <div class="flex gap-2 items-center">
