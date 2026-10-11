@@ -6,6 +6,7 @@ import { JoinRequestsComponent } from '../../../groups/pages/join-requests/join-
 import { MyGroupsCardStudentComponent } from '../../../groups/components/my-groups-card-student/my-groups-card-student.component';
 import { MyGroupsPageComponent } from '../../../groups/pages/my-groups-page/my-groups-page.component';
 import { GroupDetailsPageComponent } from '../../../groups/pages/group-details-page/group-details-page.component';
+import { GroupPostsPageComponent } from '../../../posts/pages/group-posts-page/group-posts-page.component';
 
 @Component({
   selector: 'app-dashboard',
@@ -17,6 +18,7 @@ import { GroupDetailsPageComponent } from '../../../groups/pages/group-details-p
     MyGroupsCardStudentComponent,
     MyGroupsPageComponent,
     GroupDetailsPageComponent,
+    GroupPostsPageComponent,
   ],
   templateUrl: './dashboard.component.html',
   styleUrl: './dashboard.component.css',
