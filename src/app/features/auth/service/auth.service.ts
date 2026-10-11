@@ -9,6 +9,7 @@ import { STORED_KEY } from '../../../core/constants/STORED_KEYS';
 import { IUserData } from '../interface/IRefreshToken';
 import { Router } from '@angular/router';
 import { shareReplay } from 'rxjs';
+import { UserDataInfo } from '../interface/IuserData';
 @Injectable({
   providedIn: 'root',
 })
@@ -16,7 +17,7 @@ export class AuthService {
   private readonly httpClient = inject(HttpClient);
   private readonly rememberMeDays = 30;
   private readonly router = inject(Router);
-  userData = signal<IUserData | null>(null);
+  userData = signal<UserDataInfo | null>(null);
   signup(data: RegisterPayload) {
     return this.httpClient.post<UserData>(API_KEYS.auth.signUp, data);
   }
@@ -121,7 +122,7 @@ export class AuthService {
   // UserData
   getUserData(token: string) {
     this.httpClient
-      .get<IUserData>(API_KEYS.auth.userData, {
+      .get<UserDataInfo>(API_KEYS.auth.userData, {
         headers: {
           Authorization: `Bearer ${token}`,
         },

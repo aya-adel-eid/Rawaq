@@ -1,4 +1,4 @@
-export interface IUserData {
+export interface UserDataInfo {
   id: string;
   aud: string;
   role: string;

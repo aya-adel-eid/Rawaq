@@ -52,11 +52,22 @@
           />
         </svg>
       </span>
-      <img
-        class="size-8 lg:size-12 rounded-full object-cover"
-        src="https://flowbite.com/docs/images/people/profile-picture-5.jpg"
-        alt="user photo"
-      />
+      @if (userData()?.identities?.[0]?.identity_data?.avatar_url) {
+        <img
+          class="size-8 lg:size-12 rounded-full object-cover"
+          [src]="userData()!.identities[0].identity_data.avatar_url"
+          [alt]="userData()?.user_metadata?.first_name"
+        />
+      } @else {
+        <span
+          class="bg-primary/10 text-primary flex size-8 shrink-0 items-center justify-center rounded-full text-[0.75rem] font-bold lg:size-12 lg:text-[1rem]"
+          [attr.aria-label]="userData()?.user_metadata?.first_name"
+        >
+          {{
+            userData()?.user_metadata?.first_name | initials: userData()?.user_metadata?.last_name
+          }}
+        </span>
+      }
     </div>
   </div>
 </nav>

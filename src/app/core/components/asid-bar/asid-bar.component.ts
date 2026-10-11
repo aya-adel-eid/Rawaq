@@ -1,8 +1,9 @@
 import { isPlatformBrowser } from '@angular/common';
-import { Component, computed, inject, OnInit, PLATFORM_ID, signal } from '@angular/core';
+import { Component, computed, effect, inject, OnInit, PLATFORM_ID, signal } from '@angular/core';
 import { RouterLink, RouterLinkActive } from '@angular/router';
 import { STORED_KEY } from '../../constants/STORED_KEYS';
 import { AuthService } from '../../../features/auth/service/auth.service';
+import { InitialsPipePipe } from '../../../shared/pipes/initials-pipe-pipe';
 
 type UserRole = 'student' | 'teacher';
 
@@ -34,7 +35,7 @@ const NAV_LINKS: NavLink[] = [
 
 @Component({
   selector: 'app-asid-bar',
-  imports: [RouterLink, RouterLinkActive],
+  imports: [RouterLink, RouterLinkActive, InitialsPipePipe],
   templateUrl: './asid-bar.component.html',
   styleUrl: './asid-bar.component.css',
 })
@@ -43,6 +44,9 @@ export class AsidBarComponent implements OnInit {
   authService = inject(AuthService);
   userData = this.authService.userData;
   role = signal<UserRole | null>(null);
+  constructor() {
+    effect(() => console.log('userData changed:', this.userData()));
+  }
 
   links = computed(() => {
     const role = this.role();
