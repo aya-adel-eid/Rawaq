@@ -19,6 +19,7 @@ export const API_KEYS = {
     rejectJoinReq: `${environment.base_Url}/rest/v1/rpc/reject_join_request`,
     myGroupsStudentJoined: `${environment.base_Url}/rest/v1/student_joined_groups`,
     creatPost: `${environment.base_Url}/rest/v1/posts`,
-    latestPosts: `${environment.base_Url}//rest/v1/get_posts`,
+    latestPosts: `${environment.base_Url}/rest/v1/get_posts`,
+    likePost: `${environment.base_Url}/rest/v1/post_likes`,
   },
 };

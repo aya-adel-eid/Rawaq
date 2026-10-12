@@ -53,4 +53,9 @@ export class PostService {
         },
       });
   }
+  likePosts(postId: string) {
+    return this.http.post(API_KEYS.dashboard.likePost, {
+      post_id: postId,
+    });
+  }
 }
