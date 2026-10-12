@@ -3,11 +3,22 @@
 >
   <!-- header -->
   <div class="flex gap-4 items-start">
-    <img src="/images/person.png" alt="" class="size-12 shrink-0 rounded-full object-cover" />
+    @if (post()?.author?.avatar_url) {
+      <img [src]="post()?.author?.avatar_url" alt="" class="size-10 rounded-full object-cover" />
+    } @else {
+      <span
+        class="bg-primary/10 text-primary flex size-10 shrink-0 items-center justify-center rounded-full text-[0.875rem] leading-5 font-bold"
+        aria-hidden="true"
+      >
+        {{ post()?.author?.first_name | initials: post()?.author?.last_name }}
+      </span>
+    }
 
     <div class="flex flex-col">
       <div class="flex gap-3 items-center">
-        <h3 class="font-bold text-[1rem] leading-6 tracking-normal text-[#111C2C]">Aya Adel</h3>
+        <h3 class="font-bold text-[1rem] leading-6 tracking-normal text-[#111C2C]">
+          {{ `${post()?.author?.first_name} ${post()?.author?.last_name}` }}
+        </h3>
 
         @if (variant() === 'feed') {
           <span
@@ -36,9 +47,7 @@
 
   <!-- body -->
   <p class="text-[1rem] leading-6.5 tracking-normal text-[#3E494A] pb-2">
-    The final project requirements are now live in the resources section. Please make sure to review
-    the submission guidelines carefully. We will have a Q&A session this Thursday to clarify any
-    doubts regarding the React state management part of the requirements.
+    {{ post()?.content }}
   </p>
 
   <!-- footer -->
@@ -59,7 +68,7 @@
         </svg>
       </button>
       <span class="text-[0.875rem] leading-5 tracking-[0.14px] text-[#3E494A] font-medium"
-        >12 Likes</span
+        >{{ post()?.likes_count }} Likes</span
       >
     </div>
     <div class="flex gap-2 items-center">
@@ -78,7 +87,7 @@
         </svg>
       </button>
       <span class="text-[0.875rem] leading-5 tracking-[0.14px] text-[#3E494A] font-medium"
-        >12 comment</span
+        >{{ post()?.comments_count }} comment</span
       >
     </div>
   </div>

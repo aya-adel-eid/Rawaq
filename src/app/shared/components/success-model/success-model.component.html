@@ -1,0 +1,42 @@
+<!-- success-modal.component.html -->
+<div
+  class="fixed inset-0 z-[60] flex items-center justify-center bg-[#111C2C]/40 p-4 backdrop-blur-xs"
+  role="dialog"
+  aria-modal="true"
+  aria-labelledby="success-title"
+>
+  <div
+    class="w-full max-w-sm rounded-[16px] bg-white p-8 flex flex-col items-center gap-3 text-center shadow-sm"
+  >
+    <span class="size-14 rounded-full bg-[#00535B1A] flex items-center justify-center">
+      <svg
+        width="28"
+        height="28"
+        viewBox="0 0 24 24"
+        fill="none"
+        xmlns="http://www.w3.org/2000/svg"
+      >
+        <path
+          d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 15l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z"
+          fill="#00535B"
+        />
+      </svg>
+    </span>
+
+    <h3 id="success-title" class="text-[1.125rem] leading-6 font-bold text-primary">
+      Great Success!
+    </h3>
+
+    <p class="text-[0.75rem] leading-4 text-[#3E494A] max-w-[220px]">
+      Your post has been shared successfully with the group.
+    </p>
+
+    <button
+      type="button"
+      (click)="close.emit()"
+      class="mt-4 w-full rounded-[8px] bg-primary py-2.5 text-[0.875rem] leading-5 font-medium text-white cursor-pointer"
+    >
+      Close
+    </button>
+  </div>
+</div>

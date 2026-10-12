@@ -1,20 +1,47 @@
-import { Component, inject } from '@angular/core';
+import { Component, inject, OnInit, signal } from '@angular/core';
 import { PostCardComponent } from '../../../posts/components/post-card/post-card.component';
 import { AssignmentsCardComponent } from '../../../assignments/components/assignments-card/assignments-card.component';
 import { PostFormComponent } from '../../../posts/pages/post-form/post-form.component';
 import { PostService } from '../../../posts/service/post.service';
+import { ActivatedRoute } from '@angular/router';
+import { PostCardSkeletoneComponent } from '../../../posts/components/post-card-skeletone/post-card-skeletone.component';
+import { ShowErrorComponent } from '../../../../shared/components/show-error/show-error.component';
+import { SuccessModelComponent } from '../../../../shared/components/success-model/success-model.component';
 type GroupTab = 'posts' | 'assignments' | 'members';
 @Component({
   selector: 'app-group-details-page',
-  imports: [PostCardComponent, AssignmentsCardComponent, PostFormComponent],
+  imports: [
+    PostCardComponent,
+    AssignmentsCardComponent,
+    PostFormComponent,
+    PostCardSkeletoneComponent,
+    ShowErrorComponent,
+    SuccessModelComponent,
+  ],
   templateUrl: './group-details-page.component.html',
   styleUrl: './group-details-page.component.css',
 })
-export class GroupDetailsPageComponent {
+export class GroupDetailsPageComponent implements OnInit {
   private readonly postService = inject(PostService);
+  private readonly activatedRoute = inject(ActivatedRoute);
+  allLatestPosts = this.postService.allLatestPosts;
   showFormCreate = this.postService.showCreatPost;
+  iLoadingPosts = this.postService.latestPostsLoading;
+  hasErrorLatestPosts = this.postService.latestPostsHasError;
+  groupID = signal<string>('');
+  ngOnInit(): void {
+    this.activatedRoute.paramMap.subscribe((p) => {
+      this.groupID.set(p.get('groupId')!);
+      this.getAllposts();
+    });
+  }
   openForm() {
     this.postService.openFormCreate();
+  }
+  showSuccess = this.postService.showSuccessModal;
+
+  closeSuccess() {
+    this.postService.closeSuccess();
   }
   tabs: {
     id: GroupTab;
@@ -49,4 +76,7 @@ export class GroupDetailsPageComponent {
       icon: 'groups',
     },
   ];
+  getAllposts() {
+    this.postService.getLatestPosts(this.groupID());
+  }
 }
