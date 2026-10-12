@@ -1,7 +1,8 @@
-import { Component } from '@angular/core';
+import { Component, inject } from '@angular/core';
 import { PostCardComponent } from '../../../posts/components/post-card/post-card.component';
 import { AssignmentsCardComponent } from '../../../assignments/components/assignments-card/assignments-card.component';
 import { PostFormComponent } from '../../../posts/pages/post-form/post-form.component';
+import { PostService } from '../../../posts/service/post.service';
 type GroupTab = 'posts' | 'assignments' | 'members';
 @Component({
   selector: 'app-group-details-page',
@@ -10,6 +11,11 @@ type GroupTab = 'posts' | 'assignments' | 'members';
   styleUrl: './group-details-page.component.css',
 })
 export class GroupDetailsPageComponent {
+  private readonly postService = inject(PostService);
+  showFormCreate = this.postService.showCreatPost;
+  openForm() {
+    this.postService.openFormCreate();
+  }
   tabs: {
     id: GroupTab;
     title: string;

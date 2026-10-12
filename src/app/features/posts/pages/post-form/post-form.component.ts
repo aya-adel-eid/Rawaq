@@ -27,6 +27,9 @@ export class PostFormComponent implements OnInit {
   ngOnInit(): void {
     this.activatedRoute.paramMap.subscribe((p) => this.groupId.set(p.get('groupId') ?? ''));
   }
+  closeForm() {
+    this.postService.closeFormCreate();
+  }
 
   sendData() {
     if (this.createPost.invalid) {

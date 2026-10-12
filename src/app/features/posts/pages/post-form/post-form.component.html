@@ -25,7 +25,7 @@
           Create New Post
         </h3>
       </div>
-      <span class="size-7.5 p-2">
+      <button class="size-7.5 p-2" (click)="closeForm()">
         <svg
           width="14"
           height="14"
@@ -38,7 +38,7 @@
             fill="#3E494A"
           />
         </svg>
-      </span>
+      </button>
     </div>
     <!-- body -->
     <div class="p-8 flex flex-col gap-6">
@@ -75,6 +75,7 @@
     <!-- footer -->
     <div class="py-6 px-8 flex gap-4 justify-end border-t border-t-[#BEC8CA1A] bg-[#F0F3FF]">
       <button
+        (click)="closeForm()"
         class="font-medium text-[0.875rem] leading-5 tracking-[0.14px] text-[#3E494A] py-2.5 px-6"
       >
         Cancel

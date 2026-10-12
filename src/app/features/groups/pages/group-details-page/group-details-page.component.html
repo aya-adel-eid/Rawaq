@@ -62,6 +62,7 @@
       <app-post-card></app-post-card>
       <div class="absolute -bottom-20 inset-e-3">
         <button
+          (click)="openForm()"
           class="size-14 bg-primary rounded-full flex items-center justify-center shadow-[0_20px_25px_-5px_rgba(0,0,0,0.1),0_8px_10px_-6px_rgba(0,0,0,0.1)] cursor-pointer"
         >
           <svg
@@ -162,4 +163,6 @@
     </div>
   </div>
 </section>
-<app-post-form></app-post-form>
+@if (showFormCreate()) {
+  <app-post-form></app-post-form>
+}
