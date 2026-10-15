@@ -97,4 +97,25 @@
       >
     </div>
   </div>
+  <!-- comment input -->
+  <form
+    [formGroup]="commentForm"
+    class="flex items-center gap-3 border-t border-t-[#BEC8CA4D]/30 pt-4"
+  >
+    <input
+      type="text"
+      formControlName="content"
+      placeholder="Write a comment..."
+      aria-label="Write a comment"
+      class="focus:border-primary h-10 min-w-0 flex-1 rounded-full border border-[#BEC8CA] bg-[#F0F3FF] px-4 text-[0.875rem] text-[#111C2C] outline-none placeholder:text-[#6F797A]"
+    />
+
+    <button
+      type="submit"
+      [disabled]="commentForm.invalid || isCommenting()"
+      class="bg-primary cursor-pointer rounded-full px-4 py-2 text-[0.875rem] font-medium text-white disabled:cursor-not-allowed disabled:opacity-40"
+    >
+      {{ isCommenting() ? 'Sending...' : 'Comment' }}
+    </button>
+  </form>
 </div>

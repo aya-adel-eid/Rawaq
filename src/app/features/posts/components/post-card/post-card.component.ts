@@ -4,10 +4,11 @@ import { InitialsPipePipe } from '../../../../shared/pipes/initials-pipe-pipe';
 import { PostService } from '../../service/post.service';
 import { ToastrService } from 'ngx-toastr';
 import { AuthService } from '../../../auth/service/auth.service';
+import { FormBuilder, ReactiveFormsModule, Validators } from '@angular/forms';
 
 @Component({
   selector: 'app-post-card',
-  imports: [InitialsPipePipe],
+  imports: [InitialsPipePipe, ReactiveFormsModule],
   templateUrl: './post-card.component.html',
   styleUrl: './post-card.component.css',
 })
@@ -17,6 +18,13 @@ export class PostCardComponent {
   private readonly toaster = inject(ToastrService);
   private readonly postService = inject(PostService);
   private readonly authService = inject(AuthService);
+  private readonly fb = inject(FormBuilder);
+
+  isCommenting = signal(false);
+
+  commentForm = this.fb.group({
+    content: [null, [Validators.required]],
+  });
   userId = computed(() => this.authService.userData()?.id ?? null);
   pending = false;
   liked = signal<boolean | null>(null);
