@@ -58,4 +58,10 @@ export class PostService {
       post_id: postId,
     });
   }
+  unlikePost(postId: string, userId: string) {
+    // ?post_id=eq.POST_ID&user_id=eq.USER_ID
+    return this.http.delete(
+      `${API_KEYS.dashboard.unlikePost}?post_id=eq.${postId}&user_id=eq.${userId}`,
+    );
+  }
 }

@@ -21,5 +21,6 @@ export const API_KEYS = {
     creatPost: `${environment.base_Url}/rest/v1/posts`,
     latestPosts: `${environment.base_Url}/rest/v1/get_posts`,
     likePost: `${environment.base_Url}/rest/v1/post_likes`,
+    unlikePost: `${environment.base_Url}/rest/v1/post_likes`,
   },
 };

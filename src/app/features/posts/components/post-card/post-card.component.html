@@ -54,10 +54,11 @@
   <div class="pt-4 border-t border-t-[#BEC8CA4D]/30 flex gap-6">
     <div class="flex gap-2 items-center">
       <button
+        [disabled]="pending"
         class="cursor-pointer"
         [attr.aria-pressed]="isLiked()"
         aria-label="Like post"
-        (click)="likedPost(post()!.id)"
+        (click)="toggleLike(post()!.id)"
       >
         <svg
           width="18"

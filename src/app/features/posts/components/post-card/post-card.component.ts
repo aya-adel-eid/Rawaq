@@ -18,7 +18,7 @@ export class PostCardComponent {
   private readonly postService = inject(PostService);
   private readonly authService = inject(AuthService);
   userId = computed(() => this.authService.userData()?.id ?? null);
-
+  pending = false;
   liked = signal<boolean | null>(null);
 
   isLiked = computed(() => this.liked() ?? !!this.post()?.is_liked);
@@ -29,14 +29,25 @@ export class PostCardComponent {
     return base + (this.isLiked() === original ? 0 : this.isLiked() ? 1 : -1);
   });
 
-  likedPost(postID: string) {
-    const prev = this.liked();
-    this.liked.set(!this.isLiked());
+  toggleLike(postId: string) {
+    const userId = this.userId();
+    if (!userId || this.pending) return;
 
-    this.postService.likePosts(postID).subscribe({
+    this.pending = true;
+    const wasLiked = this.isLiked();
+
+    const request$ = wasLiked
+      ? this.postService.unlikePost(postId, userId)
+      : this.postService.likePosts(postId);
+
+    request$.subscribe({
+      next: () => {
+        this.liked.set(!wasLiked);
+        this.pending = false;
+      },
       error: () => {
+        this.pending = false;
         this.toaster.error('Could not update like, please try again');
-        this.liked.set(prev);
       },
     });
   }
