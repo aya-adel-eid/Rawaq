@@ -5,6 +5,7 @@ import { API_KEYS } from '../../../core/constants/API_KEYS';
 import { IGroupStudent } from '../interfaces/IGroupStudent';
 import { tap } from 'rxjs';
 import { ImyGroups } from '../interfaces/IMyGroups';
+import { IGroupTeacher } from '../interfaces/IGroupTeacher';
 
 @Injectable({
   providedIn: 'root',
@@ -14,7 +15,9 @@ export class GroupService {
   allGroupsStudent = signal<IGroupStudent[] | null>(null);
   isLoadingGroupsStudent = signal<boolean>(false);
   hasErrorGroupsStudent = signal<boolean>(false);
-
+  allMyGroupsTeacher = signal<IGroupTeacher[] | null>(null);
+  isLoadingMyGroupsTeacher = signal<boolean>(false);
+  hasErrorMyGroupsTeacher = signal<boolean>(false);
   allMyGroupsStudentJoined = signal<ImyGroups[] | null>(null);
   isLoadingMyGroupsJoined = signal<boolean>(false);
   hasErrorMyGroupsJoined = signal<boolean>(false);
@@ -66,6 +69,23 @@ export class GroupService {
       error: () => {
         this.isLoadingMyGroupsJoined.set(false);
         this.hasErrorMyGroupsJoined.set(true);
+      },
+    });
+  }
+
+  getAllMyGroupsTeacher() {
+    this.isLoadingMyGroupsTeacher.set(true);
+    this.hasErrorMyGroupsTeacher.set(false);
+    return this.httpClinet.get<IGroupTeacher[]>(API_KEYS.dashboard.allGroupsTeacher).subscribe({
+      next: (resp) => {
+        this.allMyGroupsTeacher.set(resp);
+
+        this.isLoadingMyGroupsTeacher.set(false);
+        this.hasErrorMyGroupsTeacher.set(false);
+      },
+      error: () => {
+        this.isLoadingMyGroupsTeacher.set(false);
+        this.hasErrorMyGroupsTeacher.set(true);
       },
     });
   }

@@ -24,5 +24,6 @@ export const API_KEYS = {
     unlikePost: `${environment.base_Url}/rest/v1/post_likes`,
     comment: `${environment.base_Url}/rest/v1/comments`,
     displayComments: `${environment.base_Url}/rest/v1/get_comments`,
+    allGroupsTeacher: `${environment.base_Url}/rest/v1/teacher_groups`,
   },
 };

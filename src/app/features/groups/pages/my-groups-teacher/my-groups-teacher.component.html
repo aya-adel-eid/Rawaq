@@ -105,13 +105,12 @@
   </div>
 
   <!-- ===== Groups grid ===== -->
-  <ul class="grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-3">
-    <li>
+  <div class="grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-3">
+    @for (group of allGroupsTeacher(); track group.id) {
       <app-group-card-teacher></app-group-card-teacher>
-    </li>
-
-    <!-- Add Group card -->
-    <li>
+    }
+    <!-- addd -->
+    <div class="hidden lg:block">
       <button
         type="button"
         class="hover:border-primary hover:bg-primary/5 flex h-full min-h-[200px] w-full cursor-pointer flex-col items-center justify-center gap-3 rounded-[12px] border-2 border-dashed border-[#BEC8CA] bg-transparent p-6 text-center transition-colors sm:min-h-[373px]"
@@ -129,6 +128,6 @@
           </span>
         </span>
       </button>
-    </li>
-  </ul>
+    </div>
+  </div>
 </section>
