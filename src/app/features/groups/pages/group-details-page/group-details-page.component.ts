@@ -3,7 +3,7 @@ import { PostCardComponent } from '../../../posts/components/post-card/post-card
 import { AssignmentsCardComponent } from '../../../assignments/components/assignments-card/assignments-card.component';
 import { PostFormComponent } from '../../../posts/pages/post-form/post-form.component';
 import { PostService } from '../../../posts/service/post.service';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, RouterLink } from '@angular/router';
 import { PostCardSkeletoneComponent } from '../../../posts/components/post-card-skeletone/post-card-skeletone.component';
 import { ShowErrorComponent } from '../../../../shared/components/show-error/show-error.component';
 import { SuccessModelComponent } from '../../../../shared/components/success-model/success-model.component';
@@ -17,6 +17,7 @@ type GroupTab = 'posts' | 'assignments' | 'members';
     PostCardSkeletoneComponent,
     ShowErrorComponent,
     SuccessModelComponent,
+    RouterLink,
   ],
   templateUrl: './group-details-page.component.html',
   styleUrl: './group-details-page.component.css',

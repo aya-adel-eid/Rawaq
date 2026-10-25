@@ -65,7 +65,7 @@
           Latest Posts
         </h3>
         <a
-          href=""
+          [routerLink]="['/group', groupID(), 'posts']"
           class="hidden lg:inline text-[0.875rem] leading-5 tracking-[0.14px] text-primary font-bold"
           >View All Posts</a
         >
@@ -149,7 +149,7 @@
 
       <!-- View All Posts (mobile only) -->
       <a
-        href=""
+        [routerLink]="['/group', groupID(), 'posts']"
         class="lg:hidden mt-4 block w-full rounded-[8px] bg-primary py-3 text-center text-[0.875rem] font-bold text-white"
       >
         View All Posts

@@ -33,6 +33,11 @@ export const routes: Routes = [
         loadChildren: () => import('./features/groups/groups.routes').then((c) => c.GroupsRoutes),
       },
       {
+        path: 'group',
+        data: { roles: ['student'] },
+        loadChildren: () => import('./features/posts/posts.routes').then((c) => c.Posts_Routes),
+      },
+      {
         path: '',
         data: { roles: ['teacher'] },
         loadChildren: () =>

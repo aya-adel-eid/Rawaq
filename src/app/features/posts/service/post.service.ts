@@ -13,6 +13,7 @@ export class PostService {
   allLatestPosts = signal<ILatestPost[] | null>(null);
   latestPostsLoading = signal<boolean>(false);
   latestPostsHasError = signal<boolean>(false);
+  hasMorePosts = signal(true);
   closeFormCreate() {
     this.showCreatPost.set(false);
   }
@@ -31,14 +32,14 @@ export class PostService {
   createPost(postData: {}) {
     return this.http.post(API_KEYS.dashboard.creatPost, postData);
   }
-  getLatestPosts(groupId: string) {
+  getLatestPosts(groupId: string, limit: number = 2) {
     // ?group_id=eq.{{GROUP_ID}}&order=created_at.desc&limit=3&offset=0
     this.latestPostsLoading.set(true);
     this.latestPostsHasError.set(false);
 
     return this.http
       .get<ILatestPost[]>(
-        `${API_KEYS.dashboard.latestPosts}?group_id=eq.${groupId}&order=created_at.desc&limit=3&offset=0`,
+        `${API_KEYS.dashboard.latestPosts}?group_id=eq.${groupId}&order=created_at.desc&limit=${limit}&offset=0`,
       )
       .subscribe({
         next: (resp) => {
@@ -46,6 +47,7 @@ export class PostService {
           this.latestPostsLoading.set(false);
           this.latestPostsHasError.set(false);
           this.allLatestPosts.set(resp);
+          this.hasMorePosts.set(resp.length >= limit);
         },
         error: (error) => {
           this.latestPostsLoading.set(false);
@@ -54,6 +56,7 @@ export class PostService {
         },
       });
   }
+
   likePosts(postId: string) {
     return this.http.post(API_KEYS.dashboard.likePost, {
       post_id: postId,
