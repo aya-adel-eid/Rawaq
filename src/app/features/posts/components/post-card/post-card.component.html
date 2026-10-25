@@ -78,7 +78,12 @@
       >
     </div>
     <div class="flex gap-2 items-center">
-      <button class="cursor-pointer">
+      <button
+        class="cursor-pointer"
+        aria-label="Toggle comments"
+        [attr.aria-expanded]="showComments()"
+        (click)="toggleComments()"
+      >
         <svg
           width="17"
           height="17"
@@ -93,29 +98,111 @@
         </svg>
       </button>
       <span class="text-[0.875rem] leading-5 tracking-[0.14px] text-[#3E494A] font-medium"
-        >{{ post()?.comments_count }} comment</span
+        >{{ commentCount() }} comment</span
       >
     </div>
   </div>
-  <!-- comment input -->
-  <form
-    [formGroup]="commentForm"
-    class="flex items-center gap-3 border-t border-t-[#BEC8CA4D]/30 pt-4"
-  >
-    <input
-      type="text"
-      formControlName="content"
-      placeholder="Write a comment..."
-      aria-label="Write a comment"
-      class="focus:border-primary h-10 min-w-0 flex-1 rounded-full border border-[#BEC8CA] bg-[#F0F3FF] px-4 text-[0.875rem] text-[#111C2C] outline-none placeholder:text-[#6F797A]"
-    />
+  <div class="flex flex-col gap-4">
+    <!--displayComments  -->
+    @if (showComments()) {
+      <section
+        class="flex flex-col gap-3 border-t border-t-[#BEC8CA4D]/30 pt-4"
+        aria-label="Comments"
+        aria-live="polite"
+      >
+        @switch (commentsStatus()) {
+          @case ('loading') {
+            <div class="flex flex-col gap-3">
+              @for (i of [1, 2]; track i) {
+                <div class="flex animate-pulse items-start gap-2">
+                  <div class="size-7 shrink-0 rounded-full bg-[#E1E8F5]"></div>
+                  <div class="h-10 w-48 rounded-xl bg-[#E1E8F5]"></div>
+                </div>
+              }
+            </div>
+          }
 
-    <button
-      type="submit"
-      [disabled]="commentForm.invalid || isCommenting()"
-      class="bg-primary cursor-pointer rounded-full px-4 py-2 text-[0.875rem] font-medium text-white disabled:cursor-not-allowed disabled:opacity-40"
+          @case ('error') {
+            <div class="flex flex-col items-center gap-3 py-4 text-center">
+              <p class="text-[0.875rem] leading-5 text-[#BA1A1A]">
+                Something went wrong while loading comments.
+              </p>
+              <button
+                type="button"
+                (click)="getAllComments(post()!.id)"
+                class="border-primary text-primary cursor-pointer rounded-full border px-4 py-1.5 text-[0.875rem] font-medium"
+              >
+                Retry
+              </button>
+            </div>
+          }
+
+          @case ('success') {
+            @if (comments().length === 0) {
+              <p class="py-4 text-center text-[0.875rem] leading-5 text-[#6F797A]">
+                No comments yet. Be the first to start the discussion.
+              </p>
+            } @else {
+              <ul
+                class="flex max-h-56 flex-col gap-3 overflow-y-auto pe-1 [scrollbar-width:thin] [scrollbar-color:#BEC8CA_transparent]"
+              >
+                @for (comment of comments(); track comment.id) {
+                  <li class="flex items-start gap-2">
+                    @if (comment.author.avatar_url) {
+                      <img
+                        [src]="comment.author.avatar_url"
+                        alt=""
+                        class="size-7 shrink-0 rounded-full object-cover"
+                      />
+                    } @else {
+                      <span
+                        class="bg-primary/10 text-primary flex size-7 shrink-0 items-center justify-center rounded-full text-[0.625rem] leading-4 font-bold"
+                        aria-hidden="true"
+                      >
+                        {{ comment.author.first_name | initials: comment.author.last_name }}
+                      </span>
+                    }
+
+                    <div
+                      class="flex min-w-0 flex-col gap-0.5 rounded-b-xl rounded-tr-xl bg-Surface-container px-3 py-2"
+                    >
+                      <h4 class="text-2xs leading-4 font-bold text-[#111C2C]">
+                        {{ comment.author.first_name }} {{ comment.author.last_name }}
+                      </h4>
+                      <p class="text-[0.75rem] leading-4 wrap-break-word text-[#3E494A]">
+                        {{ comment.content }}
+                      </p>
+                    </div>
+                  </li>
+                }
+              </ul>
+            }
+          }
+        }
+      </section>
+    }
+
+    <!-- comment input -->
+    <form
+      [formGroup]="commentForm"
+      class="flex items-center gap-3 border-t border-t-[#BEC8CA4D]/30"
     >
-      {{ isCommenting() ? 'Sending...' : 'Comment' }}
-    </button>
-  </form>
+      <input
+        type="text"
+        formControlName="content"
+        placeholder="Write a comment..."
+        aria-label="Write a comment"
+        class="focus:border-primary h-10 min-w-0 flex-1 rounded-full border border-[#BEC8CA] bg-[#F0F3FF] px-4 text-[0.875rem] text-[#111C2C] outline-none placeholder:text-[#6F797A]"
+      />
+
+      <button
+        type="submit"
+        (click)="addComment(post()?.id!)"
+        [disabled]="commentForm.invalid || !isCommenting()"
+        class="bg-primary cursor-pointer rounded-full px-4 py-2 text-[0.875rem] font-medium text-white disabled:cursor-not-allowed disabled:opacity-40"
+      >
+        {{ !isCommenting() ? 'Sending...' : 'Comment' }}
+      </button>
+    </form>
+  </div>
 </div>

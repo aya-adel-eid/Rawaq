@@ -2,6 +2,7 @@ import { HttpClient } from '@angular/common/http';
 import { inject, Injectable, signal } from '@angular/core';
 import { API_KEYS } from '../../../core/constants/API_KEYS';
 import { ILatestPost } from '../interfaces/ILatestPost';
+import { IAllComments } from '../interfaces/IAllComments';
 
 @Injectable({
   providedIn: 'root',
@@ -62,6 +63,17 @@ export class PostService {
     // ?post_id=eq.POST_ID&user_id=eq.USER_ID
     return this.http.delete(
       `${API_KEYS.dashboard.unlikePost}?post_id=eq.${postId}&user_id=eq.${userId}`,
+    );
+  }
+  addComment(postId: string, content: string) {
+    return this.http.post(API_KEYS.dashboard.comment, {
+      post_id: postId,
+      content,
+    });
+  }
+  getAllComments(postId: string) {
+    return this.http.get<IAllComments[]>(
+      `${API_KEYS.dashboard.displayComments}?post_id=eq.${postId}&order=created_at.desc`,
     );
   }
 }

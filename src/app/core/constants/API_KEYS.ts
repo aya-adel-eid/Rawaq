@@ -22,5 +22,7 @@ export const API_KEYS = {
     latestPosts: `${environment.base_Url}/rest/v1/get_posts`,
     likePost: `${environment.base_Url}/rest/v1/post_likes`,
     unlikePost: `${environment.base_Url}/rest/v1/post_likes`,
+    comment: `${environment.base_Url}/rest/v1/comments`,
+    displayComments: `${environment.base_Url}/rest/v1/get_comments`,
   },
 };
