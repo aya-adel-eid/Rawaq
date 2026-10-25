@@ -36,6 +36,9 @@ export class GroupCardStudentComponent {
         'bg-[#E6E3D04D]/30  text-primary border-2 py-3  text-[0.875rem] leading-5 tracking-[0.14px] border-primary cursor-pointer ',
     },
   };
+  openGroup(group: IGroupStudent) {
+    localStorage.setItem('GroupItem', JSON.stringify(group));
+  }
 
   config = computed(() => this.statusConfig[this.groupStudent().status as GroupStatus]);
   progress = computed(() => {

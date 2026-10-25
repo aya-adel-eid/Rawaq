@@ -7,6 +7,8 @@ import { ActivatedRoute, RouterLink } from '@angular/router';
 import { PostCardSkeletoneComponent } from '../../../posts/components/post-card-skeletone/post-card-skeletone.component';
 import { ShowErrorComponent } from '../../../../shared/components/show-error/show-error.component';
 import { SuccessModelComponent } from '../../../../shared/components/success-model/success-model.component';
+import { IGroupStudent } from '../../interfaces/IGroupStudent';
+import { InitialsPipePipe } from '../../../../shared/pipes/initials-pipe-pipe';
 type GroupTab = 'posts' | 'assignments' | 'members';
 @Component({
   selector: 'app-group-details-page',
@@ -18,6 +20,7 @@ type GroupTab = 'posts' | 'assignments' | 'members';
     ShowErrorComponent,
     SuccessModelComponent,
     RouterLink,
+    InitialsPipePipe,
   ],
   templateUrl: './group-details-page.component.html',
   styleUrl: './group-details-page.component.css',
@@ -29,11 +32,13 @@ export class GroupDetailsPageComponent implements OnInit {
   showFormCreate = this.postService.showCreatPost;
   iLoadingPosts = this.postService.latestPostsLoading;
   hasErrorLatestPosts = this.postService.latestPostsHasError;
+  groupStudent = signal<IGroupStudent | null>(null);
   groupID = signal<string>('');
   ngOnInit(): void {
     this.activatedRoute.paramMap.subscribe((p) => {
       this.groupID.set(p.get('groupId')!);
       this.getAllposts();
+      this.groupStudent.set(JSON.parse(localStorage.getItem('GroupItem')!));
     });
   }
   openForm() {

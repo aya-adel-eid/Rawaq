@@ -122,7 +122,9 @@
       Sending...
     } @else {
       @if (config().label === 'Open Group') {
-        <a [routerLink]="['/group', group.id]"> {{ config().label }}</a>
+        <a [routerLink]="['/group', group.id]" (click)="openGroup(group)" role="button">
+          {{ config().label }}</a
+        >
       } @else {
         {{ config().label }}
       }

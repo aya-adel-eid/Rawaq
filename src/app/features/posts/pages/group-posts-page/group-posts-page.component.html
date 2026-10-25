@@ -22,11 +22,15 @@
       </a>
 
       <div class="flex flex-col">
-        <h1 class="text-primary text-[1.5rem] leading-8 font-semibold">Frontend Group 2</h1>
+        <h1 class="text-primary text-[1.5rem] leading-8 font-semibold">
+          {{ groupStudent()?.name }}
+        </h1>
         <p class="flex items-center gap-2 text-[1rem] leading-6 text-[#3E494A]">
-          <span>Mahmoud Taha</span>
+          <span>{{
+            `${groupStudent()?.created_by?.first_name} ${groupStudent()?.created_by?.last_name}`
+          }}</span>
           <span aria-hidden="true" class="size-1 rounded-full bg-[#6F797A]"></span>
-          <span>125 members</span>
+          <span>{{ groupStudent()?.current_students_count }} members</span>
         </p>
       </div>
     </div>
@@ -35,7 +39,22 @@
     <form
       class="flex gap-4 rounded-[8px] border border-[#D8E3FA] bg-white p-6 shadow-[0_4px_16px_0_rgba(0,0,0,0.08)]"
     >
-      <img src="/images/person.png" alt="" class="size-12 shrink-0 rounded-full object-cover" />
+      @if (groupStudent()?.created_by?.avatar_url) {
+        <img
+          [src]="groupStudent()?.created_by?.avatar_url"
+          alt=""
+          class="border-surface size-12 shrink-0 rounded-full object-cover"
+        />
+      } @else {
+        <span
+          class="bg-primary/10 text-primary border-surface flex size-12 shrink-0 items-center justify-center rounded-full border-4 font-bold"
+          aria-hidden="true"
+        >
+          {{
+            groupStudent()?.created_by?.first_name | initials: groupStudent()?.created_by?.last_name
+          }}
+        </span>
+      }
 
       <div class="flex min-w-0 flex-1 flex-col gap-4">
         <textarea

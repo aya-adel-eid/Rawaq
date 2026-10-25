@@ -7,6 +7,8 @@ import { ActivatedRoute } from '@angular/router';
 import { InfiniteScrollDirective } from 'ngx-infinite-scroll';
 import { ShowErrorComponent } from '../../../../shared/components/show-error/show-error.component';
 import { PostCardSkeletoneComponent } from '../../components/post-card-skeletone/post-card-skeletone.component';
+import { IGroupStudent } from '../../../groups/interfaces/IGroupStudent';
+import { InitialsPipePipe } from '../../../../shared/pipes/initials-pipe-pipe';
 @Component({
   selector: 'app-group-posts-page',
   imports: [
@@ -16,6 +18,7 @@ import { PostCardSkeletoneComponent } from '../../components/post-card-skeletone
     InfiniteScrollDirective,
     ShowErrorComponent,
     PostCardSkeletoneComponent,
+    InitialsPipePipe,
   ],
   templateUrl: './group-posts-page.component.html',
   styleUrl: './group-posts-page.component.css',
@@ -27,6 +30,7 @@ export class GroupPostsPageComponent {
   private readonly activatedRoute = inject(ActivatedRoute);
   allLatestPosts = this.postService.allLatestPosts;
   limit = signal<number>(2);
+  groupStudent = signal<IGroupStudent | null>(null);
 
   iLoadingPosts = this.postService.latestPostsLoading;
   hasErrorLatestPosts = this.postService.latestPostsHasError;
@@ -34,6 +38,7 @@ export class GroupPostsPageComponent {
     this.activatedRoute.paramMap.subscribe((p) => {
       this.groupID.set(p.get('groupId')!);
       this.getAllPosts();
+      this.groupStudent.set(JSON.parse(localStorage.getItem('GroupItem')!));
     });
   }
   showFormCreate = this.postService.showCreatPost;
