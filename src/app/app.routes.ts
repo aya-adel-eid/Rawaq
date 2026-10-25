@@ -32,6 +32,7 @@ export const routes: Routes = [
         data: { roles: ['student'] },
         loadChildren: () => import('./features/groups/groups.routes').then((c) => c.GroupsRoutes),
       },
+
       {
         path: 'group',
         data: { roles: ['student'] },
@@ -42,6 +43,14 @@ export const routes: Routes = [
         data: { roles: ['teacher'] },
         loadChildren: () =>
           import('./features/members/members.routes').then((c) => c.MembersRoutes),
+      },
+      {
+        path: 'groupTeacher',
+        data: { roles: ['teacher'] },
+        loadComponent: () =>
+          import('./features/groups/pages/my-groups-teacher/my-groups-teacher.component').then(
+            (c) => c.MyGroupsTeacherComponent,
+          ),
       },
     ],
   },
