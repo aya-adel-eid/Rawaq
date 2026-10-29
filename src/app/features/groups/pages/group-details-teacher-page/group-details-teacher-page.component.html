@@ -23,6 +23,7 @@
 
     <div class="flex flex-col gap-3 pt-2 sm:flex-row">
       <button
+        (click)="openForm()"
         type="button"
         class="bg-primary flex py-3 cursor-pointer items-center justify-center gap-2 rounded-[8px] px-5 text-[1rem] leading-6 font-medium text-white"
       >
@@ -82,175 +83,82 @@
           </a>
         </div>
 
-        <div class="flex flex-col gap-4">
-          <!-- Post 1 -->
-          <article
-            class="flex flex-col gap-4 rounded-[12px] border border-[#BEC8CA4D] bg-white p-5 shadow-[0_4px_16px_0_rgba(0,0,0,0.08)]"
+        @if (hasErrorLatestPosts()) {
+          <!-- posts-error-state.component.html -->
+          <div
+            class="bg-white p-6 sm:p-10 border border-dashed border-red-300 rounded-[12px] flex flex-col items-center gap-3 text-center"
+            role="alert"
           >
-            <div class="flex items-start gap-3">
-              <img
-                src="/images/person.png"
-                alt=""
-                class="size-10 shrink-0 rounded-full object-cover"
-              />
-              <div class="flex min-w-0 flex-1 flex-col">
-                <h3 class="text-[0.875rem] leading-5 font-bold text-[#111C2C]">Ahmed Hassan</h3>
-                <span class="text-[0.75rem] leading-4 text-[#6F797A]">5h ago</span>
-              </div>
-              <button
-                type="button"
-                aria-label="Post options"
-                class="flex size-8 shrink-0 cursor-pointer items-center justify-center rounded-full hover:bg-black/5"
+            <span class="size-14 rounded-full bg-red-50 flex items-center justify-center">
+              <svg
+                width="24"
+                height="24"
+                viewBox="0 0 24 24"
+                fill="none"
+                xmlns="http://www.w3.org/2000/svg"
               >
-                <svg aria-hidden="true" width="14" height="4" viewBox="0 0 14 4" fill="#6F797A">
-                  <circle cx="2" cy="2" r="1.5" />
-                  <circle cx="7" cy="2" r="1.5" />
-                  <circle cx="12" cy="2" r="1.5" />
-                </svg>
-              </button>
-            </div>
+                <path
+                  d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm1 15h-2v-2h2v2zm0-4h-2V7h2v6z"
+                  fill="#DC2626"
+                />
+              </svg>
+            </span>
 
-            <p class="text-[0.875rem] leading-6 text-[#3E494A] sm:text-[1rem]">
-              Does anyone have a good resource for learning CSS Grid? I'm struggling with the
-              12-column layout.
+            <h3 class="text-[1.125rem] leading-6 font-bold text-[#111C2C]">Something went wrong</h3>
+
+            <p class="text-[0.875rem] leading-5 tracking-[0.14px] text-[#3E494A] max-w-xs">
+              We couldn't load the posts. Please check your connection and try again.
             </p>
 
-            <div
-              class="flex gap-6 border-t border-t-[#BEC8CA4D]/30 pt-4 text-[0.75rem] leading-4 font-medium text-[#3E494A]"
+            <button
+              type="button"
+              (click)="getAllposts()"
+              class="mt-2 font-medium text-[0.875rem] leading-5 tracking-[0.14px] text-white py-2.5 px-6 bg-primary rounded-[12px] cursor-pointer"
             >
-              <span class="flex items-center gap-2">
-                <svg aria-hidden="true" width="16" height="16" viewBox="0 0 18 17" fill="none">
-                  <path
-                    d="M13.3333 16.6667H4.16667V5.83333L10 0L11.0417 1.04167C11.1389 1.13889 11.2188 1.27083 11.2812 1.4375C11.3438 1.60417 11.375 1.76389 11.375 1.91667V2.20833L10.4583 5.83333H15.8333C16.2778 5.83333 16.6667 6 17 6.33333C17.3333 6.66667 17.5 7.05556 17.5 7.5V9.16667L14.875 15.6667C14.75 15.9444 14.5417 16.1806 14.25 16.375C13.9583 16.5694 13.6528 16.6667 13.3333 16.6667M4.16667 5.83333V7.5H1.66667V15H4.16667V16.6667H0V5.83333H4.16667"
-                    fill="#3E494A"
-                  />
-                </svg>
-                10
-              </span>
-              <span class="flex items-center gap-2">
-                <svg aria-hidden="true" width="16" height="16" viewBox="0 0 17 17" fill="none">
-                  <path
-                    d="M0 16.6667V1.66667C0 1.20833 0.163194 0.815972 0.489583 0.489583C0.815972 0.163194 1.20833 0 1.66667 0H15C15.4583 0 15.8507 0.163194 16.1771 0.489583C16.5035 0.815972 16.6667 1.20833 16.6667 1.66667V11.6667C16.6667 12.125 16.5035 12.5174 16.1771 12.8438C15.8507 13.1701 15.4583 13.3333 15 13.3333H3.33333L0 16.6667M2.625 11.6667H15V1.66667H1.66667V12.6042L2.625 11.6667"
-                    fill="#3E494A"
-                  />
-                </svg>
-                5
-              </span>
+              Retry
+            </button>
+          </div>
+        } @else {
+          @if (iLoadingPosts()) {
+            <div class="grid grid-cols-1 gap-2">
+              @for (item of [0, 2, 1]; track $index) {
+                <app-post-card-skeletone></app-post-card-skeletone>
+              }
             </div>
-          </article>
-
-          <!-- Post 2 -->
-          <article
-            class="flex flex-col gap-4 rounded-[12px] border border-[#BEC8CA4D] bg-white p-5 shadow-[0_4px_16px_0_rgba(0,0,0,0.08)]"
-          >
-            <div class="flex items-start gap-3">
-              <img
-                src="/images/person.png"
-                alt=""
-                class="size-10 shrink-0 rounded-full object-cover"
-              />
-              <div class="flex min-w-0 flex-1 flex-col">
-                <h3 class="text-[0.875rem] leading-5 font-bold text-[#111C2C]">Ahmed Hassan</h3>
-                <span class="text-[0.75rem] leading-4 text-[#6F797A]">5h ago</span>
-              </div>
-              <button
-                type="button"
-                aria-label="Post options"
-                class="flex size-8 shrink-0 cursor-pointer items-center justify-center rounded-full hover:bg-black/5"
-              >
-                <svg aria-hidden="true" width="14" height="4" viewBox="0 0 14 4" fill="#6F797A">
-                  <circle cx="2" cy="2" r="1.5" />
-                  <circle cx="7" cy="2" r="1.5" />
-                  <circle cx="12" cy="2" r="1.5" />
-                </svg>
-              </button>
-            </div>
-
-            <p class="text-[0.875rem] leading-6 text-[#3E494A] sm:text-[1rem]">
-              Does anyone have a good resource for learning CSS Grid? I'm struggling with the
-              12-column layout.
-            </p>
-
+          } @else if (allLatestPosts()?.length == 0) {
             <div
-              class="flex gap-6 border-t border-t-[#BEC8CA4D]/30 pt-4 text-[0.75rem] leading-4 font-medium text-[#3E494A]"
+              class="bg-white p-6 sm:p-10 border border-dashed border-[#BEC8CA] rounded-[12px] flex flex-col items-center gap-3 text-center"
+              role="status"
             >
-              <span class="flex items-center gap-2">
-                <svg aria-hidden="true" width="16" height="16" viewBox="0 0 18 17" fill="none">
+              <span class="size-14 rounded-full bg-[#00535B1A] flex items-center justify-center">
+                <svg
+                  width="24"
+                  height="24"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  xmlns="http://www.w3.org/2000/svg"
+                >
                   <path
-                    d="M13.3333 16.6667H4.16667V5.83333L10 0L11.0417 1.04167C11.1389 1.13889 11.2188 1.27083 11.2812 1.4375C11.3438 1.60417 11.375 1.76389 11.375 1.91667V2.20833L10.4583 5.83333H15.8333C16.2778 5.83333 16.6667 6 17 6.33333C17.3333 6.66667 17.5 7.05556 17.5 7.5V9.16667L14.875 15.6667C14.75 15.9444 14.5417 16.1806 14.25 16.375C13.9583 16.5694 13.6528 16.6667 13.3333 16.6667M4.16667 5.83333V7.5H1.66667V15H4.16667V16.6667H0V5.83333H4.16667"
-                    fill="#3E494A"
+                    d="M4 4H20V16H5.17L4 17.17V4ZM4 2C2.9 2 2.01 2.9 2.01 4L2 22L6 18H20C21.1 18 22 17.1 22 16V4C22 2.9 21.1 2 20 2H4ZM6 12H14V14H6V12ZM6 9H18V11H6V9ZM6 6H18V8H6V6Z"
+                    fill="#00535B"
                   />
                 </svg>
-                10
               </span>
-              <span class="flex items-center gap-2">
-                <svg aria-hidden="true" width="16" height="16" viewBox="0 0 17 17" fill="none">
-                  <path
-                    d="M0 16.6667V1.66667C0 1.20833 0.163194 0.815972 0.489583 0.489583C0.815972 0.163194 1.20833 0 1.66667 0H15C15.4583 0 15.8507 0.163194 16.1771 0.489583C16.5035 0.815972 16.6667 1.20833 16.6667 1.66667V11.6667C16.6667 12.125 16.5035 12.5174 16.1771 12.8438C15.8507 13.1701 15.4583 13.3333 15 13.3333H3.33333L0 16.6667M2.625 11.6667H15V1.66667H1.66667V12.6042L2.625 11.6667"
-                    fill="#3E494A"
-                  />
-                </svg>
-                5
-              </span>
-            </div>
-          </article>
 
-          <!-- Post 3 -->
-          <article
-            class="flex flex-col gap-4 rounded-[12px] border border-[#BEC8CA4D] bg-white p-5 shadow-[0_4px_16px_0_rgba(0,0,0,0.08)]"
-          >
-            <div class="flex items-start gap-3">
-              <img
-                src="/images/person.png"
-                alt=""
-                class="size-10 shrink-0 rounded-full object-cover"
-              />
-              <div class="flex min-w-0 flex-1 flex-col">
-                <h3 class="text-[0.875rem] leading-5 font-bold text-[#111C2C]">Ahmed Hassan</h3>
-                <span class="text-[0.75rem] leading-4 text-[#6F797A]">5h ago</span>
-              </div>
-              <button
-                type="button"
-                aria-label="Post options"
-                class="flex size-8 shrink-0 cursor-pointer items-center justify-center rounded-full hover:bg-black/5"
-              >
-                <svg aria-hidden="true" width="14" height="4" viewBox="0 0 14 4" fill="#6F797A">
-                  <circle cx="2" cy="2" r="1.5" />
-                  <circle cx="7" cy="2" r="1.5" />
-                  <circle cx="12" cy="2" r="1.5" />
-                </svg>
-              </button>
-            </div>
+              <h3 class="text-[1.125rem] leading-6 font-bold text-[#111C2C]">No posts yet</h3>
 
-            <p class="text-[0.875rem] leading-6 text-[#3E494A] sm:text-[1rem]">
-              Does anyone have a good resource for learning CSS Grid? I'm struggling with the
-              12-column layout.
-            </p>
-
-            <div
-              class="flex gap-6 border-t border-t-[#BEC8CA4D]/30 pt-4 text-[0.75rem] leading-4 font-medium text-[#3E494A]"
-            >
-              <span class="flex items-center gap-2">
-                <svg aria-hidden="true" width="16" height="16" viewBox="0 0 18 17" fill="none">
-                  <path
-                    d="M13.3333 16.6667H4.16667V5.83333L10 0L11.0417 1.04167C11.1389 1.13889 11.2188 1.27083 11.2812 1.4375C11.3438 1.60417 11.375 1.76389 11.375 1.91667V2.20833L10.4583 5.83333H15.8333C16.2778 5.83333 16.6667 6 17 6.33333C17.3333 6.66667 17.5 7.05556 17.5 7.5V9.16667L14.875 15.6667C14.75 15.9444 14.5417 16.1806 14.25 16.375C13.9583 16.5694 13.6528 16.6667 13.3333 16.6667M4.16667 5.83333V7.5H1.66667V15H4.16667V16.6667H0V5.83333H4.16667"
-                    fill="#3E494A"
-                  />
-                </svg>
-                10
-              </span>
-              <span class="flex items-center gap-2">
-                <svg aria-hidden="true" width="16" height="16" viewBox="0 0 17 17" fill="none">
-                  <path
-                    d="M0 16.6667V1.66667C0 1.20833 0.163194 0.815972 0.489583 0.489583C0.815972 0.163194 1.20833 0 1.66667 0H15C15.4583 0 15.8507 0.163194 16.1771 0.489583C16.5035 0.815972 16.6667 1.20833 16.6667 1.66667V11.6667C16.6667 12.125 16.5035 12.5174 16.1771 12.8438C15.8507 13.1701 15.4583 13.3333 15 13.3333H3.33333L0 16.6667M2.625 11.6667H15V1.66667H1.66667V12.6042L2.625 11.6667"
-                    fill="#3E494A"
-                  />
-                </svg>
-                5
-              </span>
+              <p class="text-[0.875rem] leading-5 tracking-[0.14px] text-[#3E494A] max-w-xs">
+                Posts shared by the teacher will appear here.
+              </p>
             </div>
-          </article>
-        </div>
+          } @else {
+            <div class="grid grid-cols-1 gap-2">
+              @for (post of allLatestPosts(); track post.id) {
+                <app-post-card [post]="post"></app-post-card>
+              }
+            </div>
+          }
+        }
       </section>
 
       <!-- Assignments -->
@@ -496,3 +404,9 @@
     </aside>
   </div>
 </section>
+@if (showFormCreate()) {
+  <app-post-form></app-post-form>
+}
+@if (showSuccess()) {
+  <app-success-model (close)="closeSuccess()"></app-success-model>
+}
