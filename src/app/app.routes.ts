@@ -35,7 +35,7 @@ export const routes: Routes = [
 
       {
         path: 'group',
-        data: { roles: ['student'] },
+        data: { roles: ['student', 'teacher'] },
         loadChildren: () => import('./features/posts/posts.routes').then((c) => c.Posts_Routes),
       },
       {

@@ -11,4 +11,7 @@ import { RouterLink } from '@angular/router';
 })
 export class GroupCardTeacherComponent {
   group = input<IGroupTeacher>();
+  openGroup(group: IGroupTeacher) {
+    localStorage.setItem('GroupItem', JSON.stringify(group));
+  }
 }

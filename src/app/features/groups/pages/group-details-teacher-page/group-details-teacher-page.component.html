@@ -7,18 +7,19 @@
       >
         Active
       </span>
-      <span class="text-[1rem] leading-6 tracking-normal text-[#3E494A]">Created Jan 15, 2024</span>
+      <span class="text-[1rem] leading-6 tracking-normal text-[#3E494A]"
+        >Created{{ group()?.created_at | date: 'MMM d, y' }}</span
+      >
     </div>
 
     <h1
       class="text-primary text-[1.5rem] leading-8 font-bold sm:text-[2rem] sm:leading-10 lg:text-[3rem] lg:leading-14 pt-2"
     >
-      Frontend Mentorship - Group A
+      {{ group()?.name }}
     </h1>
 
     <p class="max-w-2xl text-[1.125rem] leading-5.5 text-[#3E494A] sm:text-[1rem] sm:leading-6">
-      Manage content, assignments, members, and group settings. Mastering React and Tailwind CSS
-      through hands-on projects.
+      {{ group()?.description }}
     </p>
 
     <div class="flex flex-col gap-3 pt-2 sm:flex-row">
@@ -78,7 +79,10 @@
           >
             Latest Posts
           </h2>
-          <a routerLink="posts" class="text-primary text-[1rem] leading-6 font-medium">
+          <a
+            [routerLink]="['/group', groupID(), 'posts']"
+            class="text-primary text-[1rem] leading-6 font-medium"
+          >
             View All Posts
           </a>
         </div>

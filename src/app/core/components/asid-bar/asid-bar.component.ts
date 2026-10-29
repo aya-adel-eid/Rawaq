@@ -31,6 +31,7 @@ const NAV_LINKS: NavLink[] = [
 
   // teacher
   { label: 'Join Requests', route: '/members', icon: 'requst', roles: ['teacher'] },
+  { label: 'Explore Groups', route: '/groupTeacher', icon: 'explore', roles: ['teacher'] },
 ];
 
 @Component({
