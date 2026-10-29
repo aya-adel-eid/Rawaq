@@ -58,11 +58,11 @@
       }
     </div>
 
-    <button
-      type="button"
+    <a
+      [routerLink]="['/group', group()?.id]"
       class="bg-primary w-full cursor-pointer rounded-[8px] py-2.5 text-center text-[0.875rem] leading-5 font-medium tracking-[0.14px] text-white shadow-sm"
     >
       Open Group
-    </button>
+    </a>
   </div>
 </article>

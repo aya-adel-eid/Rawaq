@@ -1,0 +1,498 @@
+<section class="mx-auto flex w-full flex-col gap-8 p-4 sm:p-6 lg:p-10">
+  <!-- ===== Header ===== -->
+  <header class="flex flex-col gap-6">
+    <div class="flex flex-wrap items-center gap-2 text-[0.75rem] leading-4 text-[#3E494A]">
+      <span
+        class="bg-primary rounded-full px-3 py-1 text-2xs leading-4 font-bold tracking-normal text-white uppercase"
+      >
+        Active
+      </span>
+      <span class="text-[1rem] leading-6 tracking-normal text-[#3E494A]">Created Jan 15, 2024</span>
+    </div>
+
+    <h1
+      class="text-primary text-[1.5rem] leading-8 font-bold sm:text-[2rem] sm:leading-10 lg:text-[3rem] lg:leading-14 pt-2"
+    >
+      Frontend Mentorship - Group A
+    </h1>
+
+    <p class="max-w-2xl text-[1.125rem] leading-5.5 text-[#3E494A] sm:text-[1rem] sm:leading-6">
+      Manage content, assignments, members, and group settings. Mastering React and Tailwind CSS
+      through hands-on projects.
+    </p>
+
+    <div class="flex flex-col gap-3 pt-2 sm:flex-row">
+      <button
+        type="button"
+        class="bg-primary flex py-3 cursor-pointer items-center justify-center gap-2 rounded-[8px] px-5 text-[1rem] leading-6 font-medium text-white"
+      >
+        <svg
+          width="20"
+          height="20"
+          viewBox="0 0 20 20"
+          fill="none"
+          xmlns="http://www.w3.org/2000/svg"
+        >
+          <path
+            d="M9 15H11V11H15V9H11V5H9V9H5V11H9V15V15M10 20C8.61667 20 7.31667 19.7375 6.1 19.2125C4.88333 18.6875 3.825 17.975 2.925 17.075C2.025 16.175 1.3125 15.1167 0.7875 13.9C0.2625 12.6833 0 11.3833 0 10C0 8.61667 0.2625 7.31667 0.7875 6.1C1.3125 4.88333 2.025 3.825 2.925 2.925C3.825 2.025 4.88333 1.3125 6.1 0.7875C7.31667 0.2625 8.61667 0 10 0C11.3833 0 12.6833 0.2625 13.9 0.7875C15.1167 1.3125 16.175 2.025 17.075 2.925C17.975 3.825 18.6875 4.88333 19.2125 6.1C19.7375 7.31667 20 8.61667 20 10C20 11.3833 19.7375 12.6833 19.2125 13.9C18.6875 15.1167 17.975 16.175 17.075 17.075C16.175 17.975 15.1167 18.6875 13.9 19.2125C12.6833 19.7375 11.3833 20 10 20V20M10 18C12.2333 18 14.125 17.225 15.675 15.675C17.225 14.125 18 12.2333 18 10C18 7.76667 17.225 5.875 15.675 4.325C14.125 2.775 12.2333 2 10 2C7.76667 2 5.875 2.775 4.325 4.325C2.775 5.875 2 7.76667 2 10C2 12.2333 2.775 14.125 4.325 15.675C5.875 17.225 7.76667 18 10 18V18M10 10V10V10V10V10V10V10V10V10V10"
+            fill="white"
+          />
+        </svg>
+
+        Create New Post
+      </button>
+
+      <button
+        type="button"
+        class="border-primary text-primary flex py-3 cursor-pointer items-center justify-center gap-2 rounded-[8px] border-2 bg-white px-5 text-[1rem] leading-6 font-medium"
+      >
+        <svg
+          width="20"
+          height="22"
+          viewBox="0 0 20 22"
+          fill="none"
+          xmlns="http://www.w3.org/2000/svg"
+        >
+          <path
+            d="M2 20C1.45 20 0.979167 19.8042 0.5875 19.4125C0.195833 19.0208 0 18.55 0 18V4C0 3.45 0.195833 2.97917 0.5875 2.5875C0.979167 2.19583 1.45 2 2 2H6.2C6.41667 1.4 6.77917 0.916667 7.2875 0.55C7.79583 0.183333 8.36667 0 9 0C9.63333 0 10.2042 0.183333 10.7125 0.55C11.2208 0.916667 11.5833 1.4 11.8 2H16C16.55 2 17.0208 2.19583 17.4125 2.5875C17.8042 2.97917 18 3.45 18 4V10.7C17.6833 10.55 17.3583 10.4208 17.025 10.3125C16.6917 10.2042 16.35 10.125 16 10.075V4V4V4H2V4V4V18V18V18H8.05C8.1 18.3667 8.17917 18.7167 8.2875 19.05C8.39583 19.3833 8.525 19.7 8.675 20H2V20M2 17C2 17.1833 2 17.3542 2 17.5125C2 17.6708 2 17.8333 2 18V18V18V18V4V4V4V4V4V4V10.075C2 10.0417 2 10.0208 2 10.0125C2 10.0042 2 10 2 10C2 10 2 10.6833 2 12.05C2 13.4167 2 15.0667 2 17V17M4 16H8.075C8.125 15.65 8.20417 15.3083 8.3125 14.975C8.42083 14.6417 8.54167 14.3167 8.675 14H4V16V16M4 12H10.1C10.6333 11.5 11.2292 11.0833 11.8875 10.75C12.5458 10.4167 13.25 10.1917 14 10.075V10H4V12V12M4 8H14V6H4V8V8M9 3.25C9.21667 3.25 9.39583 3.17917 9.5375 3.0375C9.67917 2.89583 9.75 2.71667 9.75 2.5C9.75 2.28333 9.67917 2.10417 9.5375 1.9625C9.39583 1.82083 9.21667 1.75 9 1.75C8.78333 1.75 8.60417 1.82083 8.4625 1.9625C8.32083 2.10417 8.25 2.28333 8.25 2.5C8.25 2.71667 8.32083 2.89583 8.4625 3.0375C8.60417 3.17917 8.78333 3.25 9 3.25V3.25M15 22C13.6167 22 12.4375 21.5125 11.4625 20.5375C10.4875 19.5625 10 18.3833 10 17C10 15.6167 10.4875 14.4375 11.4625 13.4625C12.4375 12.4875 13.6167 12 15 12C16.3833 12 17.5625 12.4875 18.5375 13.4625C19.5125 14.4375 20 15.6167 20 17C20 18.3833 19.5125 19.5625 18.5375 20.5375C17.5625 21.5125 16.3833 22 15 22V22M14.5 20H15.5V17.5H18V16.5H15.5V14H14.5V16.5H12V17.5H14.5V20V20"
+            fill="#00535B"
+          />
+        </svg>
+
+        Create Assignment
+      </button>
+    </div>
+  </header>
+
+  <!-- ===== Body ===== -->
+  <div class="grid grid-cols-1 gap-8 lg:grid-cols-[minmax(0,1fr)_300px]">
+    <!-- ===== Main column ===== -->
+    <div class="flex min-w-0 flex-col gap-8">
+      <!-- Latest Posts -->
+      <section class="flex flex-col gap-4" aria-labelledby="latest-posts">
+        <div class="flex items-center justify-between">
+          <h2
+            id="latest-posts"
+            class="text-[1.5rem] leading-8 font-semibold text-[#111C2C] sm:text-[1.25rem]"
+          >
+            Latest Posts
+          </h2>
+          <a routerLink="posts" class="text-primary text-[1rem] leading-6 font-medium">
+            View All Posts
+          </a>
+        </div>
+
+        <div class="flex flex-col gap-4">
+          <!-- Post 1 -->
+          <article
+            class="flex flex-col gap-4 rounded-[12px] border border-[#BEC8CA4D] bg-white p-5 shadow-[0_4px_16px_0_rgba(0,0,0,0.08)]"
+          >
+            <div class="flex items-start gap-3">
+              <img
+                src="/images/person.png"
+                alt=""
+                class="size-10 shrink-0 rounded-full object-cover"
+              />
+              <div class="flex min-w-0 flex-1 flex-col">
+                <h3 class="text-[0.875rem] leading-5 font-bold text-[#111C2C]">Ahmed Hassan</h3>
+                <span class="text-[0.75rem] leading-4 text-[#6F797A]">5h ago</span>
+              </div>
+              <button
+                type="button"
+                aria-label="Post options"
+                class="flex size-8 shrink-0 cursor-pointer items-center justify-center rounded-full hover:bg-black/5"
+              >
+                <svg aria-hidden="true" width="14" height="4" viewBox="0 0 14 4" fill="#6F797A">
+                  <circle cx="2" cy="2" r="1.5" />
+                  <circle cx="7" cy="2" r="1.5" />
+                  <circle cx="12" cy="2" r="1.5" />
+                </svg>
+              </button>
+            </div>
+
+            <p class="text-[0.875rem] leading-6 text-[#3E494A] sm:text-[1rem]">
+              Does anyone have a good resource for learning CSS Grid? I'm struggling with the
+              12-column layout.
+            </p>
+
+            <div
+              class="flex gap-6 border-t border-t-[#BEC8CA4D]/30 pt-4 text-[0.75rem] leading-4 font-medium text-[#3E494A]"
+            >
+              <span class="flex items-center gap-2">
+                <svg aria-hidden="true" width="16" height="16" viewBox="0 0 18 17" fill="none">
+                  <path
+                    d="M13.3333 16.6667H4.16667V5.83333L10 0L11.0417 1.04167C11.1389 1.13889 11.2188 1.27083 11.2812 1.4375C11.3438 1.60417 11.375 1.76389 11.375 1.91667V2.20833L10.4583 5.83333H15.8333C16.2778 5.83333 16.6667 6 17 6.33333C17.3333 6.66667 17.5 7.05556 17.5 7.5V9.16667L14.875 15.6667C14.75 15.9444 14.5417 16.1806 14.25 16.375C13.9583 16.5694 13.6528 16.6667 13.3333 16.6667M4.16667 5.83333V7.5H1.66667V15H4.16667V16.6667H0V5.83333H4.16667"
+                    fill="#3E494A"
+                  />
+                </svg>
+                10
+              </span>
+              <span class="flex items-center gap-2">
+                <svg aria-hidden="true" width="16" height="16" viewBox="0 0 17 17" fill="none">
+                  <path
+                    d="M0 16.6667V1.66667C0 1.20833 0.163194 0.815972 0.489583 0.489583C0.815972 0.163194 1.20833 0 1.66667 0H15C15.4583 0 15.8507 0.163194 16.1771 0.489583C16.5035 0.815972 16.6667 1.20833 16.6667 1.66667V11.6667C16.6667 12.125 16.5035 12.5174 16.1771 12.8438C15.8507 13.1701 15.4583 13.3333 15 13.3333H3.33333L0 16.6667M2.625 11.6667H15V1.66667H1.66667V12.6042L2.625 11.6667"
+                    fill="#3E494A"
+                  />
+                </svg>
+                5
+              </span>
+            </div>
+          </article>
+
+          <!-- Post 2 -->
+          <article
+            class="flex flex-col gap-4 rounded-[12px] border border-[#BEC8CA4D] bg-white p-5 shadow-[0_4px_16px_0_rgba(0,0,0,0.08)]"
+          >
+            <div class="flex items-start gap-3">
+              <img
+                src="/images/person.png"
+                alt=""
+                class="size-10 shrink-0 rounded-full object-cover"
+              />
+              <div class="flex min-w-0 flex-1 flex-col">
+                <h3 class="text-[0.875rem] leading-5 font-bold text-[#111C2C]">Ahmed Hassan</h3>
+                <span class="text-[0.75rem] leading-4 text-[#6F797A]">5h ago</span>
+              </div>
+              <button
+                type="button"
+                aria-label="Post options"
+                class="flex size-8 shrink-0 cursor-pointer items-center justify-center rounded-full hover:bg-black/5"
+              >
+                <svg aria-hidden="true" width="14" height="4" viewBox="0 0 14 4" fill="#6F797A">
+                  <circle cx="2" cy="2" r="1.5" />
+                  <circle cx="7" cy="2" r="1.5" />
+                  <circle cx="12" cy="2" r="1.5" />
+                </svg>
+              </button>
+            </div>
+
+            <p class="text-[0.875rem] leading-6 text-[#3E494A] sm:text-[1rem]">
+              Does anyone have a good resource for learning CSS Grid? I'm struggling with the
+              12-column layout.
+            </p>
+
+            <div
+              class="flex gap-6 border-t border-t-[#BEC8CA4D]/30 pt-4 text-[0.75rem] leading-4 font-medium text-[#3E494A]"
+            >
+              <span class="flex items-center gap-2">
+                <svg aria-hidden="true" width="16" height="16" viewBox="0 0 18 17" fill="none">
+                  <path
+                    d="M13.3333 16.6667H4.16667V5.83333L10 0L11.0417 1.04167C11.1389 1.13889 11.2188 1.27083 11.2812 1.4375C11.3438 1.60417 11.375 1.76389 11.375 1.91667V2.20833L10.4583 5.83333H15.8333C16.2778 5.83333 16.6667 6 17 6.33333C17.3333 6.66667 17.5 7.05556 17.5 7.5V9.16667L14.875 15.6667C14.75 15.9444 14.5417 16.1806 14.25 16.375C13.9583 16.5694 13.6528 16.6667 13.3333 16.6667M4.16667 5.83333V7.5H1.66667V15H4.16667V16.6667H0V5.83333H4.16667"
+                    fill="#3E494A"
+                  />
+                </svg>
+                10
+              </span>
+              <span class="flex items-center gap-2">
+                <svg aria-hidden="true" width="16" height="16" viewBox="0 0 17 17" fill="none">
+                  <path
+                    d="M0 16.6667V1.66667C0 1.20833 0.163194 0.815972 0.489583 0.489583C0.815972 0.163194 1.20833 0 1.66667 0H15C15.4583 0 15.8507 0.163194 16.1771 0.489583C16.5035 0.815972 16.6667 1.20833 16.6667 1.66667V11.6667C16.6667 12.125 16.5035 12.5174 16.1771 12.8438C15.8507 13.1701 15.4583 13.3333 15 13.3333H3.33333L0 16.6667M2.625 11.6667H15V1.66667H1.66667V12.6042L2.625 11.6667"
+                    fill="#3E494A"
+                  />
+                </svg>
+                5
+              </span>
+            </div>
+          </article>
+
+          <!-- Post 3 -->
+          <article
+            class="flex flex-col gap-4 rounded-[12px] border border-[#BEC8CA4D] bg-white p-5 shadow-[0_4px_16px_0_rgba(0,0,0,0.08)]"
+          >
+            <div class="flex items-start gap-3">
+              <img
+                src="/images/person.png"
+                alt=""
+                class="size-10 shrink-0 rounded-full object-cover"
+              />
+              <div class="flex min-w-0 flex-1 flex-col">
+                <h3 class="text-[0.875rem] leading-5 font-bold text-[#111C2C]">Ahmed Hassan</h3>
+                <span class="text-[0.75rem] leading-4 text-[#6F797A]">5h ago</span>
+              </div>
+              <button
+                type="button"
+                aria-label="Post options"
+                class="flex size-8 shrink-0 cursor-pointer items-center justify-center rounded-full hover:bg-black/5"
+              >
+                <svg aria-hidden="true" width="14" height="4" viewBox="0 0 14 4" fill="#6F797A">
+                  <circle cx="2" cy="2" r="1.5" />
+                  <circle cx="7" cy="2" r="1.5" />
+                  <circle cx="12" cy="2" r="1.5" />
+                </svg>
+              </button>
+            </div>
+
+            <p class="text-[0.875rem] leading-6 text-[#3E494A] sm:text-[1rem]">
+              Does anyone have a good resource for learning CSS Grid? I'm struggling with the
+              12-column layout.
+            </p>
+
+            <div
+              class="flex gap-6 border-t border-t-[#BEC8CA4D]/30 pt-4 text-[0.75rem] leading-4 font-medium text-[#3E494A]"
+            >
+              <span class="flex items-center gap-2">
+                <svg aria-hidden="true" width="16" height="16" viewBox="0 0 18 17" fill="none">
+                  <path
+                    d="M13.3333 16.6667H4.16667V5.83333L10 0L11.0417 1.04167C11.1389 1.13889 11.2188 1.27083 11.2812 1.4375C11.3438 1.60417 11.375 1.76389 11.375 1.91667V2.20833L10.4583 5.83333H15.8333C16.2778 5.83333 16.6667 6 17 6.33333C17.3333 6.66667 17.5 7.05556 17.5 7.5V9.16667L14.875 15.6667C14.75 15.9444 14.5417 16.1806 14.25 16.375C13.9583 16.5694 13.6528 16.6667 13.3333 16.6667M4.16667 5.83333V7.5H1.66667V15H4.16667V16.6667H0V5.83333H4.16667"
+                    fill="#3E494A"
+                  />
+                </svg>
+                10
+              </span>
+              <span class="flex items-center gap-2">
+                <svg aria-hidden="true" width="16" height="16" viewBox="0 0 17 17" fill="none">
+                  <path
+                    d="M0 16.6667V1.66667C0 1.20833 0.163194 0.815972 0.489583 0.489583C0.815972 0.163194 1.20833 0 1.66667 0H15C15.4583 0 15.8507 0.163194 16.1771 0.489583C16.5035 0.815972 16.6667 1.20833 16.6667 1.66667V11.6667C16.6667 12.125 16.5035 12.5174 16.1771 12.8438C15.8507 13.1701 15.4583 13.3333 15 13.3333H3.33333L0 16.6667M2.625 11.6667H15V1.66667H1.66667V12.6042L2.625 11.6667"
+                    fill="#3E494A"
+                  />
+                </svg>
+                5
+              </span>
+            </div>
+          </article>
+        </div>
+      </section>
+
+      <!-- Assignments -->
+      <section class="flex flex-col gap-4" aria-labelledby="assignments">
+        <div class="flex items-center justify-between">
+          <h2
+            id="assignments"
+            class="text-[1.5rem] leading-8 tracking-normal font-semibold text-[#111C2C] sm:text-[1.25rem]"
+          >
+            Assignments
+          </h2>
+          <a
+            routerLink="assignments"
+            class="text-primary text-[1rem] leading-6 tracking-normal font-medium hover:underline"
+          >
+            View All Assignments
+          </a>
+        </div>
+
+        <div class="grid grid-cols-1 gap-4 sm:grid-cols-2">
+          <!-- Active -->
+          <article
+            class="flex flex-col gap-3 rounded-[12px] border border-[#BEC8CA4D] bg-white p-6 shadow-[0_4px_16px_0_rgba(0,0,0,0.08)]"
+          >
+            <div class="flex justify-between">
+              <span
+                class="bg-primary w-fit rounded px-2 py-0.5 text-[0.625rem] leading-4 font-bold tracking-[0.5px] text-white uppercase"
+              >
+                Active
+              </span>
+              <span>
+                <svg
+                  width="16"
+                  height="20"
+                  viewBox="0 0 16 20"
+                  fill="none"
+                  xmlns="http://www.w3.org/2000/svg"
+                >
+                  <path
+                    d="M4 16H12V14H4V16V16M4 12H12V10H4V12V12M2 20C1.45 20 0.979167 19.8042 0.5875 19.4125C0.195833 19.0208 0 18.55 0 18V2C0 1.45 0.195833 0.979167 0.5875 0.5875C0.979167 0.195833 1.45 0 2 0H10L16 6V18C16 18.55 15.8042 19.0208 15.4125 19.4125C15.0208 19.8042 14.55 20 14 20H2V20M9 7V2H2V2V2V18V18V18H14V18V18V7H9V7M2 2V2V7V7V2V7V7V18V18V18V18V18V18V2V2V2V2"
+                    fill="#3E494A"
+                  />
+                </svg>
+              </span>
+            </div>
+            <div class="flex flex-col gap-1">
+              <h3 class="text-[1rem] leading-6 tracking-normal pt-3 font-semibold text-[#111C2C]">
+                React Hooks Quiz
+              </h3>
+              <p class="text-[0.75rem] leading-4 text-[#3E494A]">Due: Feb 20, 2024</p>
+            </div>
+            <div class="flex flex-col gap-1.5">
+              <div class="flex items-center justify-between text-xs leading-4 text-[#3E494A] pt-3">
+                <span>Submission Progress</span>
+                <span class="font-semibold">45/125</span>
+              </div>
+              <div class="h-1.5 w-full overflow-hidden rounded-full bg-[#E8E4D0]">
+                <div class="h-1.5 w-[36%] rounded-full bg-[#E5A93C]"></div>
+              </div>
+            </div>
+          </article>
+
+          <!-- Draft -->
+          <article
+            class="flex flex-col gap-3 rounded-[12px] border border-[#BEC8CA4D] bg-white p-4 shadow-[0_4px_16px_0_rgba(0,0,0,0.08)]"
+          >
+            <span
+              class="w-fit rounded bg-[#E1E8F5] px-2 py-0.5 text-[0.625rem] leading-4 font-bold tracking-[0.5px] text-[#3E494A] uppercase"
+            >
+              Draft
+            </span>
+            <div class="flex flex-col gap-1">
+              <h3 class="text-[0.875rem] leading-5 font-semibold text-[#111C2C]">
+                Final Project Draft
+              </h3>
+              <p class="text-[0.75rem] leading-4 text-[#6F797A]">Due: Mar 10, 2024</p>
+            </div>
+            <div class="flex flex-col gap-1.5">
+              <div
+                class="flex items-center justify-between text-[0.625rem] leading-4 text-[#3E494A]"
+              >
+                <span>Submission Progress</span>
+                <span class="font-semibold">0/125</span>
+              </div>
+              <div class="h-1.5 w-full overflow-hidden rounded-full bg-[#E8E4D0]">
+                <div class="h-1.5 w-0 rounded-full bg-[#E5A93C]"></div>
+              </div>
+            </div>
+          </article>
+        </div>
+      </section>
+    </div>
+
+    <!-- ===== Side column ===== -->
+    <aside class="flex min-w-0 flex-col gap-6">
+      <!-- Group Members -->
+      <section
+        class="flex flex-col gap-4 rounded-[12px] bg-[#F0F3FF] p-8"
+        aria-labelledby="members"
+      >
+        <div class="flex items-center justify-between">
+          <h2 id="members" class="text-[1rem] leading-6 tracking-normal font-semibold text-primary">
+            Group Members
+            <span class="text-[#6F797A] lg:hidden">(24)</span>
+          </h2>
+          <a
+            routerLink="members"
+            class="text-primary text-[1rem] leading-6 tracking-normal font-medium hover:underline"
+          >
+            <span class="hidden lg:inline">View All</span>
+            <span class="lg:hidden">Manage</span>
+          </a>
+        </div>
+
+        <!-- Desktop: list -->
+        <ul class="hidden flex-col gap-2 lg:flex">
+          <li class="flex items-center gap-3 rounded-[8px] bg-white p-3">
+            <img
+              src="/images/person.png"
+              alt=""
+              class="size-10 shrink-0 rounded-full object-cover"
+            />
+            <div class="flex min-w-0 flex-col">
+              <span class="truncate text-[1rem] leading-6 font-semibold text-[#111C2C]"
+                >Sara Ali</span
+              >
+              <span class="truncate text-2xs leading-3.5 tracking-normal text-[#3E494A]"
+                >sara.ali@student.edu</span
+              >
+            </div>
+          </li>
+        </ul>
+
+        <!-- Mobile / tablet: avatars row -->
+        <ul class="flex gap-4 overflow-x-auto pb-1 lg:hidden [scrollbar-width:none]">
+          <li class="flex shrink-0 flex-col items-center gap-1">
+            <img
+              src="/images/person.png"
+              alt=""
+              class="border-primary size-12 rounded-full border-2 object-cover"
+            />
+            <span class="text-[0.625rem] leading-3 text-[#3E494A]">Sara</span>
+          </li>
+          <li class="flex shrink-0 flex-col items-center gap-1">
+            <img src="/images/person.png" alt="" class="size-12 rounded-full object-cover" />
+            <span class="text-[0.625rem] leading-3 text-[#3E494A]">Omar</span>
+          </li>
+          <li class="flex shrink-0 flex-col items-center gap-1">
+            <img src="/images/person.png" alt="" class="size-12 rounded-full object-cover" />
+            <span class="text-[0.625rem] leading-3 text-[#3E494A]">Laila</span>
+          </li>
+        </ul>
+      </section>
+
+      <!-- Group Settings -->
+      <section class="flex flex-col gap-3" aria-labelledby="settings">
+        <h2
+          id="settings"
+          class="flex items-center gap-2 text-[1rem] leading-6 tracking-normal font-semibold text-[#111C2C]"
+        >
+          <svg
+            width="21"
+            height="20"
+            viewBox="0 0 21 20"
+            fill="none"
+            xmlns="http://www.w3.org/2000/svg"
+          >
+            <path
+              d="M7.3 20L6.9 16.8C6.68333 16.7167 6.47917 16.6167 6.2875 16.5C6.09583 16.3833 5.90833 16.2583 5.725 16.125L2.75 17.375L0 12.625L2.575 10.675C2.55833 10.5583 2.55 10.4458 2.55 10.3375C2.55 10.2292 2.55 10.1167 2.55 10C2.55 9.88333 2.55 9.77083 2.55 9.6625C2.55 9.55417 2.55833 9.44167 2.575 9.325L0 7.375L2.75 2.625L5.725 3.875C5.90833 3.74167 6.1 3.61667 6.3 3.5C6.5 3.38333 6.7 3.28333 6.9 3.2L7.3 0H12.8L13.2 3.2C13.4167 3.28333 13.6208 3.38333 13.8125 3.5C14.0042 3.61667 14.1917 3.74167 14.375 3.875L17.35 2.625L20.1 7.375L17.525 9.325C17.5417 9.44167 17.55 9.55417 17.55 9.6625C17.55 9.77083 17.55 9.88333 17.55 10C17.55 10.1167 17.55 10.2292 17.55 10.3375C17.55 10.4458 17.5333 10.5583 17.5 10.675L20.075 12.625L17.325 17.375L14.375 16.125C14.1917 16.2583 14 16.3833 13.8 16.5C13.6 16.6167 13.4 16.7167 13.2 16.8L12.8 20H7.3V20M9.05 18H11.025L11.375 15.35C11.8917 15.2167 12.3708 15.0208 12.8125 14.7625C13.2542 14.5042 13.6583 14.1917 14.025 13.825L16.5 14.85L17.475 13.15L15.325 11.525C15.4083 11.2917 15.4667 11.0458 15.5 10.7875C15.5333 10.5292 15.55 10.2667 15.55 10C15.55 9.73333 15.5333 9.47083 15.5 9.2125C15.4667 8.95417 15.4083 8.70833 15.325 8.475L17.475 6.85L16.5 5.15L14.025 6.2C13.6583 5.81667 13.2542 5.49583 12.8125 5.2375C12.3708 4.97917 11.8917 4.78333 11.375 4.65L11.05 2H9.075L8.725 4.65C8.20833 4.78333 7.72917 4.97917 7.2875 5.2375C6.84583 5.49583 6.44167 5.80833 6.075 6.175L3.6 5.15L2.625 6.85L4.775 8.45C4.69167 8.7 4.63333 8.95 4.6 9.2C4.56667 9.45 4.55 9.71667 4.55 10C4.55 10.2667 4.56667 10.525 4.6 10.775C4.63333 11.025 4.69167 11.275 4.775 11.525L2.625 13.15L3.6 14.85L6.075 13.8C6.44167 14.1833 6.84583 14.5042 7.2875 14.7625C7.72917 15.0208 8.20833 15.2167 8.725 15.35L9.05 18V18M10.1 13.5C11.0667 13.5 11.8917 13.1583 12.575 12.475C13.2583 11.7917 13.6 10.9667 13.6 10C13.6 9.03333 13.2583 8.20833 12.575 7.525C11.8917 6.84167 11.0667 6.5 10.1 6.5C9.11667 6.5 8.2875 6.84167 7.6125 7.525C6.9375 8.20833 6.6 9.03333 6.6 10C6.6 10.9667 6.9375 11.7917 7.6125 12.475C8.2875 13.1583 9.11667 13.5 10.1 13.5V13.5M10.05 10V10V10V10V10V10V10V10V10V10V10V10V10V10V10V10V10V10V10V10V10V10V10V10V10V10V10V10V10V10V10V10V10V10V10V10"
+              fill="#00535B"
+            />
+          </svg>
+
+          Group Settings
+        </h2>
+
+        <div
+          class="flex flex-col overflow-hidden rounded-[12px] border border-[#BEC8CA33] bg-white"
+        >
+          <button
+            type="button"
+            class="flex cursor-pointer items-center justify-between gap-3 p-4 text-start text-[0.75rem] leading-4 font-medium text-[#3E494A] hover:bg-black/5"
+          >
+            <span class="flex items-center gap-2">
+              <svg
+                width="18"
+                height="18"
+                viewBox="0 0 18 18"
+                fill="none"
+                xmlns="http://www.w3.org/2000/svg"
+              >
+                <path
+                  d="M2 16H3.425L13.2 6.225L11.775 4.8L2 14.575V16V16M0 18V13.75L13.2 0.575C13.4 0.391667 13.6208 0.25 13.8625 0.15C14.1042 0.05 14.3583 0 14.625 0C14.8917 0 15.15 0.05 15.4 0.15C15.65 0.25 15.8667 0.4 16.05 0.6L17.425 2C17.625 2.18333 17.7708 2.4 17.8625 2.65C17.9542 2.9 18 3.15 18 3.4C18 3.66667 17.9542 3.92083 17.8625 4.1625C17.7708 4.40417 17.625 4.625 17.425 4.825L4.25 18H0V18M16 3.4V3.4L14.6 2V2L16 3.4V3.4M12.475 5.525L11.775 4.8V4.8L13.2 6.225V6.225L12.475 5.525V5.525"
+                  fill="#3E494A"
+                />
+              </svg>
+
+              Edit Group Info
+            </span>
+            <svg
+              width="8"
+              height="12"
+              viewBox="0 0 8 12"
+              fill="none"
+              xmlns="http://www.w3.org/2000/svg"
+            >
+              <path d="M4.6 6L0 1.4L1.4 0L7.4 6L1.4 12L0 10.6L4.6 6V6" fill="#6F797A" />
+            </svg>
+          </button>
+
+          <button
+            type="button"
+            class="text-primary flex cursor-pointer items-center justify-between gap-3 border-t border-t-[#BEC8CA4D] px-3 py-3 text-start text-[0.75rem] leading-4 font-medium hover:bg-black/5"
+          >
+            <span class="flex items-center gap-2">
+              <svg
+                width="18"
+                height="18"
+                viewBox="0 0 18 18"
+                fill="none"
+                xmlns="http://www.w3.org/2000/svg"
+              >
+                <path
+                  d="M2 18C1.45 18 0.979167 17.8042 0.5875 17.4125C0.195833 17.0208 0 16.55 0 16V2C0 1.45 0.195833 0.979167 0.5875 0.5875C0.979167 0.195833 1.45 0 2 0H9V2H2V2V2V16V16V16H9V18H2V18M13 14L11.625 12.55L14.175 10H6V8H14.175L11.625 5.45L13 4L18 9L13 14V14"
+                  fill="#BA1A1A"
+                />
+              </svg>
+
+              Unarchive Group
+            </span>
+            <svg
+              width="8"
+              height="12"
+              viewBox="0 0 8 12"
+              fill="none"
+              xmlns="http://www.w3.org/2000/svg"
+            >
+              <path d="M4.6 6L0 1.4L1.4 0L7.4 6L1.4 12L0 10.6L4.6 6V6" fill="#BA1A1A" />
+            </svg>
+          </button>
+        </div>
+      </section>
+    </aside>
+  </div>
+</section>
