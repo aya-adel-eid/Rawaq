@@ -1,0 +1,218 @@
+<article
+  [id]="'q' + number()"
+  class="flex flex-col overflow-hidden rounded-[12px] border border-[#BEC8CA4D] bg-white shadow-[0_4px_16px_0_rgba(0,0,0,0.06)]"
+>
+  <!-- mobile header -->
+  <div class="flex items-center justify-between bg-[#F0F3FF] px-4 py-2 lg:hidden">
+    <span
+      class="flex items-center gap-2 text-[0.625rem] leading-4 font-bold tracking-[0.5px] text-[#3E494A] uppercase"
+    >
+      <span aria-hidden="true" class="cursor-grab text-[#6F797A]"
+        ><svg
+          width="10"
+          height="16"
+          viewBox="0 0 10 16"
+          fill="none"
+          xmlns="http://www.w3.org/2000/svg"
+        >
+          <path
+            d="M2 16C1.45 16 0.979167 15.8042 0.5875 15.4125C0.195833 15.0208 0 14.55 0 14C0 13.45 0.195833 12.9792 0.5875 12.5875C0.979167 12.1958 1.45 12 2 12C2.55 12 3.02083 12.1958 3.4125 12.5875C3.80417 12.9792 4 13.45 4 14C4 14.55 3.80417 15.0208 3.4125 15.4125C3.02083 15.8042 2.55 16 2 16V16M8 16C7.45 16 6.97917 15.8042 6.5875 15.4125C6.19583 15.0208 6 14.55 6 14C6 13.45 6.19583 12.9792 6.5875 12.5875C6.97917 12.1958 7.45 12 8 12C8.55 12 9.02083 12.1958 9.4125 12.5875C9.80417 12.9792 10 13.45 10 14C10 14.55 9.80417 15.0208 9.4125 15.4125C9.02083 15.8042 8.55 16 8 16V16M2 10C1.45 10 0.979167 9.80417 0.5875 9.4125C0.195833 9.02083 0 8.55 0 8C0 7.45 0.195833 6.97917 0.5875 6.5875C0.979167 6.19583 1.45 6 2 6C2.55 6 3.02083 6.19583 3.4125 6.5875C3.80417 6.97917 4 7.45 4 8C4 8.55 3.80417 9.02083 3.4125 9.4125C3.02083 9.80417 2.55 10 2 10V10M8 10C7.45 10 6.97917 9.80417 6.5875 9.4125C6.19583 9.02083 6 8.55 6 8C6 7.45 6.19583 6.97917 6.5875 6.5875C6.97917 6.19583 7.45 6 8 6C8.55 6 9.02083 6.19583 9.4125 6.5875C9.80417 6.97917 10 7.45 10 8C10 8.55 9.80417 9.02083 9.4125 9.4125C9.02083 9.80417 8.55 10 8 10V10M2 4C1.45 4 0.979167 3.80417 0.5875 3.4125C0.195833 3.02083 0 2.55 0 2C0 1.45 0.195833 0.979167 0.5875 0.5875C0.979167 0.195833 1.45 0 2 0C2.55 0 3.02083 0.195833 3.4125 0.5875C3.80417 0.979167 4 1.45 4 2C4 2.55 3.80417 3.02083 3.4125 3.4125C3.02083 3.80417 2.55 4 2 4V4M8 4C7.45 4 6.97917 3.80417 6.5875 3.4125C6.19583 3.02083 6 2.55 6 2C6 1.45 6.19583 0.979167 6.5875 0.5875C6.97917 0.195833 7.45 0 8 0C8.55 0 9.02083 0.195833 9.4125 0.5875C9.80417 0.979167 10 1.45 10 2C10 2.55 9.80417 3.02083 9.4125 3.4125C9.02083 3.80417 8.55 4 8 4V4"
+            fill="#6F797A"
+          />
+        </svg>
+      </span>
+      Question {{ number() }}
+    </span>
+    <span class="flex items-center gap-3">
+      <button type="button" aria-label="Duplicate" class="cursor-pointer text-[#3E494A]">
+        <svg
+          width="17"
+          height="20"
+          viewBox="0 0 17 20"
+          fill="none"
+          xmlns="http://www.w3.org/2000/svg"
+        >
+          <path
+            d="M6 16C5.45 16 4.97917 15.8042 4.5875 15.4125C4.19583 15.0208 4 14.55 4 14V2C4 1.45 4.19583 0.979167 4.5875 0.5875C4.97917 0.195833 5.45 0 6 0H15C15.55 0 16.0208 0.195833 16.4125 0.5875C16.8042 0.979167 17 1.45 17 2V14C17 14.55 16.8042 15.0208 16.4125 15.4125C16.0208 15.8042 15.55 16 15 16H6V16M6 14H15V14V14V2V2V2H6V2V2V14V14V14V14M2 20C1.45 20 0.979167 19.8042 0.5875 19.4125C0.195833 19.0208 0 18.55 0 18V4H2V18V18V18H13V20H2V20M6 14V14V14V2V2V2V2V2V2V14V14V14V14V14"
+            fill="#6F797A"
+          />
+        </svg>
+      </button>
+      <button type="button" aria-label="Delete" class="cursor-pointer text-[#BA1A1A]">
+        <svg
+          width="16"
+          height="18"
+          viewBox="0 0 16 18"
+          fill="none"
+          xmlns="http://www.w3.org/2000/svg"
+        >
+          <path
+            d="M3 18C2.45 18 1.97917 17.8042 1.5875 17.4125C1.19583 17.0208 1 16.55 1 16V3H0V1H5V0H11V1H16V3H15V16C15 16.55 14.8042 17.0208 14.4125 17.4125C14.0208 17.8042 13.55 18 13 18H3V18M13 3H3V16V16V16H13V16V16V3V3M5 14H7V5H5V14V14M9 14H11V5H9V14V14M3 3V3V16V16V16V16V16V16V3V3"
+            fill="#BA1A1A"
+          />
+        </svg>
+      </button>
+    </span>
+  </div>
+
+  <div class="flex gap-3 p-4 sm:p-5">
+    <!-- number + handle (desktop) -->
+    <div class="hidden flex-col items-center gap-2 lg:flex">
+      <span aria-hidden="true" class="cursor-grab text-[#6F797A]"
+        ><svg
+          width="10"
+          height="18"
+          viewBox="0 0 10 18"
+          fill="none"
+          xmlns="http://www.w3.org/2000/svg"
+        >
+          <path
+            d="M2 17.6309C1.45 17.6309 0.979167 17.435 0.5875 17.0434C0.195833 16.6517 0 16.1809 0 15.6309C0 15.0809 0.195833 14.61 0.5875 14.2184C0.979167 13.8267 1.45 13.6309 2 13.6309C2.55 13.6309 3.02083 13.8267 3.4125 14.2184C3.80417 14.61 4 15.0809 4 15.6309C4 16.1809 3.80417 16.6517 3.4125 17.0434C3.02083 17.435 2.55 17.6309 2 17.6309V17.6309M8 17.6309C7.45 17.6309 6.97917 17.435 6.5875 17.0434C6.19583 16.6517 6 16.1809 6 15.6309C6 15.0809 6.19583 14.61 6.5875 14.2184C6.97917 13.8267 7.45 13.6309 8 13.6309C8.55 13.6309 9.02083 13.8267 9.4125 14.2184C9.80417 14.61 10 15.0809 10 15.6309C10 16.1809 9.80417 16.6517 9.4125 17.0434C9.02083 17.435 8.55 17.6309 8 17.6309V17.6309M2 11.6309C1.45 11.6309 0.979167 11.435 0.5875 11.0434C0.195833 10.6517 0 10.1809 0 9.63086C0 9.08086 0.195833 8.61003 0.5875 8.21836C0.979167 7.82669 1.45 7.63086 2 7.63086C2.55 7.63086 3.02083 7.82669 3.4125 8.21836C3.80417 8.61003 4 9.08086 4 9.63086C4 10.1809 3.80417 10.6517 3.4125 11.0434C3.02083 11.435 2.55 11.6309 2 11.6309V11.6309M8 11.6309C7.45 11.6309 6.97917 11.435 6.5875 11.0434C6.19583 10.6517 6 10.1809 6 9.63086C6 9.08086 6.19583 8.61003 6.5875 8.21836C6.97917 7.82669 7.45 7.63086 8 7.63086C8.55 7.63086 9.02083 7.82669 9.4125 8.21836C9.80417 8.61003 10 9.08086 10 9.63086C10 10.1809 9.80417 10.6517 9.4125 11.0434C9.02083 11.435 8.55 11.6309 8 11.6309V11.6309M2 5.63086C1.45 5.63086 0.979167 5.43503 0.5875 5.04336C0.195833 4.65169 0 4.18086 0 3.63086C0 3.08086 0.195833 2.61003 0.5875 2.21836C0.979167 1.82669 1.45 1.63086 2 1.63086C2.55 1.63086 3.02083 1.82669 3.4125 2.21836C3.80417 2.61003 4 3.08086 4 3.63086C4 4.18086 3.80417 4.65169 3.4125 5.04336C3.02083 5.43503 2.55 5.63086 2 5.63086V5.63086M8 5.63086C7.45 5.63086 6.97917 5.43503 6.5875 5.04336C6.19583 4.65169 6 4.18086 6 3.63086C6 3.08086 6.19583 2.61003 6.5875 2.21836C6.97917 1.82669 7.45 1.63086 8 1.63086C8.55 1.63086 9.02083 1.82669 9.4125 2.21836C9.80417 2.61003 10 3.08086 10 3.63086C10 4.18086 9.80417 4.65169 9.4125 5.04336C9.02083 5.43503 8.55 5.63086 8 5.63086V5.63086"
+            fill="#BEC8CA"
+          />
+        </svg>
+      </span>
+      <span
+        class="bg-primary flex size-10 items-center justify-center rounded-full text-[0.875rem] font-bold text-white"
+      >
+        {{ number() }}
+      </span>
+    </div>
+
+    <div class="flex min-w-0 flex-1 flex-col gap-4">
+      <!-- question text -->
+      <textarea
+        rows="1"
+        [attr.aria-label]="'Question ' + number() + ' text'"
+        placeholder="Enter your question"
+        class="w-full resize-none rounded-[6px] border border-[#BEC8CA4D] focus:border-[#BEC8CA4D] bg-white p-3 text-[1.25rem] leading-8 text-[#111C2C] outline-none placeholder:text-[#6F797A] focus:ring-0 focus:outline-0"
+        >{{ text() }}</textarea>
+
+      <!-- type + grade -->
+      <div class="flex flex-col gap-3 sm:flex-row sm:items-center">
+        <label
+          class="flex h-8 items-center gap-2 rounded-[6px] border border-[#BEC8CA4D] bg-[#F0F3FF] px-3 text-xs leading-4 tracking-normal text-[#6F797A] sm:w-fit"
+        >
+          Type:
+          <select
+            class="text-primary min-w-0 flex-1 cursor-pointer bg-transparent text-[0.875rem] leading-5 tracking-[0.14px] font-bold outline-none ring-0 border-0"
+          >
+            <option [selected]="type() === 'single'">Single Choice</option>
+            <option [selected]="type() === 'multiple'">Multiple Choice</option>
+            <option [selected]="type() === 'text'">Text Answer</option>
+          </select>
+        </label>
+
+        <label
+          class="flex h-8 items-center gap-2 rounded-[6px] border border-[#BEC8CA4D] bg-[#F0F3FF] px-3 text-xs leading-4 tracking-normal text-[#6F797A] sm:w-fit"
+        >
+          Grade:
+          <input
+            type="number"
+            [value]="grade()"
+            step="0.5"
+            min="0"
+            class="text-primary min-w-0 flex-1 cursor-pointer bg-transparent text-[0.875rem] leading-5 tracking-[0.14px] font-bold outline-none ring-0 border-0"
+          />
+        </label>
+      </div>
+
+      @if (!collapsed()) {
+        <!-- options -->
+        @if (type() !== 'text') {
+          <ul class="flex flex-col gap-2">
+            @for (opt of options(); track $index) {
+              <li class="flex items-center gap-3 rounded-[8px] bg-[#F0F3FF] px-4 py-3">
+                <input
+                  [type]="type() === 'single' ? 'radio' : 'checkbox'"
+                  [name]="'q' + number()"
+                  [checked]="opt.correct"
+                  aria-label="Mark as correct"
+                  class="text-primary focus:ring-primary/30 size-4 shrink-0 cursor-pointer border-[#BEC8CA] bg-white focus:ring-2"
+                  [class.rounded-full]="type() === 'single'"
+                  [class.rounded-[4px]]="type() !== 'single'"
+                />
+
+                <input
+                  type="text"
+                  [value]="opt.text"
+                  placeholder="Option text"
+                  class="min-w-0 flex-1 border-none bg-transparent p-0 text-[0.75rem] leading-5 text-[#111C2C] outline-none placeholder:text-[#6F797A] focus:ring-0"
+                />
+
+                <button
+                  type="button"
+                  aria-label="Remove option"
+                  class="shrink-0 cursor-pointer text-[#BA1A1A]"
+                >
+                  🗑
+                </button>
+                <span
+                  aria-hidden="true"
+                  class="hidden shrink-0 cursor-grab text-[#6F797A] sm:inline"
+                  >⋮⋮</span
+                >
+              </li>
+            }
+          </ul>
+
+          <button
+            type="button"
+            class="text-primary flex w-fit cursor-pointer items-center gap-1.5 text-[0.625rem] leading-4 font-medium"
+          >
+            <span aria-hidden="true">⊕</span> Add Option
+          </button>
+        }
+      }
+    </div>
+  </div>
+
+  <!-- footer (desktop) -->
+  <div
+    class="hidden items-center justify-end gap-5 bg-[#F0F3FF] px-5 py-3 text-[0.625rem] leading-4 font-medium text-[#3E494A] lg:flex"
+  >
+    <button type="button" class="cursor-pointer hover:underline flex items-center gap-2">
+      <svg
+        width="15"
+        height="17"
+        viewBox="0 0 15 17"
+        fill="none"
+        xmlns="http://www.w3.org/2000/svg"
+      >
+        <path
+          d="M5 13.3333C4.54167 13.3333 4.14931 13.1701 3.82292 12.8438C3.49653 12.5174 3.33333 12.125 3.33333 11.6667V1.66667C3.33333 1.20833 3.49653 0.815972 3.82292 0.489583C4.14931 0.163194 4.54167 0 5 0H12.5C12.9583 0 13.3507 0.163194 13.6771 0.489583C14.0035 0.815972 14.1667 1.20833 14.1667 1.66667V11.6667C14.1667 12.125 14.0035 12.5174 13.6771 12.8438C13.3507 13.1701 12.9583 13.3333 12.5 13.3333H5V13.3333M5 11.6667H12.5V11.6667V11.6667V1.66667V1.66667V1.66667H5V1.66667V1.66667V11.6667V11.6667V11.6667V11.6667M1.66667 16.6667C1.20833 16.6667 0.815972 16.5035 0.489583 16.1771C0.163194 15.8507 0 15.4583 0 15V3.33333H1.66667V15V15V15H10.8333V16.6667H1.66667V16.6667M5 11.6667V11.6667V11.6667V1.66667V1.66667V1.66667V1.66667V1.66667V1.66667V11.6667V11.6667V11.6667V11.6667V11.6667"
+          fill="#3E494A"
+        />
+      </svg>
+      Duplicate
+    </button>
+    <button
+      type="button"
+      class="cursor-pointer text-[#BA1A1A] hover:underline flex items-center gap-2"
+    >
+      <svg
+        width="14"
+        height="15"
+        viewBox="0 0 14 15"
+        fill="none"
+        xmlns="http://www.w3.org/2000/svg"
+      >
+        <path
+          d="M2.5 15C2.04167 15 1.64931 14.8368 1.32292 14.5104C0.996528 14.184 0.833333 13.7917 0.833333 13.3333V2.5H0V0.833333H4.16667V0H9.16667V0.833333H13.3333V2.5H12.5V13.3333C12.5 13.7917 12.3368 14.184 12.0104 14.5104C11.684 14.8368 11.2917 15 10.8333 15H2.5V15M10.8333 2.5H2.5V13.3333V13.3333V13.3333H10.8333V13.3333V13.3333V2.5V2.5M4.16667 11.6667H5.83333V4.16667H4.16667V11.6667V11.6667M7.5 11.6667H9.16667V4.16667H7.5V11.6667V11.6667M2.5 2.5V2.5V13.3333V13.3333V13.3333V13.3333V13.3333V13.3333V2.5V2.5"
+          fill="#BA1A1A"
+        />
+      </svg>
+      Delete
+    </button>
+    <button type="button" class="cursor-pointer hover:underline flex items-center gap-2">
+      <svg width="10" height="7" viewBox="0 0 10 7" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <path
+          d="M1.16667 6.16667L0 5L5 0L10 5L8.83333 6.16667L5 2.33333L1.16667 6.16667V6.16667"
+          fill="#3E494A"
+        />
+      </svg>
+
+      {{ collapsed() ? 'Expand' : 'Collapse' }}
+    </button>
+  </div>
+</article>

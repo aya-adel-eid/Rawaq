@@ -1,0 +1,121 @@
+<section class="mx-auto flex w-full flex-col gap-6 p-4 sm:p-6 lg:p-10">
+  <!-- header -->
+  <header class="flex flex-col gap-2">
+    <nav
+      aria-label="Breadcrumb"
+      class="flex items-center gap-2 text-[0.75rem] leading-4 font-semibold tracking-normal"
+    >
+      <a routerLink="../.." class="text-[#6F797A] hover:underline">Assignments</a>
+      <span aria-hidden="true" class="text-[#3E494A]">&gt;</span>
+      <span class="text-primary">New Assignment</span>
+    </nav>
+    <h1
+      class="text-[2rem] leading-10 tracking-[-0.32px] font-semibold pt-1 text-[#111C2C] lg:text-[2rem] lg:leading-10"
+    >
+      Create Assignment
+    </h1>
+    <p class="text-[0.875rem] leading-5 text-[#3E494A]">
+      Create an assignment and define the questions students must answer.
+    </p>
+  </header>
+
+  <div class="grid grid-cols-1 gap-6 lg:grid-cols-[minmax(0,1fr)_300px] lg:items-start">
+    <!-- ===== Main column ===== -->
+    <div class="flex min-w-0 flex-col gap-8">
+      <!-- mobile summary (Total grade / Questions) -->
+      <div class="grid grid-cols-2 gap-3 rounded-[12px] bg-[#F0F3FF] p-3 lg:hidden">
+        <div class="flex flex-col rounded-[8px] bg-white p-3">
+          <span class="text-[0.5rem] leading-3 font-bold tracking-[0.5px] text-[#6F797A] uppercase"
+            >Total Grade</span
+          >
+          <span class="text-[1.125rem] leading-6 font-bold text-[#111C2C]"
+            >20 <small class="text-[0.625rem] font-normal">pts</small></span
+          >
+        </div>
+        <div class="flex flex-col rounded-[8px] bg-white p-3">
+          <span class="text-[0.5rem] leading-3 font-bold tracking-[0.5px] text-[#6F797A] uppercase"
+            >Questions</span
+          >
+          <span class="text-[1.125rem] leading-6 font-bold text-[#111C2C]">3</span>
+        </div>
+      </div>
+
+      <app-assignment-info-card />
+
+      <!-- questions -->
+      <section class="flex flex-col gap-4" aria-labelledby="questions">
+        <div class="flex items-center justify-between">
+          <h2 id="questions" class="text-[1rem] leading-6 font-semibold text-[#111C2C]">
+            Questions
+          </h2>
+          <span
+            class="hidden rounded-full bg-[#E1E8F5] px-3 py-1 text-[0.625rem] leading-3 text-[#3E494A] sm:inline"
+          >
+            Total: 3 Questions
+          </span>
+        </div>
+
+        <app-question-card
+          [number]="1"
+          type="single"
+          text="Which of the following best describes ?"
+          [options]="singleOptions"
+        />
+        <app-question-card
+          [number]="2"
+          type="multiple"
+          text="Select all the visual tokens used in the Rawaq Design System."
+          [options]="multipleOptions"
+        />
+        <app-question-card
+          [number]="3"
+          type="text"
+          text="Explain how 'Tonal Layering' helps in defining the platform framework."
+        />
+        <app-question-card
+          [number]="4"
+          type="text"
+          text="Explain how 'Tonal Layering' helps in defining the platform framework."
+          [collapsed]="true"
+        />
+
+        <button
+          type="button"
+          class="hover:border-primary hover:bg-primary/5 flex h-14 w-full cursor-pointer items-center justify-center gap-2 rounded-[12px] border-2 border-dashed border-[#BEC8CA] text-[0.875rem] leading-5 font-medium text-[#3E494A] transition-colors"
+        >
+          <span aria-hidden="true">⊕</span> Add Question
+        </button>
+
+        <!-- publish (mobile only) -->
+        <button
+          type="button"
+          class="bg-primary h-11 w-full cursor-pointer rounded-[8px] text-[0.875rem] leading-5 font-medium text-white lg:hidden"
+        >
+          Publish Assignment
+        </button>
+      </section>
+    </div>
+
+    <!-- ===== Side column (desktop only) ===== -->
+    <aside class="sticky top-6 hidden min-w-0 flex-col gap-4 lg:flex">
+      <app-assignment-summary />
+
+      <button
+        type="button"
+        class="flex cursor-pointer items-center gap-3 rounded-[12px] bg-[#F0F3FF] p-4 text-start"
+      >
+        <span class="bg-primary/10 flex size-9 shrink-0 items-center justify-center rounded-full"
+          >👁</span
+        >
+        <span class="flex min-w-0 flex-1 flex-col">
+          <span class="text-[0.75rem] leading-4 font-semibold text-[#111C2C]">Live Preview</span>
+          <span class="text-[0.625rem] leading-3 text-[#6F797A]"
+            >See how students will view this assignment</span
+          >
+        </span>
+      </button>
+
+      <app-question-map />
+    </aside>
+  </div>
+</section>

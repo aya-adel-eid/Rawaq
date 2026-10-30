@@ -1,0 +1,25 @@
+<section class="flex flex-col gap-3 rounded-[12px] bg-[#F0F3FF] p-4" aria-labelledby="map">
+  <h2
+    id="map"
+    class="text-[0.625rem] leading-4 font-bold tracking-[0.5px] text-[#6F797A] uppercase"
+  >
+    Question Map
+  </h2>
+  <div class="flex flex-wrap gap-2">
+    @for (n of numbers; track n) {
+      <a
+        [href]="'#q' + n"
+        class="bg-primary flex size-6 items-center justify-center rounded text-[0.625rem] font-bold text-white"
+      >
+        {{ n }}
+      </a>
+    }
+    <button
+      type="button"
+      aria-label="Add question"
+      class="flex size-6 cursor-pointer items-center justify-center rounded border border-dashed border-[#BEC8CA] text-[0.75rem] text-[#6F797A]"
+    >
+      +
+    </button>
+  </div>
+</section>

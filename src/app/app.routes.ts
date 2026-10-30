@@ -52,6 +52,14 @@ export const routes: Routes = [
             (c) => c.MyGroupsTeacherComponent,
           ),
       },
+      {
+        path: 'assign',
+        data: { roles: ['teacher'] },
+        loadComponent: () =>
+          import('./features/assignments/pages/create-assignment-page/create-assignment-page.component').then(
+            (c) => c.CreateAssignmentPageComponent,
+          ),
+      },
     ],
   },
 ];
